@@ -1,0 +1,33 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<style>
+#openseadragon1 {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+<div id="openseadragon"></div>
+<script src="openseadragon.min.js"></script>
+<script type="text/javascript">
+  const SERVER = "http://0.0.0.0:8000";
+  var viewer = OpenSeadragon({
+    id: "openseadragon",
+    prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@3.1.0/build/openseadragon/images/",
+    tileSources: {
+          height: 189680,
+          width:  189680,
+          tileSize: 512,
+          minLevel: 9,        
+          maxLevel: 18,        
+          overlay: 0,
+          getTileUrl: function( level, x, y ) {
+            const lvl = 18 - level;
+              return `${SERVER}/tile/mars_4_4/${lvl}/${x}/${y}`;
+          },
+      //  debugMode: true
+  }});
+  </script>
