@@ -11,13 +11,9 @@ with a web server serving the tiles, and an OpenSeaDragon javascript object in a
 **Khufu** allows tiles to be be served from a single TIFF that has the same structure as a DeepZoom image.
 
 Thanks to the wonderful OpenSeaDragon project, all you have to do is use a Custom Embedded Source in an HTML
-page, run the **khufu** Web Server were your images are, and your image is instantly viewable, whatever its dimensions.
+page, run the **khufu** Web Server where your images are, and they become instantly viewable, whatever their pixel dimensions and disk size.
 
-```bin/khufu```
-
-You then can open locally the corresponding HTML file for your image.
-You may have to update the SERVER variable  in the HTML depending on your configuration.
-You will also need the openseadragon.min.js file.
+You first create an HTML file that defines a custom tile source for OpenSeaDragon
 
 ````
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -48,9 +44,16 @@ var viewer = OpenSeadragon({
 </script>
 ````
 
-and you can display your gigantic image.
+Then you launch the **khufu** server 
 
-You can generate this HTML from a template (for ```mars_4_4.tif```)
+```bin/khufu```
+
+You then can open the HTML file with any Web Browser wth Javascript support to explore your image.
+
+You may have to update the SERVER variable in the HTML depending on your configuration.
+You will also need the ```openseadragon.min.js``` file.
+
+You can generate this HTML from a template for a given pyramidal TIFF (for example ```mars_4_4.tif```)
 ```bin/tiff2khufu mars_4_4 | sed -f - khufu.tpl.html > mars_4_4.html```
 
 Khufu is built with the great Mongoose library https://mongoose.ws/ (two files and you have a web server !),
@@ -68,7 +71,7 @@ make
 
 and you are ready to go
 
-![khufu sserving tiles of a 200 000 x 200 000 single TIFF for a local HTML file](images/cassini.png)
+![khufu serving tiles of a 200 000 x 200 000 10 zoom levels single TIFF](images/cassini.png)
 
 
   ## Issues
@@ -83,11 +86,12 @@ Requests are in the URI as: ```/tile/<name>/<level>/<col>/<row>```
 
 ```http://127.0.0.1:8000/tile/cassini/0/0/0``` will retrieve the top-left tile of the first directory of the cassini.tif image
 
-khufu retrieves tile at col and row for the given level (starting from 0) TIFF image directory and returns a Jpeg file, so all level or row/column mappings must be present in the OpenSeaDragon config in the HTML.
+khufu retrieves tile at col and row of the given level (directory in TIFF jargon, starting from 0) and returns a Jpeg file, so all level or row/column mappings must have been declared in the OpenSeaDragon config in the HTML.
 
 
 (```tiff2khufu``` generates this for you)
 ```bin/tiff2khufu mars_4_4 |  sed -f - khufu.tpl.html > mars_4_4.html```
 
-For alternative to khufu, you can on Windows use my **Vliv** viewer for parmidal TIFFS.
+For alternative to khufu, you can on the Windows platform  use my **Vliv** viewer for pyramidal TIFFs.
+
 https://github.com/delhoume/vliv
