@@ -1,27 +1,24 @@
-  # **Khufu** is a very simple HTTP server that serves tiles from a **single pyramidal TIFF**
+  # **Khufu** is a very simple HTTP server that serves tiles from  **single pyramidal TIFF files**
 
-This allows a single TIFF file to be deployed over the Web, instead of the classic method
-of generating a Deep Zoom file hierarchy and having a web server to deliver them.
+This allows gigantic TIFF files to be deployed over the Web, without the hassle 
+of generating a Deep Zoom file hierarchy and having a web server deliver it.
 
-When you have terapixel images, with dimensions up to 4 267 800 x 2 086 480 pixels (as from htts://github.com/delhoume/BigMars), even with a 512x512 tile size you end up having 5558 x 3705 jpeg files (that makes more than 2 million files).
-
+When you have terapixel images, with dimensions up to 4 267 800 x 2 086 480 pixels (as from htts://github.com/delhoume/BigMars), even with a 512x512 tile size you end up having 5558 x 3705 jpeg files (that makes more than 2 million files for the most detailed level).
 
 You would deploy then using a DZI file that describes the image and can be visualized in a web browser,
 with a web server serving the tiles, and an OpenSeaDragon javascript object in an HTML page.
 
-**Khufu** allows tiles to be be served from a single TIFF that has the same structure as DeepZoom.
+**Khufu** allows tiles to be be served from a single TIFF that has the same structure as a DeepZoom image.
 
 Thanks to the wonderful OpenSeaDragon project, all you have to do is use a Custom Embedded Source in an HTML
-page, run the khufu Web Server, and your image is instantly viewable, whatever its dimensions.
+page, run the **khufu** Web Server were your images are, and your image is instantly viewable, whatever its dimensions.
 
-
-
-and you launch the khufu Web Server were your TIFF images are
 ```bin/khufu```
 
 You then can open locally the corresponding HTML file for your image.
-You may have to update the SERVER variable depending on your configuration.
-Youl will also need the openseadragon.min.js file.
+You may have to update the SERVER variable  in the HTML depending on your configuration.
+You will also need the openseadragon.min.js file.
+
 ````
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <style>
