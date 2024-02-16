@@ -18,15 +18,15 @@ body {
     id: "openseadragon",
     prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@3.1.0/build/openseadragon/images/",
     tileSources: {
-          height: 189680,
-          width:  189680,
-          tileSize: 512,
-          minLevel: 9,        
-          maxLevel: 18,        
+          height: HEIGHT,
+          width:  WIDTH,
+          tileSize: TILESIZE,
+          minLevel: MINLEVEL,        
+          maxLevel: MAXLEVEL,        
           overlay: 0,
           getTileUrl: function( level, x, y ) {
             const lvl = 18 - level;
-              return `${SERVER}/tile/mars_4_4/${lvl}/${x}/${y}`;
+              return `${SERVER}/tile/IMAGE/${lvl}/${x}/${y}`;
           },
       //  debugMode: true
   }});

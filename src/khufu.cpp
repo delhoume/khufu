@@ -85,6 +85,10 @@ int main(int argc, char *argv[]) {
   struct mg_connection *c;
   int i;
 
+   TIFFSetErrorHandler(NULL);
+    TIFFSetErrorHandlerExt(NULL);
+   TIFFSetWarningHandler(NULL);
+    TIFFSetWarningHandlerExt(NULL);
 
   // Initialise stuff
   signal(SIGINT, signal_handler);
