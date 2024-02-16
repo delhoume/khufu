@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Frederic Delhoume
+// All rights reserved
+
+
 #include <iostream>
 #include <cstring>
 #include <cmath>

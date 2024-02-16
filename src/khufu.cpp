@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Cesanta Software Limited
+// Copyright (c) 2024 Frederic Delhoume
 // All rights reserved
 
 #include <signal.h>
