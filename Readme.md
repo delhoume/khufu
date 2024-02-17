@@ -77,9 +77,8 @@ and you are ready to go
   ## Issues
 
  for each tile request I generate a file on disk and use mg_http_serve_file, this is ineficient and there might
- be issues concurrently acccessing the same file with multiple instances of khulu running or even multithreading.
-
-If you know how to serve images from memory with Mongoose this would be very apprecited.
+ be issues of disk usage  that keeps growing with each request.
+I am working on serving from memory but until I get it, if you know to serve images from memory with Mongoose this would be very apprecited.
 
 The protocol is very simple
 Requests are in the URI as: ```/tile/<name>/<level>/<col>/<row>```

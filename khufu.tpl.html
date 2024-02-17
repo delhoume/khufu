@@ -25,7 +25,7 @@ body {
           maxLevel: MAXLEVEL,        
           overlay: 0,
           getTileUrl: function( level, x, y ) {
-            const lvl = 18 - level;
+            const lvl = MAXLEVEL - level;
               return `${SERVER}/tile/IMAGE/${lvl}/${x}/${y}`;
           },
       //  debugMode: true
