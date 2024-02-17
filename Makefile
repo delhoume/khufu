@@ -11,15 +11,18 @@ LIBS = /opt/homebrew/lib/libtiff.a  /opt/homebrew/lib/libturbojpeg.a \
 
 PROGRAMS = $(BINDIR)/khufu $(BINDIR)/tiff2khufu
 
-all: $(PROGRAMS)
+all: $(BINDIR) $(PROGRAMS)
 
 clean:
 	rm -rf *~ *# .??*
 	rm -rf $(SRCDIR)*~ $(SRCDIR)*# $(SRCDIR).??*
 	rm -rf $(PROGRAMS)
 
-$(BINDIR)/khufu: $(SRCDIR)/khufu.cpp $(SRCDIR)/mongoose.c
+$(BINDIR):
+	mkdir -p bin
+
+$(BINDIR)/khufu: $(SRCDIR)/khufu.cpp $(SRCDIR)/mongoose.c $(BINDIR)
 	$(CCC) $(CCFLAGS) $(SRCDIR)/khufu.cpp $(SRCDIR)/mongoose.c -o $(BINDIR)/khufu $(LIBS)
 
-$(BINDIR)/tiff2khufu: $(SRCDIR)/tiff2khufu.cpp
+$(BINDIR)/tiff2khufu: $(SRCDIR)/tiff2khufu.cpp $(BINDIR)
 	$(CCC) $(CCFLAGS) $(SRCDIR)/tiff2khufu.cpp -o $(BINDIR)/tiff2khufu $(LIBS)
