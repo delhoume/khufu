@@ -74,14 +74,18 @@ and you are ready to go
 ![khufu serving tiles of a 200 000 x 200 000 10 zoom levels single TIFF](images/cassini.png)
 
 
-  ## Issues
+  ## Misc
 
- for each tile request I generate a file on disk and use mg_http_serve_file, this is ineficient and there might
- be issues of disk usage  that keeps growing with each request.
-I am working on serving from memory but until I get it, if you know to serve images from memory with Mongoose this would be very apprecited.
+Tiles are retireved from the TIFF file, decoded using libTIFF and encoded using STB, there is n intermediary file.
 
-The protocol is very simple
-Requests are in the URI as: ```/tile/<name>/<level>/<col>/<row>```
+While easier to code, I  will switch to libturbo-jpeg, for performance reasons and because STB does not handle 1 byte (grey) input
+and generates a tile that is 3 bytes per pixel with repeated value... 
+
+I seem to have currently some issues on right and top border for some images, that might come from the fact that image dimension are usually not exact multiple of tile dimensions,
+so the last row and column might be handled differently, maybe deepZoom wants smaller tiles for the last row / column, clipped to level dimensions.
+
+
+The protocol for serving is very simple, the complete request is encoded in the URI as: ```/tile/<name>/<level>/<col>/<row>```
 
 ```http://127.0.0.1:8000/tile/cassini/0/0/0``` will retrieve the top-left tile of the first directory of the cassini.tif image
 
@@ -91,6 +95,7 @@ khufu retrieves tile at col and row of the given level (directory in TIFF jargon
 (```tiff2khufu``` generates this for you)
 ```bin/tiff2khufu mars_4_4 |  sed -f - khufu.tpl.html > mars_4_4.html```
 
-For alternative to khufu, you can on the Windows platform  use my **Vliv** viewer for pyramidal TIFFs.
+For an alternative to khufu, you can use my **Vliv** viewer for pyramidal TIFFs, for Windows.
 
 https://github.com/delhoume/vliv
+
