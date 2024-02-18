@@ -73,9 +73,9 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].ptr);
       unsigned int row = atoi(buffer);
 
-      // mg_log("Request : %.*s",  uri.len, uri.ptr);
-      mg_log("Loading : %s (directory: %d column: %d row: %d)", filename, level, column, row);
-   
+      int64_t uptime = mg_millis();
+  //    mg_log("Request : %.*s",  uri.len, uri.ptr);
+    
       TIFF* tifin = TIFFOpen(filename, "r");
       //  first checks do not depend on level        
       if (tifin && TIFFIsTiled(tifin) && (level >= 0) && (level < TIFFNumberOfDirectories(tifin))) {       
@@ -93,7 +93,6 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
           unsigned char* data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
   //       int  ret =  TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight, (uint32_t*)data);  
           uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0); 
-          mg_log("Tilenum : %d %d", tilenum, TIFFNumberOfTiles(tifin));
           if (TIFFReadEncodedTile(tifin, tilenum, (uint32_t*)data, tilewidth * tileheight * samples_per_pixel) != -1) {
                mg_printf(c,
                         "HTTP/1.1 200 OK\r\n"
@@ -114,9 +113,11 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
           delete [] data;
         }
       } else {
-        mg_http_reply(c, 404, "", "Not found\n");
+        mg_http_reply(c, 404, "", "No tile found\n");
       }
       TIFFClose(tifin);
+      int elapsed = mg_millis() - uptime;
+      mg_log("%s tile at %dx%d in directory %d generated in %d ms", filename, column, row, level, elapsed);
     }
  }
 
