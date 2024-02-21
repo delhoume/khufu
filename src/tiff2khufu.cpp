@@ -64,7 +64,7 @@ main(int argc, char* argv[]) {
     << "s/WIDTH/" << imagewidth << "/g" << std::endl
     << "s/HEIGHT/" << imageheight << "/g" << std::endl
     << "s/TILESIZE/" << tilewidth << "/g" << std::endl
-    << "s/MINLEVEL/" << (maxlevel - directories) << "/g" << std::endl   
+    << "s/MINLEVEL/" << (maxlevel - directories + 1) << "/g" << std::endl   
      << "s/MAXLEVEL/" << maxlevel << "/g" << std::endl;
 
     TIFFClose(tifin);

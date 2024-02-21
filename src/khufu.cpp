@@ -41,10 +41,67 @@ void khufu_write(void *context, void *data, int size) {
   mg_send(c, data, size);
 }
 
-// test with
-// curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 --output tile.jp
+void MongooseInit(j_compress_ptr cinfo) {
+  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+}
 
-struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);  
+boolean MongooseEmpty(j_compress_ptr cinfo) {
+  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+  return true;
+}
+
+void MongooseTerm(j_compress_ptr cinfo) {
+  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+}
+
+static void emitJPEG(struct mg_connection *c, int width, int height, int comp, unsigned char* data) {
+  struct jpeg_compress_struct cinfo;
+	struct jpeg_error_mgr err;
+  unsigned char* lpRowBuffer[1];
+  cinfo.err = jpeg_std_error(&err);
+	jpeg_create_compress(&cinfo);
+
+	//jpeg_stdio_dest(&info, fHandle);
+
+  unsigned char *mem = 0;
+  unsigned long mem_size = 0;
+
+  jpeg_mem_dest(&cinfo, &mem, &mem_size);
+
+/*
+  struct jpeg_destination_mgr khufu;
+  cinfo.dest = &khufu;
+  khufu.init_destination = MongooseInit;
+  khufu.empty_output_buffer = MongooseEmpty;
+  khufu.term_destination = MongooseTerm;
+  cinfo.dest = &khufu;
+  cinfo.client_data = (void*)c;
+  */
+
+	cinfo.image_width = width;
+	cinfo.image_height = height;
+	cinfo.input_components = comp;
+	cinfo.in_color_space = comp == 3 ? JCS_RGB : JCS_GRAYSCALE;
+
+	jpeg_set_defaults(&cinfo);
+	jpeg_set_quality(&cinfo, jpeg_quality, TRUE);
+	jpeg_start_compress(&cinfo, TRUE);
+
+	/* Write every scanline ... */
+	while(cinfo.next_scanline < cinfo.image_height) {
+		lpRowBuffer[0] = data + cinfo.next_scanline * width * comp;
+		jpeg_write_scanlines(&cinfo, lpRowBuffer, 1);
+	}
+	jpeg_finish_compress(&cinfo);
+  mg_send(c, mem, mem_size);
+	jpeg_destroy_compress(&cinfo);
+    free((void*)mem);
+ }
+// test with
+// curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 --output tile.jpg
+
+struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;  
+
 
 // /tile/<name>/<level>/<x>/<y>
  static void cb(struct mg_connection *c, int ev, void *ev_data) {
@@ -75,6 +132,7 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
 
       int64_t uptime = mg_millis();
   //    mg_log("Request : %.*s",  uri.len, uri.ptr);
+    unsigned int nWritten = 0;
     
       TIFF* tifin = TIFFOpen(filename, "r");
       //  first checks do not depend on level        
@@ -101,14 +159,17 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
               int off = c->send.len;  // Start of body
               khufu_context context = { c };
               // direct jpeg to out buffer
-              stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, samples_per_pixel, data, jpeg_quality);
-
+              //stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, samples_per_pixel, data, jpeg_quality);
+             emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
              // fill placeholder for size
               char tmp[10];
               size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu", (unsigned long) (c->send.len - off));
+               nWritten = c->send.len - off;
               if (n > sizeof(tmp)) n = 0;
               memcpy(c->send.buf + off - 12, tmp, n);  // Set content length
               c->is_resp = 0;                          // Mark response end
+              int elapsed = mg_millis() - uptime;
+              mg_log("%s: %d bytes %dx%d tile at column %d and row %d in directory %d, took %d ms", filename, nWritten, tilewidth, tileheight, column, row, level, elapsed);
           } 
           delete [] data;
         }
@@ -116,11 +177,8 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD);
         mg_http_reply(c, 404, "", "No tile found\n");
       }
       TIFFClose(tifin);
-      int elapsed = mg_millis() - uptime;
-      mg_log("%s tile at %dx%d in directory %d generated in %d ms", filename, column, row, level, elapsed);
     }
  }
-
 
 int main(int argc, char *argv[]) {
   char path[MG_PATH_MAX] = ".";
