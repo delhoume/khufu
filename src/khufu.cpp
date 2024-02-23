@@ -55,6 +55,7 @@ void MongooseTerm(j_compress_ptr cinfo) {
 }
 
 static void emitJPEG(struct mg_connection *c, int width, int height, int comp, unsigned char* data) {
+ // mg_log("Using JPEGLib");
   struct jpeg_compress_struct cinfo;
 	struct jpeg_error_mgr err;
   unsigned char* lpRowBuffer[1];
@@ -100,11 +101,17 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp, u
 // test with
 // curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 --output tile.jpg
 
+
+boolean KhufuCheckTile(int position, int numtiles) {
+  return (position >= 0) && (position < numtiles);
+}
+
+
 struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;  
 
 
 // /tile/<name>/<level>/<x>/<y>
- static void cb(struct mg_connection *c, int ev, void *ev_data) {
+static void cb(struct mg_connection *c, int ev, void *ev_data) {
     if (ev == MG_EV_HTTP_MSG) {
       struct mg_http_message *hm = (struct mg_http_message *) ev_data;
       struct mg_str uri = hm->uri;
@@ -121,6 +128,7 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;
       char filename[128];
       char buffer[8];
 
+      mg_log("Incoming request %.*s", uri.len, uri.ptr);
       // TODO look for images in a configurable  folder (argv[1] ?)
       mg_snprintf(filename, sizeof(filename), "%.*s.tif", caps[0].len, caps[0].ptr); 
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].ptr);
@@ -129,56 +137,103 @@ struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;
       unsigned int column = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].ptr);
       unsigned int row = atoi(buffer);
-
+      mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
       int64_t uptime = mg_millis();
-  //    mg_log("Request : %.*s",  uri.len, uri.ptr);
     unsigned int nWritten = 0;
-    
-      TIFF* tifin = TIFFOpen(filename, "r");
-      //  first checks do not depend on level        
-      if (tifin && TIFFIsTiled(tifin) && (level >= 0) && (level < TIFFNumberOfDirectories(tifin))) {       
-        if (level != 0) TIFFSetDirectory(tifin, level); // is it necessary ? is there's a cost ?
-        unsigned int tilewidth;              
-        unsigned int tileheight;
-        uint16_t bits_per_pixel; 
-        int16_t samples_per_pixel;
-        TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);             
-        TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);              
-        TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);              
-        TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_pixel);
-        if (TIFFCheckTile(tifin, column * tilewidth, row * tileheight, 0, 0) && (bits_per_pixel == 8)) {
-    //      samples_per_pixel = 4;
-          unsigned char* data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
-  //       int  ret =  TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight, (uint32_t*)data);  
-          uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0); 
-          if (TIFFReadEncodedTile(tifin, tilenum, (uint32_t*)data, tilewidth * tileheight * samples_per_pixel) != -1) {
-               mg_printf(c,
-                        "HTTP/1.1 200 OK\r\n"
-                        "Content-Type: image/jpeg; charset=utf-8\r\n"
-                        "Content-Length:         \r\n\r\n");  // placeholder
-              int off = c->send.len;  // Start of body
-              khufu_context context = { c };
-              // direct jpeg to out buffer
-              //stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, samples_per_pixel, data, jpeg_quality);
-             emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
-             // fill placeholder for size
-              char tmp[10];
-              size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu", (unsigned long) (c->send.len - off));
-               nWritten = c->send.len - off;
-              if (n > sizeof(tmp)) n = 0;
-              memcpy(c->send.buf + off - 12, tmp, n);  // Set content length
-              c->is_resp = 0;                          // Mark response end
-              int elapsed = mg_millis() - uptime;
-              mg_log("%s: %d bytes %dx%d tile at column %d and row %d in directory %d, took %d ms", filename, nWritten, tilewidth, tileheight, column, row, level, elapsed);
-          } 
-          delete [] data;
+    boolean useSTB= false;
+    boolean ok = true;
+
+      ok = level >= 0;
+      if (ok) {
+        TIFF *tifin = TIFFOpen(filename, "r");
+        ok = tifin != 0;
+        if (ok) {
+          tdir_t ndirectories = TIFFNumberOfDirectories(tifin);
+          ok = level < ndirectories;
+          if (ok) {
+            ok = TIFFIsTiled(tifin);
+            if (ok) {
+              TIFFSetDirectory(tifin, level);
+              unsigned int ntiles = TIFFNumberOfTiles(tifin);
+              unsigned int tilewidth;
+              unsigned int tileheight;
+              unsigned int imagewidth;
+              unsigned int imageheight;
+              uint16_t bits_per_pixel;
+              int16_t samples_per_pixel;
+              TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
+              TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
+              TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);
+              TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
+              TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);
+              TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_pixel);
+
+              unsigned int numtilesx = imagewidth / tilewidth;
+              if (imagewidth % tilewidth)
+                ++numtilesx;
+
+              unsigned int numtilesy = imageheight / tileheight;
+              if (imageheight % tileheight)
+                ++numtilesy;
+
+//              mg_log("directory %d image %dx%d (%dx%d tiles %dx%d)", level, imagewidth, imageheight, numtilesx, numtilesy, tilewidth, tileheight);
+
+              ok = KhufuCheckTile(column, numtilesx);
+              if (ok) {
+                ok = KhufuCheckTile(row, numtilesy);
+                if (ok) {
+                  ok = bits_per_pixel == 8;
+                  if (ok) {
+                    unsigned char *data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
+                    uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
+                    ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data, tilewidth * tileheight * samples_per_pixel) != -1;
+                    if (ok) {
+                      mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; charset=utf-8\r\nContent-Length:         \r\n\r\n"); // placeholder
+                      int off = c->send.len;                                                                                      // Start of body
+                      if (useSTB) {
+                        khufu_context context = {c};
+                        stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, samples_per_pixel, data, jpeg_quality);
+                      } else {
+                        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
+                      }
+                      // fill placeholder for size
+                      char tmp[10];
+                      size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu", (unsigned long)(c->send.len - off));
+                      nWritten = c->send.len - off;
+                      if (n > sizeof(tmp))
+                        n = 0;
+                      memcpy(c->send.buf + off - 12, tmp, n); // Set content length
+                      c->is_resp = 0;                         // Mark response end
+                      int elapsed = mg_millis() - uptime;
+                      mg_log("%d bytes, took %d ms", nWritten, elapsed);
+                  } else {
+                    mg_log("could not read tile");
+                  }
+                  delete[] data;
+                } else {
+                }
+              } else {
+                  mg_log("bad row number %d, max is %d", row, numtilesy - 1);
+              }
+              } else {
+                mg_log("bad column number %d, max is %d", column, numtilesx - 1);
+              }
+            } else {
+              mg_log("image is not tiled");
+            }
+          } else {
+            mg_log("directory number %d exceed limit %d", level, ndirectories - 1); 
+          }
+        } else {
+          mg_log("could not open %s", filename);
         }
-      } else {
-        mg_http_reply(c, 404, "", "No tile found\n");
+         TIFFClose(tifin);
       }
-      TIFFClose(tifin);
+    if (!ok) {
+      mg_http_reply(c, 404, "",  "");
     }
- }
+    }
+  }
 
 int main(int argc, char *argv[]) {
   char path[MG_PATH_MAX] = ".";
@@ -188,8 +243,8 @@ int main(int argc, char *argv[]) {
 
   //  TIFFSetErrorHandler(NULL);
   //   TIFFSetErrorHandlerExt(NULL);
- TIFFSetWarningHandler(NULL);
- TIFFSetWarningHandlerExt(NULL);
+ //TIFFSetWarningHandler(NULL);
+ //TIFFSetWarningHandlerExt(NULL);
 
   // Initialise stuff
   signal(SIGINT, signal_handler);

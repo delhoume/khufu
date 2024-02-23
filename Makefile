@@ -21,8 +21,8 @@ clean:
 $(BINDIR):
 	mkdir -p bin
 
-$(BINDIR)/khufu: $(SRCDIR)/khufu.cpp $(BINDIR)
+$(BINDIR)/khufu: $(SRCDIR)/khufu.cpp
 	$(CCC) $(CCFLAGS) $(SRCDIR)/khufu.cpp $(SRCDIR)/mongoose.c -o $(BINDIR)/khufu $(LIBS)
 
-$(BINDIR)/tiff2khufu: $(SRCDIR)/tiff2khufu.cpp $(BINDIR)
+$(BINDIR)/tiff2khufu: $(SRCDIR)/tiff2khufu.cpp 
 	$(CCC) $(CCFLAGS) $(SRCDIR)/tiff2khufu.cpp -o $(BINDIR)/tiff2khufu $(LIBS)
