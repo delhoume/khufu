@@ -25,7 +25,8 @@ body {
           maxLevel: MAXLEVEL,        
           overlay: 0,
           getTileUrl: function( level, x, y ) {
-            const lvl = MAXLEVEL - level;
+            // dirfull is either 0 or last index of directories (full is last)
+            const lvl = DIRFULL == 0 ? (MAXLEVEL - level) : DIRFULL - (MAXLEVEL- level);
               return `${SERVER}/tile/IMAGE/${lvl}/${x}/${y}`;
           },
         },
