@@ -77,7 +77,8 @@ and you are ready to go
 **Khufu** in action on a 105342 x 193424 image made from 47 scanned pages taken from https://gallica.bnf.fr/ark:/12148/btv1b531569998/f7.item, processed,
 geo-localized, stitched and rendered as single 5 Gigabyte TIFF
 
-https://www.youtube.com/shorts/ZZLwF6EcVjs
+[https://www.youtube.com/shorts/ZZLwF6EcVjs](https://www.youtube.com/shorts/ZZLwF6EcVjs)
+[https://www.youtube.com/shorts/gKuOutmZoD8](https://www.youtube.com/shorts/gKuOutmZoD8)
 
 
   ## Misc
