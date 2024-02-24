@@ -74,7 +74,7 @@ and you are ready to go
 
 ![khufu serving tiles of a 200 000 x 200 000 10 zoom levels single TIFF](images/cassini.png)
 
-±**Khufu** in action on a 105342 x 193424 image made from 47 scanned pages taken from https://gallica.bnf.fr/ark:/12148/btv1b531569998/f7.item, processed,
+**Khufu** in action on a 105342 x 193424 image made from 47 scanned pages taken from https://gallica.bnf.fr/ark:/12148/btv1b531569998/f7.item, processed,
 geo-localized, stitched and rendered as single 5 Gigabyte TIFF
 
 https://www.youtube.com/shorts/ZZLwF6EcVjs
