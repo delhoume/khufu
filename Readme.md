@@ -1,6 +1,6 @@
   # **Khufu** is a very simple HTTP server that serves tiles from  **single pyramidal TIFF files** 
 
-This allows gigantic TIFF files to be deployed loically or over the Web, without the hassle 
+This allows gigantic TIFF files to be deployed locally or over the Web, without the hassle 
 of generating a Deep Zoom file hierarchy and having a web server deliver it.
 
 When you have terapixel images, with dimensions up to 4 267 800 x 2 086 480 pixels (as from https://github.com/delhoume/BigMars), 
