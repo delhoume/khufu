@@ -127,6 +127,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       }
       char filename[128];
       char buffer[8];
+      char error[64];
 
       mg_log("Incoming request %.*s", uri.len, uri.ptr);
       // TODO look for images in a configurable  folder (argv[1] ?)
@@ -139,9 +140,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       unsigned int row = atoi(buffer);
       mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
       int64_t uptime = mg_millis();
-    unsigned int nWritten = 0;
-    boolean useSTB= false;
-    boolean ok = true;
+      unsigned int nWritten = 0;
+      boolean useSTB= false;
+      boolean ok = true;
 
       ok = level >= 0;
       if (ok) {
@@ -182,56 +183,76 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               if (ok) {
                 ok = KhufuCheckTile(row, numtilesy);
                 if (ok) {
-                  ok = bits_per_pixel == 8;
+                  unsigned char *data = 0;
+                  if ((bits_per_pixel == 8) && ((samples_per_pixel == 1) || (samples_per_pixel == 3))) {              
+                     //  mg_log("Encoded");
+                      data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
+                      uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
+                      ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data, tilewidth * tileheight * samples_per_pixel) != -1;
+                   } else {
+                    //  uncommon formats not handled by libJPEG
+                    // mg_log("RGBA");
+                      data = new unsigned char[tilewidth * tileheight * 4];
+                      ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight, (uint32_t*)data) == 1;
+                      useSTB = true;
+                   }
                   if (ok) {
-                    unsigned char *data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
-                    uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
-                    ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data, tilewidth * tileheight * samples_per_pixel) != -1;
-                    if (ok) {
-                      mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; charset=utf-8\r\nContent-Length:         \r\n\r\n"); // placeholder
-                      int off = c->send.len;                                                                                      // Start of body
-                      if (useSTB) {
+                    mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; charset=utf-8\r\nContent-Length:         \r\n\r\n"); // placeholder
+                    int off = c->send.len;  // Start of body
+                    if (useSTB == false) { // fully optimized path, up to 3 times faster
+                      emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
+                    } else {  // fallback
+                        // mg_log("using stb: %d %d", bits_per_pixel, samples_per_pixel);
+                        // TIFFReadRGBATile returns upside-down data...
+                        uint32_t* top = (uint32_t*)data;
+                        uint32_t* bottom = (uint32_t*)(data + (tileheight - 1) * tilewidth * 4);
+                        for (unsigned int yy = 0;  yy < tileheight / 2; ++yy) {
+                          for (unsigned int xx = 0; xx < tilewidth; ++xx) {
+                            uint32_t temp = top[xx];
+                            top[xx] = bottom[xx];
+                            bottom[xx] = temp;
+                          }
+                          top += tilewidth;
+                          bottom -= tilewidth;
+                        }
                         khufu_context context = {c};
-                        stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, samples_per_pixel, data, jpeg_quality);
-                      } else {
-                        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
-                      }
-                      // fill placeholder for size
-                      char tmp[10];
-                      size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu", (unsigned long)(c->send.len - off));
-                      nWritten = c->send.len - off;
-                      if (n > sizeof(tmp))
-                        n = 0;
-                      memcpy(c->send.buf + off - 12, tmp, n); // Set content length
-                      c->is_resp = 0;                         // Mark response end
-                      int elapsed = mg_millis() - uptime;
-                      mg_log("%d bytes, took %d ms", nWritten, elapsed);
+                        stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, 4, data, jpeg_quality);
+                    }
+                    // fill placeholder for size
+                    char tmp[10];
+                    size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu", (unsigned long)(c->send.len - off));
+                    nWritten = c->send.len - off;
+                    if (n > sizeof(tmp))
+                      n = 0;
+                    memcpy(c->send.buf + off - 12, tmp, n); // Set content length
+                    c->is_resp = 0;                         // Mark response end
+                    int elapsed = mg_millis() - uptime;
+                    mg_log("%d bytes, took %d ms", nWritten, elapsed);
                   } else {
-                    mg_log("could not read tile");
+                    mg_snprintf(error, sizeof(error), "could not read tile");
                   }
-                  delete[] data;
+                  if (data) delete[] data;
                 } else {
+                    mg_snprintf(error, sizeof(error), "bad row number %d, max is %d", row, numtilesy - 1);
                 }
               } else {
-                  mg_log("bad row number %d, max is %d", row, numtilesy - 1);
-              }
-              } else {
-                mg_log("bad column number %d, max is %d", column, numtilesx - 1);
+                mg_snprintf(error, sizeof(error), "bad column number %d, max is %d", column, numtilesx - 1);
               }
             } else {
-              mg_log("image is not tiled");
+              mg_snprintf(error, sizeof(error), "image is not tiled");
             }
           } else {
-            mg_log("directory number %d exceed limit %d", level, ndirectories - 1); 
+            mg_snprintf(error, sizeof(error), "directory number %d exceed limit %d", level, ndirectories - 1); 
           }
         } else {
-          mg_log("could not open %s", filename);
+          mg_snprintf(error, sizeof(error), "could not open %s", filename);
         }
          TIFFClose(tifin);
       }
-    if (!ok) {
-      mg_http_reply(c, 404, "",  "");
-    }
+      if (!ok) {
+        mg_log(error);
+        mg_http_reply(c, 404, "",  error);
+      }
     }
   }
 
