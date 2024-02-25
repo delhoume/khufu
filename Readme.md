@@ -101,3 +101,10 @@ For an alternative to khufu, you can use my **Vliv** viewer for pyramidal TIFFs,
 
 https://github.com/delhoume/vliv
 
+Compiling **khufu** on Windows with msvc is straightforward, once you got the dependencies.
+
+This is working for me:
+
+cl /MD src/khufu.cpp src/mongoose.c  /Isrc /Isrc/tiff-4.3.0/libtiff /Isrc/zlib-1.2.11 /Isrc/libjpeg-turbo2.1.2/include  src/libs64/zlib.lib src/libs64/libtiff.lib src/libs64/turbojpeg-static.lib src/libs64/libwebp.lib
+
+
