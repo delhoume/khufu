@@ -264,8 +264,8 @@ int main(int argc, char *argv[]) {
 
   //  TIFFSetErrorHandler(NULL);
   //   TIFFSetErrorHandlerExt(NULL);
- //TIFFSetWarningHandler(NULL);
- //TIFFSetWarningHandlerExt(NULL);
+ TIFFSetWarningHandler(NULL);
+ TIFFSetWarningHandlerExt(NULL);
 
   // Initialise stuff
   signal(SIGINT, signal_handler);
