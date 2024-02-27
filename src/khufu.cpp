@@ -18,9 +18,7 @@ extern "C" {
 // pixel images (gain in bandwidth = 3, speed to evalute)
 
 static int s_debug_level = MG_LL_INFO;
-
 static const char *s_listening_address = "http://0.0.0.0:8000";
-
 
 static const unsigned int jpeg_quality = 80;
 
@@ -256,11 +254,32 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     }
   }
 
+static void usage(const char *prog) {
+  fprintf(stderr,
+          "Mongoose v.%s\n"
+          "Usage: %s OPTIONS\n"
+          "  -l ADDR   - listening address, default: '%s'\n"
+          "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
+          MG_VERSION, prog, s_listening_address, s_debug_level);
+  exit(EXIT_FAILURE);
+}
+
 int main(int argc, char *argv[]) {
   char path[MG_PATH_MAX] = ".";
   struct mg_mgr mgr;
   struct mg_connection *c;
   int i;
+
+  // Parse command-line flags
+  for (i = 1; i < argc; i++) {
+    if (strcmp(argv[i], "-l") == 0) {
+      s_listening_address = argv[++i];
+    } else if (strcmp(argv[i], "-v") == 0) {
+      s_debug_level = atoi(argv[++i]);
+    } else {
+      usage(argv[0]);
+    }
+  }
 
   //  TIFFSetErrorHandler(NULL);
   //   TIFFSetErrorHandlerExt(NULL);
