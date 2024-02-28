@@ -248,8 +248,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
          TIFFClose(tifin);
       }
       if (!ok) {
-        mg_log(error);
-        struct mg_http_serve_opts opts = { .mime_types = "png=image/png" };
+        mg_log("Incoming request %.*s -=> %s", uri.len, uri.ptr, error);
+        struct mg_http_serve_opts opts = { .mime_types = "jpg=image/jpg" };
         mg_http_serve_file(c, hm, "default_tile.jpg", &opts);
         //mg_http_reply(c, 404, "",  error);
       }
