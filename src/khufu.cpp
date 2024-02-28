@@ -19,6 +19,7 @@ extern "C" {
 
 static int s_debug_level = MG_LL_INFO;
 static const char *s_listening_address = "http://0.0.0.0:8000";
+char path[MG_PATH_MAX] = ".";
 
 static const unsigned int jpeg_quality = 80;
 
@@ -127,16 +128,15 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       char buffer[8];
       char error[64];
 
-      mg_log("Incoming request %.*s", uri.len, uri.ptr);
       // TODO look for images in a configurable  folder (argv[1] ?)
-      mg_snprintf(filename, sizeof(filename), "%.*s.tif", caps[0].len, caps[0].ptr); 
+      mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", path, caps[0].len, caps[0].ptr); 
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].ptr);
       unsigned int level = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[2].len, caps[2].ptr);
       unsigned int column = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].ptr);
       unsigned int row = atoi(buffer);
-      mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
+ //     mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
       int64_t uptime = mg_millis();
       unsigned int nWritten = 0;
       boolean useSTB= false;
@@ -225,7 +225,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
                     memcpy(c->send.buf + off - 12, tmp, n); // Set content length
                     c->is_resp = 0;                         // Mark response end
                     int elapsed = mg_millis() - uptime;
-                    mg_log("%d bytes, took %d ms", nWritten, elapsed);
+                    mg_log("Incoming request %.*s -=> %d bytes, took %d ms", uri.len, uri.ptr, nWritten, elapsed);
                   } else {
                     mg_snprintf(error, sizeof(error), "could not read tile");
                   }
@@ -249,7 +249,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       }
       if (!ok) {
         mg_log(error);
-        mg_http_reply(c, 404, "",  error);
+        struct mg_http_serve_opts opts = { .mime_types = "png=image/png" };
+        mg_http_serve_file(c, hm, "default_tile.jpg", &opts);
+        //mg_http_reply(c, 404, "",  error);
       }
     }
   }
@@ -258,6 +260,7 @@ static void usage(const char *prog) {
   fprintf(stderr,
           "Mongoose v.%s\n"
           "Usage: %s OPTIONS\n"
+          "  -f FOLDER - folder with images, default: .\n"
           "  -l ADDR   - listening address, default: '%s'\n"
           "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
           MG_VERSION, prog, s_listening_address, s_debug_level);
@@ -265,7 +268,6 @@ static void usage(const char *prog) {
 }
 
 int main(int argc, char *argv[]) {
-  char path[MG_PATH_MAX] = ".";
   struct mg_mgr mgr;
   struct mg_connection *c;
   int i;
@@ -276,6 +278,8 @@ int main(int argc, char *argv[]) {
       s_listening_address = argv[++i];
     } else if (strcmp(argv[i], "-v") == 0) {
       s_debug_level = atoi(argv[++i]);
+    } else if (strcmp(argv[i], "-f") == 0) {
+      strcpy(path, argv[++i]);
     } else {
       usage(argv[0]);
     }
@@ -298,9 +302,10 @@ int main(int argc, char *argv[]) {
 
   // Start infinite event loop
   MG_INFO(("Khufu tile server version : v%s", "0.2"));
-  MG_INFO(("Mongoose version : v%s", MG_VERSION));
-  MG_INFO(("Listening on     : %s", s_listening_address));
-  while (s_signo == 0) mg_mgr_poll(&mgr, 1000);
+  MG_INFO(("Mongoose version          : v%s", MG_VERSION));
+  MG_INFO(("Listening on              : %s", s_listening_address));
+  MG_INFO(("Serving tiles from folder : %s", path));
+   while (s_signo == 0) mg_mgr_poll(&mgr, 1000);
   mg_mgr_free(&mgr);
   MG_INFO(("Exiting on signal %d", s_signo));
   return 0;
