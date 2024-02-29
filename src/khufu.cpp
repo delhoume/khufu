@@ -14,12 +14,9 @@ extern "C" {
 #include "stb_image_write.h"
 
 
-// TODO: use libjpeg-turbo for maximum performance and support of 1 byte per
-// pixel images (gain in bandwidth = 3, speed to evalute)
-
 static int s_debug_level = MG_LL_INFO;
 static const char *s_listening_address = "http://0.0.0.0:8000";
-char path[MG_PATH_MAX] = ".";
+static const char* s_image_folder = ".";
 
 static const unsigned int jpeg_quality = 80;
 
@@ -129,7 +126,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       char error[64];
 
       // TODO look for images in a configurable  folder (argv[1] ?)
-      mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", path, caps[0].len, caps[0].ptr); 
+      mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", s_image_folder, caps[0].len, caps[0].ptr); 
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].ptr);
       unsigned int level = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[2].len, caps[2].ptr);
@@ -279,7 +276,7 @@ int main(int argc, char *argv[]) {
     } else if (strcmp(argv[i], "-v") == 0) {
       s_debug_level = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-f") == 0) {
-      strcpy(path, argv[++i]);
+      s_image_folder = argv[++i];
     } else {
       usage(argv[0]);
     }
@@ -304,7 +301,7 @@ int main(int argc, char *argv[]) {
   MG_INFO(("Khufu tile server version : v%s", "0.2"));
   MG_INFO(("Mongoose version          : v%s", MG_VERSION));
   MG_INFO(("Listening on              : %s", s_listening_address));
-  MG_INFO(("Serving tiles from folder : %s", path));
+  MG_INFO(("Serving tiles from folder : %s", s_image_folder));
    while (s_signo == 0) mg_mgr_poll(&mgr, 1000);
   mg_mgr_free(&mgr);
   MG_INFO(("Exiting on signal %d", s_signo));
