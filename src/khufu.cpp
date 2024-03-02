@@ -18,7 +18,7 @@ static int s_debug_level = MG_LL_INFO;
 static const char *s_listening_address = "http://0.0.0.0:8000";
 static const char* s_image_folder = ".";
 
-static const unsigned int jpeg_quality = 80;
+static const unsigned int jpeg_quality = 75;
 
 // Handle interrupts, like Ctrl-C
 static int s_signo;
@@ -51,7 +51,7 @@ void MongooseTerm(j_compress_ptr cinfo) {
 }
 
 static void emitJPEG(struct mg_connection *c, int width, int height, int comp, unsigned char* data) {
- // mg_log("Using JPEGLib");
+ MG_VERBOSE(("Using JPEGLib"));
   struct jpeg_compress_struct cinfo;
 	struct jpeg_error_mgr err;
   unsigned char* lpRowBuffer[1];
@@ -92,10 +92,10 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp, u
 	jpeg_finish_compress(&cinfo);
   mg_send(c, mem, mem_size);
 	jpeg_destroy_compress(&cinfo);
-    free((void*)mem);
+  free((void*)mem);
  }
 // test with
-// curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 --output tile.jpg
+// curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 -o tile.jpg
 
 
 boolean KhufuCheckTile(int position, int numtiles) {
@@ -123,7 +123,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       }
       char filename[128];
       char buffer[8];
-      char error[64];
+      char error[256];
 
       // TODO look for images in a configurable  folder (argv[1] ?)
       mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", s_image_folder, caps[0].len, caps[0].ptr); 
@@ -136,7 +136,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
  //     mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
       int64_t uptime = mg_millis();
       unsigned int nWritten = 0;
-      boolean useSTB= false;
+      boolean useSTB= true;
       boolean ok = true;
 
       ok = level >= 0;
@@ -155,14 +155,14 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               unsigned int tileheight;
               unsigned int imagewidth;
               unsigned int imageheight;
-              uint16_t bits_per_pixel;
+              uint16_t bits_per_sample;
               int16_t samples_per_pixel;
               TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
               TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
               TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);
               TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
               TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);
-              TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_pixel);
+              TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_sample);
 
               unsigned int numtilesx = imagewidth / tilewidth;
               if (imagewidth % tilewidth)
@@ -172,21 +172,21 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               if (imageheight % tileheight)
                 ++numtilesy;
 
-//              mg_log("directory %d image %dx%d (%dx%d tiles %dx%d)", level, imagewidth, imageheight, numtilesx, numtilesy, tilewidth, tileheight);
+              MG_INFO(("directory %d image %dx%d (%dx%d tiles %dx%d)", level, imagewidth, imageheight, numtilesx, numtilesy, tilewidth, tileheight));
 
               ok = KhufuCheckTile(column, numtilesx);
               if (ok) {
                 ok = KhufuCheckTile(row, numtilesy);
                 if (ok) {
                   unsigned char *data = 0;
-                  if ((bits_per_pixel == 8) && ((samples_per_pixel == 1) || (samples_per_pixel == 3))) {              
-                     //  mg_log("Encoded");
+                  if ((useSTB == false) && (bits_per_sample == 8) && ((samples_per_pixel == 1) || (samples_per_pixel == 3))) {              
+                       MG_VERBOSE(("ReadEncodedTile bps %d spp %d", bits_per_sample, samples_per_pixel));
                       data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
                       uint32_t tilenum = TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
                       ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data, tilewidth * tileheight * samples_per_pixel) != -1;
                    } else {
                     //  uncommon formats not handled by libJPEG
-                    // mg_log("RGBA");
+                     MG_VERBOSE(("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
                       data = new unsigned char[tilewidth * tileheight * 4];
                       ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight, (uint32_t*)data) == 1;
                       useSTB = true;
@@ -197,7 +197,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
                     if (useSTB == false) { // fully optimized path, up to 3 times faster
                       emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
                     } else {  // fallback
-                        // mg_log("using stb: %d %d", bits_per_pixel, samples_per_pixel);
                         // TIFFReadRGBATile returns upside-down data...
                         uint32_t* top = (uint32_t*)data;
                         uint32_t* bottom = (uint32_t*)(data + (tileheight - 1) * tilewidth * 4);
@@ -222,7 +221,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
                     memcpy(c->send.buf + off - 12, tmp, n); // Set content length
                     c->is_resp = 0;                         // Mark response end
                     int elapsed = mg_millis() - uptime;
-                    mg_log("Incoming request %.*s -=> %d bytes, took %d ms", uri.len, uri.ptr, nWritten, elapsed);
+                    MG_INFO(("Incoming request %.*s -=> %d bytes, took %d ms", uri.len, uri.ptr, nWritten, elapsed));
                   } else {
                     mg_snprintf(error, sizeof(error), "could not read tile");
                   }
@@ -245,7 +244,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
          TIFFClose(tifin);
       }
       if (!ok) {
-        mg_log("Incoming request %.*s -=> %s", uri.len, uri.ptr, error);
+        MG_ERROR(("Incoming request %.*s -=> %s", uri.len, uri.ptr, error));
         struct mg_http_serve_opts opts = { .mime_types = "jpg=image/jpg" };
         mg_http_serve_file(c, hm, "default_tile.jpg", &opts);
         //mg_http_reply(c, 404, "",  error);
