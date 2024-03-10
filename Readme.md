@@ -14,7 +14,7 @@ with a web server serving the tiles, and an OpenSeaDragon javascript object in a
 Thanks to the wonderful OpenSeaDragon project, all you have to do is use a Custom Embedded Source in an HTML
 page, run the **khufu** Web Server where your images are, and they become instantly viewable, whatever their pixel dimensions and disk size.
 
-1. Create an HTML file that defines a custom tile source for OpenSeaDragon
+  1. Create an HTML file that defines a custom tile source for OpenSeaDragon
 
 ````
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -44,12 +44,11 @@ var viewer = OpenSeadragon({
 }});
 </script>
 ````
-
-2. Launch the **khufu** server 
+  2. Launch the **khufu** server 
 
 ```bin/khufu```
 
-3. open the HTML file with any Web Browser with Javascript support to explore your image.
+  3. open the HTML file in any Web Browser with Javascript support to explore your image.
 
 You may have to update the SERVER variable in the HTML depending on your configuration.
 You will also need the ```openseadragon.min.js``` file.
@@ -59,7 +58,7 @@ You can generate this HTML from a template for a given pyramidal TIFF (for examp
 
 Khufu is built with the great Mongoose library https://mongoose.ws/ (two files and you have a web server !),
 Libtiff (https://libtiff.gitlab.io/libtiff/#) LibJPEG (https://en.wikipedia.org/wiki/Libjpeg) and STB (https://github.com/nothings/stb/blob/master/stb_image_write.h).
-And visualization provided by the fantastic OpenSeaDragon project (https://openseadragon.github.io/)
+Web client visualization provided by the fantastic OpenSeadragon project (https://openseadragon.github.io/)
 
 The source code for both the server ```src/khufu.cpp``` and the sed parameter generator ```src/tiff2khufu.cpp``` is very simple.
 
