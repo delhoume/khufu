@@ -14,7 +14,7 @@ with a web server serving the tiles, and an OpenSeaDragon javascript object in a
 Thanks to the wonderful OpenSeaDragon project, all you have to do is use a Custom Embedded Source in an HTML
 page, run the **khufu** Web Server where your images are, and they become instantly viewable, whatever their pixel dimensions and disk size.
 
-You first create an HTML file that defines a custom tile source for OpenSeaDragon
+1. Create an HTML file that defines a custom tile source for OpenSeaDragon
 
 ````
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -45,11 +45,11 @@ var viewer = OpenSeadragon({
 </script>
 ````
 
-Then you launch the **khufu** server 
+2. Launch the **khufu** server 
 
 ```bin/khufu```
 
-You then can open the HTML file with any Web Browser wth Javascript support to explore your image.
+3. open the HTML file with any Web Browser with Javascript support to explore your image.
 
 You may have to update the SERVER variable in the HTML depending on your configuration.
 You will also need the ```openseadragon.min.js``` file.
@@ -61,8 +61,7 @@ Khufu is built with the great Mongoose library https://mongoose.ws/ (two files a
 Libtiff (https://libtiff.gitlab.io/libtiff/#) LibJPEG (https://en.wikipedia.org/wiki/Libjpeg) and STB (https://github.com/nothings/stb/blob/master/stb_image_write.h).
 And visualization provided by the fantastic OpenSeaDragon project (https://openseadragon.github.io/)
 
-The source code for both the server (```src/khufu.cpp``` and the sed parameter generator
-```src/tiff2khufu.cpp``` is very simple.
+The source code for both the server ```src/khufu.cpp``` and the sed parameter generator ```src/tiff2khufu.cpp``` is very simple.
 
 I develop on a Mac Mini 2020  with Homebrew to fetch dependencies. Go to https://brew.sh, follow instructions to install, go to the khufu directory then type:
 ```
@@ -105,6 +104,6 @@ Compiling **khufu** on Windows with msvc is straightforward, once you got the de
 
 This is working for me:
 
-cl /MD src/khufu.cpp src/mongoose.c  /Isrc /Isrc/tiff-4.3.0/libtiff /Isrc/zlib-1.2.11 /Isrc/libjpeg-turbo2.1.2/include  src/libs64/zlib.lib src/libs64/libtiff.lib src/libs64/turbojpeg-static.lib src/libs64/libwebp.lib
+```cl /MD src/khufu.cpp src/mongoose.c  /Isrc /Isrc/tiff-4.3.0/libtiff /Isrc/zlib-1.2.11 /Isrc/libjpeg-turbo2.1.2/include  src/libs64/zlib.lib src/libs64/libtiff.lib src/libs64/turbojpeg-static.lib src/libs64/libwebp.lib```
 
 
