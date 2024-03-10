@@ -6,7 +6,7 @@ of generating a Deep Zoom file hierarchy and having a web server deliver it.
 When you have terapixel images, with dimensions up to 4 267 800 x 2 086 480 pixels (as from https://github.com/delhoume/BigMars), 
 even with a 512x512 tile size you end up having 5558 x 3705 jpeg files (that makes more than 2 million files for the most detailed level).
 
-You deploy then using a DZI file that describes the image and can be visualized in a web browser,
+You deploy then using a DZI file that describes the image and it can be visualized in a web browser,
 with a web server serving the tiles, and an OpenSeaDragon javascript object in an HTML page.
 
 **Khufu** allows tiles to be be served from a single TIFF file that has the same structure as a DeepZoom image.
