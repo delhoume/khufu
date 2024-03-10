@@ -1,6 +1,8 @@
 // Copyright (c) 2024 Frederic Delhoume
 // All rights reserved
 
+#define KHUFU_VERSION "0.3"
+
 #include <signal.h>
 #include "mongoose.h"
 
@@ -105,6 +107,9 @@ boolean KhufuCheckTile(int position, int numtiles) {
 
 struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;  
 
+// cache
+static uLong adler_signature = 0;
+static TIFF* tifin = 0;
 
 // /tile/<name>/<level>/<x>/<y>
 static void cb(struct mg_connection *c, int ev, void *ev_data) {
@@ -125,7 +130,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       char buffer[8];
       char error[256];
 
-      // TODO look for images in a configurable  folder (argv[1] ?)
       mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", s_image_folder, caps[0].len, caps[0].ptr); 
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].ptr);
       unsigned int level = atoi(buffer);
@@ -136,12 +140,19 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
  //     mg_log("Incoming request: %.*s tile column %d row %d for level %d", caps[0].len, caps[0].ptr, column, row, level);
       int64_t uptime = mg_millis();
       unsigned int nWritten = 0;
-      boolean useSTB= true;
+      boolean useSTB= false;
       boolean ok = true;
 
       ok = level >= 0;
       if (ok) {
-        TIFF *tifin = TIFFOpen(filename, "r");
+        uLong new_signature = adler32(0, (const Bytef*)caps[0].ptr, caps[0].len);
+        if (new_signature != adler_signature) {
+          TIFFClose(tifin);
+          tifin = TIFFOpen(filename, "r");
+          adler_signature = new_signature;
+        } else {
+          MG_VERBOSE(("using cached TIFF"));
+        }
         ok = tifin != 0;
         if (ok) {
           tdir_t ndirectories = TIFFNumberOfDirectories(tifin);
@@ -241,7 +252,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         } else {
           mg_snprintf(error, sizeof(error), "could not open %s", filename);
         }
-         TIFFClose(tifin);
       }
       if (!ok) {
         MG_ERROR(("Incoming request %.*s -=> %s", uri.len, uri.ptr, error));
@@ -254,12 +264,12 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
 
 static void usage(const char *prog) {
   fprintf(stderr,
-          "Mongoose v.%s\n"
+         "Khufu tile server version : v%ss\n"
           "Usage: %s OPTIONS\n"
           "  -f FOLDER - folder with images, default: .\n"
           "  -l ADDR   - listening address, default: '%s'\n"
           "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
-          MG_VERSION, prog, s_listening_address, s_debug_level);
+          KHUFU_VERSION, prog, s_listening_address, s_debug_level);
   exit(EXIT_FAILURE);
 }
 
@@ -297,11 +307,12 @@ int main(int argc, char *argv[]) {
   }
 
   // Start infinite event loop
-  MG_INFO(("Khufu tile server version : v%s", "0.2"));
+  MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
   MG_INFO(("Mongoose version          : v%s", MG_VERSION));
   MG_INFO(("Listening on              : %s", s_listening_address));
   MG_INFO(("Serving tiles from folder : %s", s_image_folder));
    while (s_signo == 0) mg_mgr_poll(&mgr, 1000);
+  TIFFClose(tifin);
   mg_mgr_free(&mgr);
   MG_INFO(("Exiting on signal %d", s_signo));
   return 0;
