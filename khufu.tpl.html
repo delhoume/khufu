@@ -12,6 +12,7 @@ body {
 
 <div id="openseadragon"></div>
 <script src="openseadragon.min.js"></script>
+<script src="openseadragon-scalebar.js"></script>
 <script type="text/javascript">
   const SERVER = "http://0.0.0.0:8000";
   var viewer = OpenSeadragon({
@@ -34,4 +35,12 @@ body {
      showNavigator:  true,
       navigatorAutoFade:  false,
   });
+//   viewer.scalebar({
+//       barThickness: 2,
+//       stayInsideImage: true,
+//   minWidth: 300,
+//       pixelsPerMeter: 0.2,
+//       backgroundColor: "white",
+//   location: OpenSeadragon.ScalebarLocation.BOTTOM_LEFT,
+// });
   </script>

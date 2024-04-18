@@ -1,28 +1,39 @@
-CCC=/opt/homebrew/bin/g++-13
 
-CCFLAGS = -std=c++11  -O3 -I /opt/homebrew/include -I .
+CXXFLAGS += -std=c++11 -g -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I .
+#CXX=/opt/homebrew/bin/g++-13
 
 
 SRCDIR = src
 BINDIR = bin
 
-LIBS = /opt/homebrew/lib/libtiff.a  /opt/homebrew/lib/libturbojpeg.a \
-    /opt/homebrew/lib/libz-ng.a /opt/homebrew/lib/libzlibstatic.a /opt/homebrew/lib/libzstd.a /opt/homebrew/lib/liblzma.a
+LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
 
 PROGRAMS = $(BINDIR)/khufu $(BINDIR)/tiff2khufu
 
 all: $(BINDIR) $(PROGRAMS)
 
 clean:
-	rm -rf *~ *# .??*
-	rm -rf $(SRCDIR)*~ $(SRCDIR)*# $(SRCDIR).??*
-	rm -rf $(PROGRAMS)
+	rm -rf $(SRCDIR)/*~ $(SRCDIR)/*# 
+	rm -rf $(PROGRAMS) $(BINDIR)/*.o $(BINDIR)/ingui.ini
+
 
 $(BINDIR):
 	mkdir -p bin
 
-$(BINDIR)/khufu: $(SRCDIR)/khufu.cpp
-	$(CCC) $(CCFLAGS) $(SRCDIR)/khufu.cpp $(SRCDIR)/mongoose.c -o $(BINDIR)/khufu $(LIBS)
+$(BINDIR)/khufu: $(BINDIR)/khufu.o  $(BINDIR)/mongoose.o
+	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(BINDIR)/khufu $(LIBS)
 
-$(BINDIR)/tiff2khufu: $(SRCDIR)/tiff2khufu.cpp 
-	$(CCC) $(CCFLAGS) $(SRCDIR)/tiff2khufu.cpp -o $(BINDIR)/tiff2khufu $(LIBS)
+$(BINDIR)/khufu.o: $(SRCDIR)/khufu.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/khufu.cpp -c -o $(BINDIR)/khufu.o 
+
+$(BINDIR)/mongoose.o: $(SRCDIR)/mongoose.c
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/mongoose.c -c -o $(BINDIR)/mongoose.o 
+
+
+
+$(BINDIR)/tiff2khufu: $(BINDIR)/tiff2khufu.o 
+	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(BINDIR)/khufu $(LIBS)
+
+$(BINDIR)/tiff2khufu.o: $(SRCDIR)/tiff2khufu.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/tiff2khufu.cpp -c -o $(BINDIR)/tiff2khufu.o 

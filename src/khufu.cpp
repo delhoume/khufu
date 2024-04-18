@@ -148,7 +148,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         uLong new_signature = adler32(0, (const Bytef*)caps[0].ptr, caps[0].len);
         if (new_signature != adler_signature) {
           TIFFClose(tifin);
-          tifin = TIFFOpen(filename, "r");
+          TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
+          TIFFOpenOptionsFree(opts);
           adler_signature = new_signature;
         } else {
           MG_VERBOSE(("using cached TIFF"));
