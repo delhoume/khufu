@@ -40,16 +40,16 @@ void khufu_write(void *context, void *data, int size) {
 }
 
 void MongooseInit(j_compress_ptr cinfo) {
-  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+  //struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
 }
 
 boolean MongooseEmpty(j_compress_ptr cinfo) {
-  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+ // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
   return true;
 }
 
 void MongooseTerm(j_compress_ptr cinfo) {
-  struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
+ // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
 }
 
 static void emitJPEG(struct mg_connection *c, int width, int height, int comp, unsigned char* data) {
@@ -117,11 +117,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       struct mg_http_message *hm = (struct mg_http_message *) ev_data;
       struct mg_str uri = hm->uri;
       struct mg_str caps[5];
-      char etag[64];
-      size_t size = 0;
-      time_t mtime = 0;
-      struct mg_str *inm = NULL;
-      int len = 0;
     
       if (!mg_match(uri, tileapi, caps)) {
           return;
@@ -149,6 +144,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         if (new_signature != adler_signature) {
           TIFFClose(tifin);
           TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
+          tifin = TIFFOpenExt(filename, "r", opts);
           TIFFOpenOptionsFree(opts);
           adler_signature = new_signature;
         } else {
@@ -162,7 +158,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
             ok = TIFFIsTiled(tifin);
             if (ok) {
               TIFFSetDirectory(tifin, level);
-              unsigned int ntiles = TIFFNumberOfTiles(tifin);
+//              unsigned int ntiles = TIFFNumberOfTiles(tifin);
               unsigned int tilewidth;
               unsigned int tileheight;
               unsigned int imagewidth;

@@ -1,5 +1,5 @@
 
-CXXFLAGS += -std=c++11 -g -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I .
+CXXFLAGS += -std=c++11 -g -v -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I .
 #CXX=/opt/homebrew/bin/g++-13
 
 
@@ -7,6 +7,7 @@ SRCDIR = src
 BINDIR = bin
 
 LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
 LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
 
 PROGRAMS = $(BINDIR)/khufu $(BINDIR)/tiff2khufu
@@ -33,7 +34,7 @@ $(BINDIR)/mongoose.o: $(SRCDIR)/mongoose.c
 
 
 $(BINDIR)/tiff2khufu: $(BINDIR)/tiff2khufu.o 
-	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(BINDIR)/khufu $(LIBS)
+	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/tiff2khufu.o -o $(BINDIR)/tiff2khufu $(LIBS)
 
 $(BINDIR)/tiff2khufu.o: $(SRCDIR)/tiff2khufu.cpp
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/tiff2khufu.cpp -c -o $(BINDIR)/tiff2khufu.o 
