@@ -8,7 +8,6 @@ BINDIR = bin
 
 LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
-LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
 
 PROGRAMS = $(BINDIR)/khufu $(BINDIR)/tiff2khufu
 
