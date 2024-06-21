@@ -4,6 +4,9 @@
 #define KHUFU_VERSION "0.3"
 
 #include <signal.h>
+#include <time.h>
+
+#define MG_ENABLE_CUSTOM_LOG
 #include "mongoose.h"
 
 extern "C" {
@@ -245,7 +248,13 @@ static void cb(struct mg_connection *c, int ev, void *ev_data){
     }
     if (ok) {
       mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; charset=utf-8\r\nContent-Length:         \r\n\r\n"); // placeholder
-      int off = c->send.len;                                                                                          // Start of body
+      int off = c->send.len;  
+             // watermark
+        for (int y = 0; y <tileheight; ++y) {
+          unsigned char* line = data + y * tilewidth * samples_per_pixel;
+          if (y % 20 == 0) memset(line, 0, tilewidth * samples_per_pixel);
+        }
+                                                                                        // Start of body
       if (useSTB == false)  { // fully optimized path, up to 3 times faster
         emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
       } else { // fallback
@@ -263,6 +272,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data){
           top += tilewidth;
           bottom -= tilewidth;
         }
+ 
         khufu_context context = {c};
         stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, 4, data, jpeg_quality);
       }
@@ -274,9 +284,22 @@ static void cb(struct mg_connection *c, int ev, void *ev_data){
         n = 0;
       memcpy(c->send.buf + off - 12, tmp, n); // Set content length
       c->is_resp = 0;                         // Mark response end
-      int elapsed = mg_millis() - uptime;
-      MG_INFO(("Incoming request %.*s -=> %d bytes, took %d ms", uri.len, uri.ptr, nWritten, elapsed));
-    } else {
+      {
+       struct timespec now;
+      clock_gettime( CLOCK_REALTIME, &now );	
+        const struct tm tms = *localtime( &now.tv_sec );
+        int year = tms.tm_year+1900; 
+        int mon  = tms.tm_mon+1;
+        int day  = tms.tm_mday;
+        int hour = tms.tm_hour;
+        int min  = tms.tm_min; 
+        int sec  = tms.tm_sec;
+        int mil =  (int)now.tv_nsec / 1000000;
+        int elapsed = mg_millis() - uptime;
+        mg_log("[%4d-%02d-%02dT%02d:%02d:%02d:%03dZ] %M \"%.*s\" -=> %d bytes in %d ms", 
+          year, mon, day, hour, min, sec, mil, mg_print_ip, &c->rem, uri.len, uri.ptr, nWritten, elapsed);
+     }
+     } else {
       mg_snprintf(error, sizeof(error), "could not read tile");
       cbError(uri);
     }
