@@ -1,0 +1,65 @@
+﻿  1>Checking Build System
+  CMake is re-running because C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/CMakeFiles/generate.stamp is out-of-date.
+    the file 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/CMakeFiles/3.31.6-msvc6/CMakeCCompiler.cmake'
+    is newer than 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/CMakeFiles/generate.stamp.depend'
+    result='-1'
+  -- Building tiff version 4.7.1
+  -- Could NOT find Deflate (missing: Deflate_LIBRARY Deflate_INCLUDE_DIR) 
+  -- Could NOT find JBIG (missing: JBIG_LIBRARY JBIG_INCLUDE_DIR) 
+  -- Could NOT find LERC (missing: LERC_LIBRARY LERC_INCLUDE_DIR) 
+  -- Could NOT find liblzma (missing: LIBLZMA_LIBRARY LIBLZMA_INCLUDE_DIR LIBLZMA_HAS_AUTO_DECODER LIBLZMA_HAS_EASY_ENCODER LIBLZMA_HAS_LZMA_PRESET) 
+  -- Could NOT find ZSTD (missing: ZSTD_LIBRARY ZSTD_INCLUDE_DIR) 
+  -- Could NOT find WebP (missing: WebP_LIBRARY WebP_INCLUDE_DIR) 
+  -- Could NOT find GLUT (missing: GLUT_glut_LIBRARY GLUT_INCLUDE_DIR) 
+  -- Include resource version information for LibTIFF
+  -- Include resource version information for TOOLS
+  -- Looking for sphinx-build - not found
+  -- 
+  -- Libtiff is now configured for Windows-10.0.26100
+  -- 
+  --   Libtiff build version:       4.7.1
+  --   Libtiff library version:     6.2.0
+  --   Libtiff release date:        20250911
+  -- 
+  --   Installation directory:             C:/Program Files (x86)/tiff
+  --   Documentation directory:            share/doc/tiff
+  --   C compiler:                         C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+  --   C++ compiler:                       C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+  --   Build shared libraries:             OFF
+  --   Build tools:                        ON
+  --   Build tests:                        ON
+  --   Build contrib:                      ON
+  --   Build docs:                         ON
+  --   Build deprecated features:          OFF
+  --   Enable linker symbol versioning:    FALSE
+  --   Support Microsoft Document Imaging: ON
+  --   Use win32 IO:                       ON
+  -- 
+  --  Support for internal codecs:
+  --   CCITT Group 3 & 4 algorithms:       ON
+  --   Macintosh PackBits algorithm:       ON
+  --   LZW algorithm:                      ON
+  --   ThunderScan 4-bit RLE algorithm:    ON
+  --   NeXT 2-bit RLE algorithm:           ON
+  --   LogLuv high dynamic range encoding: OFF
+  -- 
+  --  Support for external codecs:
+  --   ZLIB support:                       Requested:ON Availability:TRUE Support:TRUE
+  --   libdeflate support:                 Requested:OFF Availability:FALSE Support:FALSE
+  --   Pixar log-format algorithm:         Requested:OFF Availability:TRUE Support:FALSE
+  --   JPEG support:                       Requested:ON Availability:TRUE Support:TRUE
+  --   Old JPEG support:                   Requested:OFF Availability:TRUE Support:FALSE
+  --   JPEG 8/12 bit dual mode:            Requested:OFF Availability:FALSE Support:FALSE
+  --   ISO JBIG support:                   Requested:OFF Availability:FALSE Support:FALSE
+  --   LERC support:                       Requested:OFF Availability:FALSE Support:FALSE
+  --   LZMA2 support:                      Requested:OFF Availability:FALSE Support:FALSE
+  --   ZSTD support:                       Requested:OFF Availability:FALSE Support:FALSE
+  --   WEBP support:                       Requested:OFF Availability:FALSE Support:FALSE
+  -- 
+  --   C++ support:                        ON (requested) TRUE (availability)
+  -- 
+  --   OpenGL support:                     Requested:OFF Availability:FALSE Support:FALSE
+  -- 
+  -- Configuring done (18.6s)
+  -- Generating done (1.9s)
+  -- Build files have been written to: C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1

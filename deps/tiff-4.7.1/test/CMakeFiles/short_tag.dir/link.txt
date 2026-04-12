@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/short_tag.dir/short_tag.c.o CMakeFiles/short_tag.dir/check_tag.c.o -o short_tag  ../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CCF4250A-009A-3947-8E1E-69B74DC0A3B7}|libtiff\\tiff.vcxproj|C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\libtiff\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{CCF4250A-009A-3947-8E1E-69B74DC0A3B7}|libtiff\\tiff.vcxproj|solutionrelative:libtiff\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\libtiff\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "libtiff\\CMakeLists.txt",
+              "ToolTip": "C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\libtiff\\CMakeLists.txt",
+              "RelativeToolTip": "libtiff\\CMakeLists.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-03-21T10:18:05.151Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

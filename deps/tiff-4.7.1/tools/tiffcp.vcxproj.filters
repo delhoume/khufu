@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\tools\tiffcp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\placeholder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\tools\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\tools\tif_tools_versioninfo.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6D495CC8-FC1C-37DB-A897-FD05F647CBB5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{F50A7239-A361-3821-BF91-19E9E87ED11C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7FFB4026-D8F7-3604-8285-47C4CA8B6A3C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -54,7 +54,7 @@ void MongooseTerm(j_compress_ptr cinfo) {
 }
 
 static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
-                     unsigned char *data) {
+                     int isvswap, unsigned char *data) {
   MG_VERBOSE(("Using JPEGLib"));
   struct jpeg_compress_struct cinfo;
   struct jpeg_error_mgr err;
@@ -69,20 +69,11 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
 
   jpeg_mem_dest(&cinfo, &mem, &mem_size);
 
-  /*
-    struct jpeg_destination_mgr khufu;
-    cinfo.dest = &khufu;
-    khufu.init_destination = MongooseInit;
-    khufu.empty_output_buffer = MongooseEmpty;
-    khufu.term_destination = MongooseTerm;
-    cinfo.dest = &khufu;
-    cinfo.client_data = (void*)c;
-    */
-
   cinfo.image_width = width;
   cinfo.image_height = height;
   cinfo.input_components = comp;
-  cinfo.in_color_space = comp == 3 ? JCS_RGB : JCS_GRAYSCALE;
+  cinfo.in_color_space =
+      comp == 4 ? JCS_EXT_RGBX : (comp == 3 ? JCS_RGB : JCS_GRAYSCALE);
 
   jpeg_set_defaults(&cinfo);
   jpeg_set_quality(&cinfo, jpeg_quality, TRUE);
@@ -90,7 +81,9 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
 
   /* Write every scanline ... */
   while (cinfo.next_scanline < cinfo.image_height) {
-    lpRowBuffer[0] = data + cinfo.next_scanline * width * comp;
+    unsigned int offset = isvswap ?((cinfo.image_height - 1 - cinfo.next_scanline) * width * comp)
+    : (cinfo.next_scanline * width * comp);
+    lpRowBuffer[0] = data + offset;
     jpeg_write_scanlines(&cinfo, lpRowBuffer, 1);
   }
   jpeg_finish_compress(&cinfo);
@@ -122,6 +115,12 @@ void cbError(struct mg_str &uri) {
   MG_ERROR(("%.*s -=> %s", uri.len, uri.buf, error));
 }
 
+void buildList() {
+  char buf[100] = "";
+  while (mg_fs_ls(&mg_fs_posix, s_image_folder, buf, sizeof(buf))) {
+    puts(buf);
+}
+ }
 // /tile/<name>/<level>/<x>/<y>
 static void cb(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_ERROR) {
@@ -131,9 +130,14 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     struct mg_str uri = hm->uri;
     struct mg_str caps[5];
 
-    if (!mg_match(uri, tileapi, caps)) {
-      //normal web server
-      struct mg_http_serve_opts opts = {.root_dir = s_root_folder };  // Serve local dir
+    if (mg_match(uri, mg_str("/list"), caps)) {
+      buildList();
+      return;
+    } else if  (!mg_match(uri, tileapi, caps)) {
+      
+       // normal web server
+      struct mg_http_serve_opts opts = {.root_dir =
+                                            s_root_folder}; // Serve local dir
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
       mg_http_serve_dir(c, hm, &opts);
       return;
@@ -161,7 +165,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     }
     uLong signature = adler32(0, (const Bytef *)caps[0].buf, caps[0].len);
     TIFF *tifin;
-    if (false || signature != cache.signature) {
+    if (signature != cache.signature) {
+      TIFFClose(cache.tifin);
+
       TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
       tifin = TIFFOpenExt(filename, "r", opts);
       TIFFOpenOptionsFree(opts);
@@ -170,7 +176,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         cbError(uri);
         return;
       }
-      TIFFClose(cache.tifin);
       cache.tifin = tifin;
       cache.num_directories = TIFFNumberOfDirectories(tifin);
       cache.current_directory = 0;
@@ -189,9 +194,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       return;
     }
     if (cache.current_directory != level) {
-      TIFFSetDirectory(tifin, level);
+      TIFFSetDirectory(cache.tifin, level);
       cache.current_directory = level;
-      cache.tiled = TIFFIsTiled(tifin);
+      // cache.tiled = TIFFIsTiled(tifin);
     }
     if (cache.tiled == false) {
       mg_snprintf(error, sizeof(error), "directory %d is not tiled", level);
@@ -237,10 +242,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     }
 
     unsigned char *data = nullptr;
-    if ((useSTB == false) && (bits_per_sample == 8) &&
-        ((samples_per_pixel == 1) || (samples_per_pixel == 3))) {
-      MG_VERBOSE(("ReadEncodedTile bps %d spp %d", bits_per_sample,
-                  samples_per_pixel));
+    int vswap = 0;
+    if (bits_per_sample == 8 && samples_per_pixel == 1) {
+      MG_VERBOSE((" bps %d spp %d", bits_per_sample, samples_per_pixel));
       data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
       uint32_t tilenum =
           TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
@@ -248,28 +252,15 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
           TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data,
                               tilewidth * tileheight * samples_per_pixel) != -1;
     } else {
-      //  uncommon formats not handled by libJPEG
+      //  all other formats
       MG_VERBOSE(
           ("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
       data = new unsigned char[tilewidth * tileheight * 4];
       ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight,
                             (uint32_t *)data) == 1;
-      useSTB = true;
-    }
-    if (ok) {
-      mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
-                   "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
-                   "Length:         \r\n\r\n"); // placeholder
-      int off = c->send.len;
-      // watermark
-      // for (int y = 0; y <tileheight; ++y) {
-      //   unsigned char* line = data + y * tilewidth * samples_per_pixel;
-      //   if (y % 20 == 0) memset(line, 0, tilewidth * samples_per_pixel);
-      // }
-      // Start of body
-      if (useSTB == false) { // fully optimized path, up to 3 times faster
-        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, data);
-      } else { // fallback
+      if (ok) {
+        vswap = 1;
+        /*
         // TIFFReadRGBATile returns upside-down data...
         uint32_t *top = (uint32_t *)data;
         uint32_t *bottom =
@@ -283,6 +274,19 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
           top += tilewidth;
           bottom -= tilewidth;
         }
+        */
+        samples_per_pixel = 4;
+      }
+    }
+    if (ok) {
+      mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
+                   "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
+                   "Length:         \r\n\r\n"); // placeholder
+      int off = c->send.len;
+    
+      if (useSTB == false) { // fully optimized path, many times faster
+        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, vswap, data);
+      } else { // fallback
 
         khufu_context context = {c};
         stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, 4,
@@ -298,6 +302,17 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       memcpy(c->send.buf + off - 12, tmp, n); // Set content length
       c->is_resp = 0;                         // Mark response end
       {
+#if defined(_WIN32)
+        SYSTEMTIME ltime;
+        GetLocalTime(&ltime);
+        int year = ltime.wYear;
+        int mon = ltime.wMonth;
+        int day = ltime.wDay;
+        int hour = ltime.wHour;
+        int min = ltime.wMinute;
+        int sec = ltime.wSecond;
+        int mil = ltime.wMilliseconds;
+#else
         struct timespec now;
         clock_gettime(CLOCK_REALTIME, &now);
         const struct tm tms = *localtime(&now.tv_sec);
@@ -308,7 +323,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         int min = tms.tm_min;
         int sec = tms.tm_sec;
         int mil = (int)now.tv_nsec / 1000000;
-        int elapsed = mg_millis() - uptime;
+#endif
+        int elapsed = (int)(mg_millis() - uptime);
         mg_log("[%4d-%02d-%02dT%02d:%02d:%02d:%03dZ] %M \"%.*s\" -=> %d bytes "
                "in %d ms",
                year, mon, day, hour, min, sec, mil, mg_print_ip, &c->rem,

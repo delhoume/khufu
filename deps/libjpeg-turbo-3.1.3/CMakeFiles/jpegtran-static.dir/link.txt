@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG "CMakeFiles/jpegtran-static.dir/src/jpegtran.c.o" "CMakeFiles/jpegtran-static.dir/src/cdjpeg.c.o" "CMakeFiles/jpegtran-static.dir/src/rdswitch.c.o" "CMakeFiles/jpegtran-static.dir/src/transupp.c.o" -o jpegtran-static  libjpeg.a 

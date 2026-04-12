@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/tools/CMakeLists.txt
+  The vcpkg manifest was disabled, but we found a manifest file in C:\Users\FredericDelhoume\gitperso\khufu\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
+  tiffinfo.c
+LINK : fatal error LNK1104: cannot open file '..\libtiff\Debug\tiffd.lib'

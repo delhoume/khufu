@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/test_transferfunction_write_read.dir/test_transferfunction_write_read.c.o -o test_transferfunction_write_read  ../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 

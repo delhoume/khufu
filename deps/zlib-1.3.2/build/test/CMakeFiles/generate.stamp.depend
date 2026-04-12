@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/CMakeLists.txt
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/add_subdirectory_exclude_test.cmake.in
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/add_subdirectory_test.cmake.in
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/find_package_no_components_test.cmake.in
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/find_package_test.cmake.in
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/test/find_package_wrong_components_test.cmake.in

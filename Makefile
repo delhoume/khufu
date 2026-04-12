@@ -1,14 +1,20 @@
 
-CXXFLAGS += -std=c++11 -g -v -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I .
+OPTFLAGS = -O3
+CXXFLAGS += -std=c++11 $(OPTFLAGS)  -v -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I src
 #CXX=/opt/homebrew/bin/g++-13
 
 
 SRCDIR = src
 BINDIR = bin
 
-LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
-LIBS += -L /opt/homebrew/lib -ltiff -lturbojpeg -lz-ng -lz -lzstd -llzma
+LIB_BREW = /opt/homebrew/lib
+LIB_ZLIBNGCOMPAT=/opt/homebrew/opt/zlib-ng-compat/lib
+LIBS_DYNAMIC = -L $(LIB_BREW) -L $(LIB_ZIBNGCOMPAT) -ltiff -lturbojpeg -lz-ng -lzstd -llzma
 
+LIBS_STATIC = $(LIB_BREW)/libtiff.a $(LIB_BREW)/libturbojpeg.a $(LIB_ZLIBNGCOMPAT)/libz.a $(LIB_BREW)/libzstd.a $(LIB_BREW)/liblzma.a
+# LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+LIBS += $(LIBS_STATIC)
+# LIBS += $(LIBS_DYNAMIC)
 PROGRAMS = $(BINDIR)/khufu $(BINDIR)/tiff2khufu
 
 all: $(BINDIR) $(PROGRAMS)

@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/defer_strile_writing.dir/defer_strile_writing.c.o -o defer_strile_writing  ../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 

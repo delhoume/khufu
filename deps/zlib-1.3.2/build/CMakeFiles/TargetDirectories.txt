@@ -1,0 +1,17 @@
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/zlib.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/zlibstatic.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/PACKAGE.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/INSTALL.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/zlib_example.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/minigzip.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/zlib_static_example.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/static_minigzip.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/PACKAGE.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/RUN_TESTS.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/test/CMakeFiles/INSTALL.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/contrib/CMakeFiles/PACKAGE.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/contrib/CMakeFiles/RUN_TESTS.dir
+C:/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/build/contrib/CMakeFiles/INSTALL.dir

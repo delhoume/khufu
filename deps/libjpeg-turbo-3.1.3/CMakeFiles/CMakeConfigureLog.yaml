@@ -1,0 +1,1685 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      The system is: Linux - 6.6.87.2-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a9713/fast
+        gmake: Warning: File 'Makefile' has modification time 0.13 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_a9713.dir/build.make CMakeFiles/cmTC_a9713.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_a9713.dir/flags.make' has modification time 0.066 s in the future
+        Building C object CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a9713.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccR8UBhu.s
+        GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/13/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/'
+         as -v --64 -o CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o /tmp/ccR8UBhu.s
+        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_a9713
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9713.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -o cmTC_a9713 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9713' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9713.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4hsmVd.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a9713 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9713' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9713.'
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a9713/fast]
+        ignore line: [gmake: Warning: File 'Makefile' has modification time 0.13 s in the future]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_a9713.dir/build.make CMakeFiles/cmTC_a9713.dir/build]
+        ignore line: [gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PS7DyC']
+        ignore line: [gmake[1]: Warning: File 'CMakeFiles/cmTC_a9713.dir/flags.make' has modification time 0.066 s in the future]
+        ignore line: [Building C object CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a9713.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccR8UBhu.s]
+        ignore line: [GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o /tmp/ccR8UBhu.s]
+        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_a9713]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9713.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -o cmTC_a9713 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9713' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9713.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4hsmVd.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a9713 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc4hsmVd.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_a9713] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
+          arg [CMakeFiles/cmTC_a9713.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:250 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bdea1/fast
+        gmake: Warning: File 'Makefile' has modification time 0.37 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bdea1.dir/build.make CMakeFiles/cmTC_bdea1.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_bdea1.dir/flags.make' has modification time 0.32 s in the future
+        Building C object CMakeFiles/cmTC_bdea1.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_bdea1.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg/CheckIncludeFile.c
+        Linking C executable cmTC_bdea1
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bdea1.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_bdea1.dir/CheckIncludeFile.c.o -o cmTC_bdea1 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-zcfstg'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_244ed/fast
+        gmake: Warning: File 'Makefile' has modification time 0.43 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_244ed.dir/build.make CMakeFiles/cmTC_244ed.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_244ed.dir/flags.make' has modification time 0.38 s in the future
+        Building C object CMakeFiles/cmTC_244ed.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_244ed.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD/CheckIncludeFile.c
+        Linking C executable cmTC_244ed
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_244ed.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_244ed.dir/CheckIncludeFile.c.o -o cmTC_244ed 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-FgB5oD'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_826f3/fast
+        gmake: Warning: File 'Makefile' has modification time 0.55 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_826f3.dir/build.make CMakeFiles/cmTC_826f3.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_826f3.dir/flags.make' has modification time 0.49 s in the future
+        Building C object CMakeFiles/cmTC_826f3.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_826f3.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju/CheckIncludeFile.c
+        Linking C executable cmTC_826f3
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_826f3.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_826f3.dir/CheckIncludeFile.c.o -o cmTC_826f3 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3ya5ju'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Check size of size_t"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_SIZE_T"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7a672/fast
+        gmake: Warning: File 'Makefile' has modification time 0.72 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7a672.dir/build.make CMakeFiles/cmTC_7a672.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_7a672.dir/flags.make' has modification time 0.67 s in the future
+        Building C object CMakeFiles/cmTC_7a672.dir/SIZE_T.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_7a672.dir/SIZE_T.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE/SIZE_T.c
+        Linking C executable cmTC_7a672
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7a672.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_7a672.dir/SIZE_T.c.o -o cmTC_7a672 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-C91DVE'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "CMakeLists.txt:491 (check_type_size)"
+    checks:
+      - "Check size of unsigned long"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_UNSIGNED_LONG"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2feaf/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2feaf.dir/build.make CMakeFiles/cmTC_2feaf.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV'
+        Building C object CMakeFiles/cmTC_2feaf.dir/UNSIGNED_LONG.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_2feaf.dir/UNSIGNED_LONG.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV/UNSIGNED_LONG.c
+        Linking C executable cmTC_2feaf
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2feaf.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_2feaf.dir/UNSIGNED_LONG.c.o -o cmTC_2feaf 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-8TbXIV'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:494 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_BUILTIN_CTZL"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_BUILTIN_CTZL"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_63ce0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_63ce0.dir/build.make CMakeFiles/cmTC_63ce0.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl'
+        Building C object CMakeFiles/cmTC_63ce0.dir/src.c.o
+        /usr/bin/cc -DHAVE_BUILTIN_CTZL   -o CMakeFiles/cmTC_63ce0.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl/src.c
+        Linking C executable cmTC_63ce0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63ce0.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_63ce0.dir/src.c.o -o cmTC_63ce0 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-Y7frtl'
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceRuns.cmake:93 (try_run)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceRuns.cmake:52 (cmake_check_source_runs)"
+      - "CMakeLists.txt:506 (check_c_source_runs)"
+    checks:
+      - "Performing Test RIGHT_SHIFT_IS_UNSIGNED"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "RIGHT_SHIFT_IS_UNSIGNED_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_1f090/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_1f090.dir/build.make CMakeFiles/cmTC_1f090.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w'
+        Building C object CMakeFiles/cmTC_1f090.dir/src.c.o
+        /usr/bin/cc -DRIGHT_SHIFT_IS_UNSIGNED   -o CMakeFiles/cmTC_1f090.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w/src.c
+        Linking C executable cmTC_1f090
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f090.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_1f090.dir/src.c.o -o cmTC_1f090 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-MOHv3w'
+        
+      exitCode: 0
+    runResult:
+      variable: "RIGHT_SHIFT_IS_UNSIGNED_EXITCODE"
+      cached: true
+      stdout: |
+      stderr: |
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:529 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HIDDEN_WORKS"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HIDDEN_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c03c5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c03c5.dir/build.make CMakeFiles/cmTC_c03c5.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4'
+        Building C object CMakeFiles/cmTC_c03c5.dir/src.c.o
+        /usr/bin/cc -DHIDDEN_WORKS   -o CMakeFiles/cmTC_c03c5.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4/src.c
+        Linking C executable cmTC_c03c5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c03c5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_c03c5.dir/src.c.o -o cmTC_c03c5 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dqatz4'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:553 (check_c_source_compiles)"
+    checks:
+      - "Performing Test INLINE_WORKS"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "INLINE_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_90e3e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_90e3e.dir/build.make CMakeFiles/cmTC_90e3e.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0'
+        Building C object CMakeFiles/cmTC_90e3e.dir/src.c.o
+        /usr/bin/cc -DINLINE_WORKS   -o CMakeFiles/cmTC_90e3e.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0/src.c
+        Linking C executable cmTC_90e3e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90e3e.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_90e3e.dir/src.c.o -o cmTC_90e3e 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-OwZxN0'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:570 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_THREAD_LOCAL"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_THREAD_LOCAL"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_56e3c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_56e3c.dir/build.make CMakeFiles/cmTC_56e3c.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE'
+        Building C object CMakeFiles/cmTC_56e3c.dir/src.c.o
+        /usr/bin/cc -DHAVE_THREAD_LOCAL   -o CMakeFiles/cmTC_56e3c.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE/src.c
+        Linking C executable cmTC_56e3c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56e3c.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_56e3c.dir/src.c.o -o cmTC_56e3c 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-cHHRZE'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:583 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_VERSION_SCRIPT"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_VERSION_SCRIPT"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6b7c6/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6b7c6.dir/build.make CMakeFiles/cmTC_6b7c6.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92'
+        Building C object CMakeFiles/cmTC_6b7c6.dir/src.c.o
+        /usr/bin/cc -DHAVE_VERSION_SCRIPT  -Wl,--version-script,/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/conftest.map -o CMakeFiles/cmTC_6b7c6.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92/src.c
+        Linking C executable cmTC_6b7c6
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b7c6.dir/link.txt --verbose=1
+        /usr/bin/cc  -Wl,--version-script,/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/conftest.map CMakeFiles/cmTC_6b7c6.dir/src.c.o -o cmTC_6b7c6 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-0BXG92'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckLanguage.cmake:139 (message)"
+      - "simd/CMakeLists.txt:46 (check_language)"
+    checks:
+      - "Looking for a ASM_NASM compiler"
+    message: |
+      Looking for a ASM_NASM compiler failed with the following output:
+      -- The ASM_NASM compiler identification is unknown
+      -- Didn't find assembler
+      CMake Error at CMakeLists.txt:2 (project):
+        No CMAKE_ASM_NASM_COMPILER could be found.
+      
+        Tell CMake where to find the compiler by setting either the environment
+        variable "ASM_NASM" or the CMake cache entry CMAKE_ASM_NASM_COMPILER to the
+        full path to the compiler, or to the compiler name if it is in the PATH.
+      
+      
+      -- Configuring incomplete, errors occurred!
+      
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      The system is: Linux - 6.6.87.2-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_136d5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_136d5.dir/build.make CMakeFiles/cmTC_136d5.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0'
+        Building C object CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_136d5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccLJu4gE.s
+        GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/13/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/'
+         as -v --64 -o CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o /tmp/ccLJu4gE.s
+        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_136d5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_136d5.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -o cmTC_136d5 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_136d5' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_136d5.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJCC5Y4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_136d5 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_136d5' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_136d5.'
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_136d5/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_136d5.dir/build.make CMakeFiles/cmTC_136d5.dir/build]
+        ignore line: [gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-3nsSX0']
+        ignore line: [Building C object CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_136d5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccLJu4gE.s]
+        ignore line: [GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o /tmp/ccLJu4gE.s]
+        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_136d5]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_136d5.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -o cmTC_136d5 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_136d5' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_136d5.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJCC5Y4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_136d5 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccJCC5Y4.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_136d5] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
+          arg [CMakeFiles/cmTC_136d5.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:250 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c84d5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c84d5.dir/build.make CMakeFiles/cmTC_c84d5.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN'
+        Building C object CMakeFiles/cmTC_c84d5.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_c84d5.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN/CheckIncludeFile.c
+        Linking C executable cmTC_c84d5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c84d5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_c84d5.dir/CheckIncludeFile.c.o -o cmTC_c84d5 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-PEHFrN'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6829e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6829e.dir/build.make CMakeFiles/cmTC_6829e.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa'
+        Building C object CMakeFiles/cmTC_6829e.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_6829e.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa/CheckIncludeFile.c
+        Linking C executable cmTC_6829e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6829e.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_6829e.dir/CheckIncludeFile.c.o -o cmTC_6829e 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-yyAjaa'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ff907/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ff907.dir/build.make CMakeFiles/cmTC_ff907.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr'
+        Building C object CMakeFiles/cmTC_ff907.dir/CheckIncludeFile.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_ff907.dir/CheckIncludeFile.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr/CheckIncludeFile.c
+        Linking C executable cmTC_ff907
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff907.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_ff907.dir/CheckIncludeFile.c.o -o cmTC_ff907 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-JeEWCr'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "CMakeLists.txt:490 (check_type_size)"
+    checks:
+      - "Check size of size_t"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_SIZE_T"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f6bc7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f6bc7.dir/build.make CMakeFiles/cmTC_f6bc7.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W'
+        Building C object CMakeFiles/cmTC_f6bc7.dir/SIZE_T.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_f6bc7.dir/SIZE_T.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W/SIZE_T.c
+        Linking C executable cmTC_f6bc7
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6bc7.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_f6bc7.dir/SIZE_T.c.o -o cmTC_f6bc7 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-nUAo7W'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "CMakeLists.txt:491 (check_type_size)"
+    checks:
+      - "Check size of unsigned long"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_UNSIGNED_LONG"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bc25a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bc25a.dir/build.make CMakeFiles/cmTC_bc25a.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ'
+        Building C object CMakeFiles/cmTC_bc25a.dir/UNSIGNED_LONG.c.o
+        /usr/bin/cc    -o CMakeFiles/cmTC_bc25a.dir/UNSIGNED_LONG.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ/UNSIGNED_LONG.c
+        Linking C executable cmTC_bc25a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc25a.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_bc25a.dir/UNSIGNED_LONG.c.o -o cmTC_bc25a 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-IBWeVJ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:494 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_BUILTIN_CTZL"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_BUILTIN_CTZL"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_15a0b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_15a0b.dir/build.make CMakeFiles/cmTC_15a0b.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA'
+        Building C object CMakeFiles/cmTC_15a0b.dir/src.c.o
+        /usr/bin/cc -DHAVE_BUILTIN_CTZL   -o CMakeFiles/cmTC_15a0b.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA/src.c
+        Linking C executable cmTC_15a0b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15a0b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_15a0b.dir/src.c.o -o cmTC_15a0b 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-D3KSrA'
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceRuns.cmake:93 (try_run)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceRuns.cmake:52 (cmake_check_source_runs)"
+      - "CMakeLists.txt:506 (check_c_source_runs)"
+    checks:
+      - "Performing Test RIGHT_SHIFT_IS_UNSIGNED"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "RIGHT_SHIFT_IS_UNSIGNED_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_603b9/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_603b9.dir/build.make CMakeFiles/cmTC_603b9.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG'
+        Building C object CMakeFiles/cmTC_603b9.dir/src.c.o
+        /usr/bin/cc -DRIGHT_SHIFT_IS_UNSIGNED   -o CMakeFiles/cmTC_603b9.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG/src.c
+        Linking C executable cmTC_603b9
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_603b9.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_603b9.dir/src.c.o -o cmTC_603b9 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-ERNTrG'
+        
+      exitCode: 0
+    runResult:
+      variable: "RIGHT_SHIFT_IS_UNSIGNED_EXITCODE"
+      cached: true
+      stdout: |
+      stderr: |
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:529 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HIDDEN_WORKS"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HIDDEN_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5072b/fast
+        gmake: Warning: File 'Makefile' has modification time 0.017 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5072b.dir/build.make CMakeFiles/cmTC_5072b.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_5072b.dir/progress.make' has modification time 0.075 s in the future
+        Building C object CMakeFiles/cmTC_5072b.dir/src.c.o
+        /usr/bin/cc -DHIDDEN_WORKS   -o CMakeFiles/cmTC_5072b.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII/src.c
+        Linking C executable cmTC_5072b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5072b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_5072b.dir/src.c.o -o cmTC_5072b 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-A8LAII'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:553 (check_c_source_compiles)"
+    checks:
+      - "Performing Test INLINE_WORKS"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "INLINE_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4141b/fast
+        gmake: Warning: File 'Makefile' has modification time 0.12 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4141b.dir/build.make CMakeFiles/cmTC_4141b.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_4141b.dir/flags.make' has modification time 0.059 s in the future
+        Building C object CMakeFiles/cmTC_4141b.dir/src.c.o
+        /usr/bin/cc -DINLINE_WORKS   -o CMakeFiles/cmTC_4141b.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez/src.c
+        Linking C executable cmTC_4141b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4141b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_4141b.dir/src.c.o -o cmTC_4141b 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-BXIaez'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:570 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_THREAD_LOCAL"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_THREAD_LOCAL"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_352b5/fast
+        gmake: Warning: File 'Makefile' has modification time 0.26 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_352b5.dir/build.make CMakeFiles/cmTC_352b5.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_352b5.dir/flags.make' has modification time 0.21 s in the future
+        Building C object CMakeFiles/cmTC_352b5.dir/src.c.o
+        /usr/bin/cc -DHAVE_THREAD_LOCAL   -o CMakeFiles/cmTC_352b5.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV/src.c
+        Linking C executable cmTC_352b5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_352b5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_352b5.dir/src.c.o -o cmTC_352b5 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-grzdfV'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "CMakeLists.txt:583 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_VERSION_SCRIPT"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_VERSION_SCRIPT"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8045b/fast
+        gmake: Warning: File 'Makefile' has modification time 0.45 s in the future
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8045b.dir/build.make CMakeFiles/cmTC_8045b.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH'
+        gmake[1]: Warning: File 'CMakeFiles/cmTC_8045b.dir/flags.make' has modification time 0.39 s in the future
+        Building C object CMakeFiles/cmTC_8045b.dir/src.c.o
+        /usr/bin/cc -DHAVE_VERSION_SCRIPT  -Wl,--version-script,/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/conftest.map -o CMakeFiles/cmTC_8045b.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH/src.c
+        Linking C executable cmTC_8045b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8045b.dir/link.txt --verbose=1
+        /usr/bin/cc  -Wl,--version-script,/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/conftest.map CMakeFiles/cmTC_8045b.dir/src.c.o -o cmTC_8045b 
+        gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-kXtacH'
+        gmake: warning:  Clock skew detected.  Your build may be incomplete.
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckLanguage.cmake:132 (message)"
+      - "simd/CMakeLists.txt:46 (check_language)"
+    checks:
+      - "Looking for a ASM_NASM compiler"
+    message: |
+      Looking for a ASM_NASM compiler passed with the following output:
+      -- The ASM_NASM compiler identification is NASM
+      -- Found assembler: /usr/bin/nasm
+      -- Configuring done (1.1s)
+      -- Generating done (0.1s)
+      -- Build files have been written to: /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/simd/CMakeFiles/CheckASM_NASM
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is AppleClang using "--version" did not match "(Apple (clang|LLVM) version)":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is Clang using "--version" did not match "(clang version)":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is ARMClang using "--version" did not match "armclang":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is OrangeC using "--version" did not match "occ \\(OrangeC\\) Version":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is HP using "-V" did not match "HP C":
+      nasm: error: unrecognised option `-V'
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is Intel using "--version" did not match "(ICC)":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is IntelLLVM using "--version" did not match "(Intel[^
+      ]+oneAPI)":
+      NASM version 2.16.01
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is SunPro using "-V" did not match "Sun C":
+      nasm: error: unrecognised option `-V'
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is XL using "-qversion" did not match "XL C":
+      nasm: error: unrecognised option `-q'
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is MSVC using "-?" did not match "Microsoft":
+      nasm: error: unrecognised option `-?'
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is TI using "-h" did not match "Texas Instruments":
+      Usage: /usr/bin/nasm [-@ response_file] [options...] [--] filename
+             /usr/bin/nasm -v (or --v)
+      
+      Options (values in brackets indicate defaults):
+      
+          -h            show this text and exit (also --help)
+          -v (or --v)   print the NASM version number and exit
+          -@ file       response file; one command line option per line
+      
+          -o outfile    write output to outfile
+          --keep-all    output files will not be removed even if an error happens
+      
+          -Xformat      specify error reporting format (gnu or vc)
+          -s            redirect error messages to stdout
+          -Zfile        redirect error messages to file
+      
+          -M            generate Makefile dependencies on stdout
+          -MG           d:o, missing files assumed generated
+          -MF file      set Makefile dependency file
+          -MD file      assemble and generate dependencies
+          -MT file      dependency target name
+          -MQ file      dependency target name (quoted)
+          -MP           emit phony targets
+      
+          -f format     select output file format
+             bin                  Flat raw binary (MS-DOS, embedded, ...) [default]
+             ith                  Intel Hex encoded flat binary
+             srec                 Motorola S-records encoded flat binary
+             aout                 Linux a.out
+             aoutb                NetBSD/FreeBSD a.out
+             coff                 COFF (i386) (DJGPP, some Unix variants)
+             elf32                ELF32 (i386) (Linux, most Unix variants)
+             elf64                ELF64 (x86-64) (Linux, most Unix variants)
+             elfx32               ELFx32 (ELF32 for x86-64) (Linux)
+             as86                 as86 (bin86/dev86 toolchain)
+             obj                  Intel/Microsoft OMF (MS-DOS, OS/2, Win16)
+             win32                Microsoft extended COFF for Win32 (i386)
+             win64                Microsoft extended COFF for Win64 (x86-64)
+             ieee                 IEEE-695 (LADsoft variant) object file format
+             macho32              Mach-O i386 (Mach, including MacOS X and variants)
+             macho64              Mach-O x86-64 (Mach, including MacOS X and variants)
+             dbg                  Trace of all info passed to output stage
+             elf                  Legacy alias for "elf32"
+             macho                Legacy alias for "macho32"
+             win                  Legacy alias for "win32"
+      
+          -g            generate debugging information
+          -F format     select a debugging format (output format dependent)
+          -gformat      same as -g -F format
+             elf32:     dwarf     ELF32 (i386) dwarf (newer) [default]
+                        stabs     ELF32 (i386) stabs (older)
+             elf64:     dwarf     ELF64 (x86-64) dwarf (newer) [default]
+                        stabs     ELF64 (x86-64) stabs (older)
+             elfx32:    dwarf     ELFx32 (x86-64) dwarf (newer) [default]
+                        stabs     ELFx32 (x86-64) stabs (older)
+             obj:       borland   Borland Debug Records [default]
+             win32:     cv8       Codeview 8+ [default]
+             win64:     cv8       Codeview 8+ [default]
+             ieee:      ladsoft   LADsoft Debug Records [default]
+             macho32:   dwarf     Mach-O i386 dwarf for Darwin/MacOS [default]
+             macho64:   dwarf     Mach-O x86-64 dwarf for Darwin/MacOS [default]
+             dbg:       debug     Trace of all info passed to debug stage [default]
+      
+          -l listfile   write listing to a list file
+          -Lflags...    add optional information to the list file
+             -Lb        show builtin macro packages (standard and %use)
+             -Ld        show byte and repeat counts in decimal, not hex
+             -Le        show the preprocessed output
+             -Lf        ignore .nolist (force output)
+             -Lm        show multi-line macro calls with expanded parameters
+             -Lp        output a list file every pass, in case of errors
+             -Ls        show all single-line macro definitions
+             -Lw        flush the output after every line (very slow!)
+             -L+        enable all listing options except -Lw (very verbose!)
+      
+          -Oflags...    optimize opcodes, immediates and branch offsets
+             -O0        no optimization
+             -O1        minimal optimization
+             -Ox        multipass optimization (default)
+             -Ov        display the number of passes executed at the end
+          -t            assemble in limited SciTech TASM compatible mode
+      
+          -E (or -e)    preprocess only (writes output to stdout by default)
+          -a            don't preprocess (assemble only)
+          -Ipath        add a pathname to the include file path
+          -Pfile        pre-include a file (also --include)
+          -Dmacro[=str] pre-define a macro
+          -Umacro       undefine a macro
+         --pragma str   pre-executes a specific %%pragma
+         --before str   add line (usually a preprocessor statement) before the input
+         --no-line      ignore %line directives in input
+      
+         --prefix str   prepend the given string to the names of all extern,
+                        common and global symbols (also --gprefix)
+         --suffix str   append the given string to the names of all extern,
+                        common and global symbols (also --gprefix)
+         --lprefix str  prepend the given string to local symbols
+         --lpostfix str append the given string to local symbols
+      
+         --reproducible attempt to produce run-to-run identical output
+      
+          -w+x          enable warning x (also -Wx)
+          -w-x          disable warning x (also -Wno-x)
+          -w[+-]error   promote all warnings to errors (also -Werror)
+          -w[+-]error=x promote warning x to errors (also -Werror=x)
+             all                  all possible warnings
+             db-empty             no operand for data declaration [on]
+             ea                   all warnings prefixed with "ea-"
+             ea-absolute          absolute address cannot be RIP-relative [on]
+             ea-dispsize          displacement size ignored on absolute address [on]
+             float                all warnings prefixed with "float-"
+             float-denorm         floating point denormal [off]
+             float-overflow       floating point overflow [on]
+             float-toolong        too many digits in floating-point number [on]
+             float-underflow      floating point underflow [off]
+             forward              forward reference may have unpredictable results [on]
+             label                all warnings prefixed with "label-"
+             label-orphan         labels alone on lines without trailing `:' [on]
+             label-redef          label redefined to an identical value [off]
+             label-redef-late     label (re)defined during code generation [error]
+             number-overflow      numeric constant does not fit [on]
+             obsolete             all warnings prefixed with "obsolete-"
+             obsolete-nop         instruction obsolete and is a noop on the target CPU [on]
+             obsolete-removed     instruction obsolete and removed on the target CPU [on]
+             obsolete-valid       instruction obsolete but valid on the target CPU [on]
+             phase                phase error during stabilization [off]
+             pp                   all warnings prefixed with "pp-"
+             pp-else              all warnings prefixed with "pp-else-"
+             pp-else-elif         %elif after %else [on]
+             pp-else-else         %else after %else [on]
+             pp-empty-braces      empty %{} construct [on]
+             pp-environment       nonexistent environment variable [on]
+             pp-macro             all warnings prefixed with "pp-macro-"
+             pp-macro-def         all warnings prefixed with "pp-macro-def-"
+             pp-macro-def-case-single single-line macro defined both case sensitive and insensitive [on]
+             pp-macro-def-greedy-single single-line macro [on]
+             pp-macro-def-param-single single-line macro defined with and without parameters [error]
+             pp-macro-defaults    macros with more default than optional parameters [on]
+             pp-macro-params      all warnings prefixed with "pp-macro-params-"
+             pp-macro-params-legacy improperly calling multi-line macro for legacy support [on]
+             pp-macro-params-multi multi-line macro calls with wrong parameter count [on]
+             pp-macro-params-single single-line macro calls with wrong parameter count [on]
+             pp-macro-redef-multi redefining multi-line macro [on]
+             pp-open              all warnings prefixed with "pp-open-"
+             pp-open-braces       unterminated %{...} [on]
+             pp-open-brackets     unterminated %[...] [on]
+             pp-open-string       unterminated string [on]
+             pp-rep-negative      regative %rep count [on]
+             pp-sel-range         %sel() argument out of range [on]
+             pp-trailing          trailing garbage ignored [on]
+             pragma               all warnings prefixed with "pragma-"
+             pragma-bad           malformed %pragma [off]
+             pragma-empty         empty %pragma directive [off]
+             pragma-na            %pragma not applicable to this compilation [off]
+             pragma-unknown       unknown %pragma facility or directive [off]
+             prefix               all warnings prefixed with "prefix-"
+             prefix-bnd           invalid BND prefix [on]
+             prefix-hle           invalid HLE prefix [on]
+             prefix-lock          LOCK prefix on unlockable instructions [on]
+             prefix-opsize        invalid operand size prefix [on]
+             prefix-seg           segment prefix ignored in 64-bit mode [on]
+             ptr                  non-NASM keyword used in other assemblers [on]
+             regsize              register size specification ignored [on]
+             unknown-warning      unknown warning in -W/-w or warning directive [off]
+             user                 %warning directives [on]
+             warn-stack-empty     warning stack empty [on]
+             zeroing              RESx in initialized section becomes zero [on]
+             zext-reloc           relocation zero-extended to match output format [on]
+             other                any warning not specifically mentioned above [on]
+      
+         --limit-X val  set execution limit X
+             passes               total number of passes [unlimited]
+             stalled-passes       number of passes without forward progress [1000]
+             macro-levels         levels of macro expansion [10000]
+             macro-tokens         tokens processed during single-lime macro expansion [10000000]
+             mmacros              multi-line macros before final return [100000]
+             rep                  %rep count [1000000]
+             eval                 expression evaluation descent [8192]
+             lines                total source lines processed [2000000000]
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is IAR using "" did not match "IAR Assembler":
+      nasm: fatal: no input file specified
+      Type /usr/bin/nasm -h for help.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is ARMCC using "" did not match "(ARM Compiler)|(ARM Assembler)|(Arm Compiler)":
+      nasm: fatal: no input file specified
+      Type /usr/bin/nasm -h for help.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1131 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASM_NASMCompiler.cmake:29 (include)"
+      - "simd/CMakeLists.txt:52 (enable_language)"
+    message: |
+      Checking whether the ASM_NASM compiler is NASM using "-v" matched "(NASM version)":
+      NASM version 2.16.01
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "simd/CMakeLists.txt:100 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_CET"
+    directories:
+      source: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F"
+      binary: "/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "HAVE_CET"
+      cached: true
+      stdout: |
+        Change Dir: '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f337c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f337c.dir/build.make CMakeFiles/cmTC_f337c.dir/build
+        gmake[1]: Entering directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F'
+        Building C object CMakeFiles/cmTC_f337c.dir/src.c.o
+        /usr/bin/cc -DHAVE_CET   -o CMakeFiles/cmTC_f337c.dir/src.c.o -c /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F/src.c
+        Linking C executable cmTC_f337c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f337c.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_f337c.dir/src.c.o -o cmTC_f337c 
+        gmake[1]: Leaving directory '/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3/CMakeFiles/CMakeScratch/TryCompile-dfm16F'
+        
+      exitCode: 0
+...

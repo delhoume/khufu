@@ -1,0 +1,50 @@
+﻿  Building Custom Rule C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/libtiff/CMakeLists.txt
+  The vcpkg manifest was disabled, but we found a manifest file in C:\Users\FredericDelhoume\gitperso\khufu\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
+  tif_aux.c
+  tif_close.c
+  tif_codec.c
+  tif_color.c
+  tif_compress.c
+  tif_dir.c
+  tif_dirinfo.c
+  tif_dirread.c
+  tif_dirwrite.c
+  tif_dumpmode.c
+  tif_error.c
+  tif_extension.c
+  tif_fax3.c
+  tif_fax3sm.c
+  tif_flush.c
+  tif_getimage.c
+  tif_hash_set.c
+  tif_jbig.c
+  tif_jpeg.c
+  tif_jpeg_12.c
+C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\libtiff\tif_jpeg.c(76,10): error C1083: Cannot open include file: 'jerror.h': No such file or directory
+  Generating Code...
+  Compiling...
+  tif_lerc.c
+  tif_luv.c
+  tif_lzma.c
+  tif_lzw.c
+  tif_next.c
+  tif_ojpeg.c
+  tif_packbits.c
+  tif_pixarlog.c
+  tif_predict.c
+  tif_print.c
+  tif_read.c
+  tif_strip.c
+  tif_swab.c
+  tif_thunder.c
+  tif_tile.c
+  tif_version.c
+  tif_warning.c
+  tif_webp.c
+  tif_write.c
+  tif_zip.c
+C:\Users\FredericDelhoume\gitperso\khufu\deps\tiff-4.7.1\libtiff\tif_zip.c(41,10): error C1083: Cannot open include file: 'zlib.h': No such file or directory
+  Generating Code...
+  Compiling...
+  tif_zstd.c
+  Generating Code...

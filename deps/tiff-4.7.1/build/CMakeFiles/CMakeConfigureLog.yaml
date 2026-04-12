@@ -1,0 +1,1208 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      The system is: Windows - 6.2.9200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35222 for x64
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/3.29.2/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        Note: including file: C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35222 for x64
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/3.29.2/CompilerIdCXX/CMakeCXXCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        Note: including file: C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-p8axu8"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-p8axu8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-p8axu8'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_30242
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_30242.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_30242.dir\\ /FS -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_30242.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_30242.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_30242.exe /implib:cmTC_30242.lib /pdb:cmTC_30242.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/PROGRA~2/MICROS~3/2022/BUILDT~1/VC/Tools/MSVC/1444~1.352/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Running the C compiler's linker: "C:/PROGRA~2/MICROS~3/2022/BUILDT~1/VC/Tools/MSVC/1444~1.352/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-4rafyx"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-4rafyx"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-4rafyx'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_b028f
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_b028f.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_b028f.dir\\ /FS -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b028f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_b028f.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_b028f.exe /implib:cmTC_b028f.lib /pdb:cmTC_b028f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/PROGRA~2/MICROS~3/2022/BUILDT~1/VC/Tools/MSVC/1444~1.352/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:46 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/PROGRA~2/MICROS~3/2022/BUILDT~1/VC/Tools/MSVC/1444~1.352/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/CompilerChecks.cmake:120 (CHECK_C_COMPILER_FLAG)"
+      - "CMakeLists.txt:87 (include)"
+    checks:
+      - "Performing Test C_FLAG_W3"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pkxnps"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pkxnps"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "C_FLAG_W3"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pkxnps'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_3f34e
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DC_FLAG_W3  /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1   /W3 /showIncludes /FoCMakeFiles\\cmTC_3f34e.dir\\src.c.obj /FdCMakeFiles\\cmTC_3f34e.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pkxnps\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_3f34e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_3f34e.dir\\src.c.obj  /out:cmTC_3f34e.exe /implib:cmTC_3f34e.lib /pdb:cmTC_3f34e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake/LinkerChecks.cmake:48 (check_c_source_compiles)"
+      - "CMakeLists.txt:90 (include)"
+    checks:
+      - "Performing Test HAVE_LD_VERSION_SCRIPT"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-tunk1a"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-tunk1a"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_LD_VERSION_SCRIPT"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-tunk1a'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_268d7
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_LD_VERSION_SCRIPT  /DWIN32 /D_WINDOWS /W3 /W3 -Wl,--version-script=C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/conftest.map /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_268d7.dir\\src.c.obj /FdCMakeFiles\\cmTC_268d7.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tunk1a\\src.c
+        FAILED: CMakeFiles/cmTC_268d7.dir/src.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_LD_VERSION_SCRIPT  /DWIN32 /D_WINDOWS /W3 /W3 -Wl,--version-script=C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/conftest.map /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_268d7.dir\\src.c.obj /FdCMakeFiles\\cmTC_268d7.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tunk1a\\src.c
+        cl : Command line error D8021 : invalid numeric argument '/Wl,--version-script=C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/conftest.map'
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:30 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for assert.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-s7hwqi"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-s7hwqi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_ASSERT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-s7hwqi'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_1fca5
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_1fca5.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_1fca5.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7hwqi\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_1fca5.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_1fca5.dir\\CheckIncludeFile.c.obj  /out:cmTC_1fca5.exe /implib:cmTC_1fca5.lib /pdb:cmTC_1fca5.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:31 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for fcntl.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vzr938"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vzr938"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_FCNTL_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vzr938'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_2eca9
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_2eca9.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_2eca9.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vzr938\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_2eca9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_2eca9.dir\\CheckIncludeFile.c.obj  /out:cmTC_2eca9.exe /implib:cmTC_2eca9.lib /pdb:cmTC_2eca9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:32 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for io.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-fzo25y"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-fzo25y"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_IO_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-fzo25y'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_b0247
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_b0247.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_b0247.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fzo25y\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b0247.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_b0247.dir\\CheckIncludeFile.c.obj  /out:cmTC_b0247.exe /implib:cmTC_b0247.lib /pdb:cmTC_b0247.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:33 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for strings.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3vl5x2"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3vl5x2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_STRINGS_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3vl5x2'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_9807a
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_9807a.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_9807a.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3vl5x2\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_9807a.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_9807a.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_9807a.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3vl5x2\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3vl5x2\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'strings.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:34 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for sys/time.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jiqhnp"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jiqhnp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_SYS_TIME_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jiqhnp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_21fbf
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_21fbf.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_21fbf.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jiqhnp\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_21fbf.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_21fbf.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_21fbf.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jiqhnp\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jiqhnp\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'sys/time.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:35 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-xydkdn"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-xydkdn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-xydkdn'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_329a2
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_329a2.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_329a2.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xydkdn\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_329a2.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_329a2.dir\\CheckIncludeFile.c.obj  /out:cmTC_329a2.exe /implib:cmTC_329a2.lib /pdb:cmTC_329a2.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/IncludeChecks.cmake:36 (check_include_file)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-1h0e9y"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-1h0e9y"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-1h0e9y'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_ca7e6
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_ca7e6.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_ca7e6.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1h0e9y\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_ca7e6.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_ca7e6.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_ca7e6.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1h0e9y\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1h0e9y\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'unistd.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:140 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/SymbolChecks.cmake:31 (check_symbol_exists)"
+      - "CMakeLists.txt:99 (include)"
+    checks:
+      - "Looking for getopt"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-o9w57l"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-o9w57l"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_GETOPT"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-o9w57l'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_f0858
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_f0858.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_f0858.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o9w57l\\CheckSymbolExists.c
+        FAILED: CMakeFiles/cmTC_f0858.dir/CheckSymbolExists.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_f0858.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_f0858.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o9w57l\\CheckSymbolExists.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o9w57l\\CheckSymbolExists.c(2): fatal error C1083: Cannot open include file: 'unistd.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:140 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/SymbolChecks.cmake:32 (check_symbol_exists)"
+      - "CMakeLists.txt:99 (include)"
+    checks:
+      - "Looking for optarg"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wa9zga"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wa9zga"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_DECL_OPTARG"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wa9zga'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_d1598
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_d1598.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_d1598.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wa9zga\\CheckSymbolExists.c
+        FAILED: CMakeFiles/cmTC_d1598.dir/CheckSymbolExists.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_d1598.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_d1598.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wa9zga\\CheckSymbolExists.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wa9zga\\CheckSymbolExists.c(2): fatal error C1083: Cannot open include file: 'getopt.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:140 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/SymbolChecks.cmake:40 (check_symbol_exists)"
+      - "CMakeLists.txt:99 (include)"
+    checks:
+      - "Looking for mmap"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-ye26zf"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-ye26zf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_MMAP"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-ye26zf'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_73553
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_73553.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_73553.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ye26zf\\CheckSymbolExists.c
+        FAILED: CMakeFiles/cmTC_73553.dir/CheckSymbolExists.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_73553.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_73553.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ye26zf\\CheckSymbolExists.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ye26zf\\CheckSymbolExists.c(2): fatal error C1083: Cannot open include file: 'sys/mman.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:140 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/SymbolChecks.cmake:43 (check_symbol_exists)"
+      - "CMakeLists.txt:99 (include)"
+    checks:
+      - "Looking for setmode"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-a00srt"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-a00srt"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_SETMODE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-a00srt'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_bf4a6
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_bf4a6.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_bf4a6.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a00srt\\CheckSymbolExists.c
+        FAILED: CMakeFiles/cmTC_bf4a6.dir/CheckSymbolExists.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_bf4a6.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_bf4a6.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a00srt\\CheckSymbolExists.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a00srt\\CheckSymbolExists.c(2): fatal error C1083: Cannot open include file: 'unistd.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "cmake/TypeSizeChecks.cmake:31 (check_type_size)"
+      - "CMakeLists.txt:110 (include)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-cu6vgw"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-cu6vgw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-cu6vgw'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_0f84d
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_0f84d.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_0f84d.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cu6vgw\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_0f84d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_0f84d.dir\\CheckIncludeFile.c.obj  /out:cmTC_0f84d.exe /implib:cmTC_0f84d.lib /pdb:cmTC_0f84d.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "cmake/TypeSizeChecks.cmake:31 (check_type_size)"
+      - "CMakeLists.txt:110 (include)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-w34kpi"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-w34kpi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-w34kpi'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_e1c22
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_e1c22.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_e1c22.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w34kpi\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_e1c22.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e1c22.dir\\CheckIncludeFile.c.obj  /out:cmTC_e1c22.exe /implib:cmTC_e1c22.lib /pdb:cmTC_e1c22.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "cmake/TypeSizeChecks.cmake:31 (check_type_size)"
+      - "CMakeLists.txt:110 (include)"
+    checks:
+      - "Check size of size_t"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-zxh350"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-zxh350"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_SIZEOF_SIZE_T"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-zxh350'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_a5749
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_a5749.dir\\SIZEOF_SIZE_T.c.obj /FdCMakeFiles\\cmTC_a5749.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zxh350\\SIZEOF_SIZE_T.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_a5749.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_a5749.dir\\SIZEOF_SIZE_T.c.obj  /out:cmTC_a5749.exe /implib:cmTC_a5749.lib /pdb:cmTC_a5749.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake/JPEGCodec.cmake:50 (check_c_source_compiles)"
+      - "CMakeLists.txt:125 (include)"
+    checks:
+      - "Performing Test HAVE_JPEGTURBO_DUAL_MODE_8_12"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-x0dler"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-x0dler"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_JPEGTURBO_DUAL_MODE_8_12"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-x0dler'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_a5257
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_JPEGTURBO_DUAL_MODE_8_12 -IC:\\Strawberry\\c\\include /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_a5257.dir\\src.c.obj /FdCMakeFiles\\cmTC_a5257.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x0dler\\src.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x0dler\\src.c(8): warning C4013: 'jpeg12_read_scanlines' undefined; assuming extern returning int
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_a5257.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_a5257.dir\\src.c.obj  /out:cmTC_a5257.exe /implib:cmTC_a5257.lib /pdb:cmTC_a5257.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  C:\\Strawberry\\c\\lib\\libjpeg.a  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_a5257.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_a5257.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_a5257.dir\\src.c.obj  /out:cmTC_a5257.exe /implib:cmTC_a5257.lib /pdb:cmTC_a5257.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  C:\\Strawberry\\c\\lib\\libjpeg.a  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_a5257.dir\\src.c.obj /out:cmTC_a5257.exe /implib:cmTC_a5257.lib /pdb:cmTC_a5257.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console C:\\Strawberry\\c\\lib\\libjpeg.a kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_a5257.dir/intermediate.manifest CMakeFiles\\cmTC_a5257.dir/manifest.res" failed (exit code 1120) with the following output:
+        src.c.obj : error LNK2019: unresolved external symbol jpeg12_read_scanlines referenced in function main\x0d
+        cmTC_a5257.exe : fatal error LNK1120: 1 unresolved externals\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake/Findliblzma.cmake:81 (CHECK_LIBRARY_EXISTS)"
+      - "cmake/LZMACodec.cmake:29 (find_package)"
+      - "CMakeLists.txt:134 (include)"
+    checks:
+      - "Looking for lzma_auto_decoder in C:/Strawberry/c/lib/liblzma.a"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wztg81"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wztg81"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "LIBLZMA_HAS_AUTO_DECODER"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-wztg81'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_593e9
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3 -DCHECK_FUNCTION_EXISTS=lzma_auto_decoder /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_593e9.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_593e9.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wztg81\\CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_593e9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_593e9.dir\\CheckFunctionExists.c.obj  /out:cmTC_593e9.exe /implib:cmTC_593e9.lib /pdb:cmTC_593e9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  C:\\Strawberry\\c\\lib\\liblzma.a  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake/Findliblzma.cmake:82 (CHECK_LIBRARY_EXISTS)"
+      - "cmake/LZMACodec.cmake:29 (find_package)"
+      - "CMakeLists.txt:134 (include)"
+    checks:
+      - "Looking for lzma_easy_encoder in C:/Strawberry/c/lib/liblzma.a"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jyyxsk"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jyyxsk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "LIBLZMA_HAS_EASY_ENCODER"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-jyyxsk'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_2442d
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3 -DCHECK_FUNCTION_EXISTS=lzma_easy_encoder /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_2442d.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_2442d.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jyyxsk\\CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_2442d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_2442d.dir\\CheckFunctionExists.c.obj  /out:cmTC_2442d.exe /implib:cmTC_2442d.lib /pdb:cmTC_2442d.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  C:\\Strawberry\\c\\lib\\liblzma.a  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake/Findliblzma.cmake:83 (CHECK_LIBRARY_EXISTS)"
+      - "cmake/LZMACodec.cmake:29 (find_package)"
+      - "CMakeLists.txt:134 (include)"
+    checks:
+      - "Looking for lzma_lzma_preset in C:/Strawberry/c/lib/liblzma.a"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vult21"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vult21"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "LIBLZMA_HAS_LZMA_PRESET"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-vult21'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_3ff59
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3 -DCHECK_FUNCTION_EXISTS=lzma_lzma_preset /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_3ff59.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_3ff59.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vult21\\CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_3ff59.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_3ff59.dir\\CheckFunctionExists.c.obj  /out:cmTC_3ff59.exe /implib:cmTC_3ff59.lib /pdb:cmTC_3ff59.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  C:\\Strawberry\\c\\lib\\liblzma.a  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:39 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for GL/gl.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-bi3jtq"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-bi3jtq"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_GL_GL_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-bi3jtq'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_01410
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_01410.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_01410.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bi3jtq\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_01410.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_01410.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_01410.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bi3jtq\\CheckIncludeFile.c
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2146: syntax error: missing ',' before identifier 'glAccum'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2146: syntax error: missing ',' before identifier 'glAlphaFunc'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2146: syntax error: missing ',' before identifier 'glAreTexturesResident'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2146: syntax error: missing ',' before identifier 'glArrayElement'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2146: syntax error: missing ',' before identifier 'glBegin'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2146: syntax error: missing ',' before identifier 'glBindTexture'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2146: syntax error: missing ',' before identifier 'glBitmap'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2146: syntax error: missing ',' before identifier 'glBlendFunc'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2146: syntax error: missing ',' before identifier 'glCallList'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2146: syntax error: missing ',' before identifier 'glCallLists'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2146: syntax error: missing ',' before identifier 'glClear'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2146: syntax error: missing ',' before identifier 'glClearAccum'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2146: syntax error: missing ',' before identifier 'glClearColor'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2146: syntax error: missing ',' before identifier 'glClearDepth'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2146: syntax error: missing ',' before identifier 'glClearIndex'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2146: syntax error: missing ',' before identifier 'glClearStencil'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2146: syntax error: missing ',' before identifier 'glClipPlane'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2146: syntax error: missing ',' before identifier 'glColor3b'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2146: syntax error: missing ',' before identifier 'glColor3bv'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2146: syntax error: missing ',' before identifier 'glColor3d'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1177): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1177): fatal error C1003: error count exceeds 100; stopping compilation
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:40 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for GL/glu.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pfxhl0"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pfxhl0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_GL_GLU_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-pfxhl0'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_5d068
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_5d068.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_5d068.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pfxhl0\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_5d068.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_5d068.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_5d068.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pfxhl0\\CheckIncludeFile.c
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2146: syntax error: missing ',' before identifier 'glAccum'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1157): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2146: syntax error: missing ',' before identifier 'glAlphaFunc'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1158): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2146: syntax error: missing ',' before identifier 'glAreTexturesResident'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1159): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2146: syntax error: missing ',' before identifier 'glArrayElement'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1160): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2146: syntax error: missing ',' before identifier 'glBegin'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1161): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2146: syntax error: missing ',' before identifier 'glBindTexture'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1162): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2146: syntax error: missing ',' before identifier 'glBitmap'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1163): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2146: syntax error: missing ',' before identifier 'glBlendFunc'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1164): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2146: syntax error: missing ',' before identifier 'glCallList'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1165): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2146: syntax error: missing ',' before identifier 'glCallLists'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1166): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2146: syntax error: missing ',' before identifier 'glClear'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1167): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2146: syntax error: missing ',' before identifier 'glClearAccum'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1168): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2146: syntax error: missing ',' before identifier 'glClearColor'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1169): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2146: syntax error: missing ',' before identifier 'glClearDepth'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1170): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2146: syntax error: missing ',' before identifier 'glClearIndex'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1171): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2146: syntax error: missing ',' before identifier 'glClearStencil'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1172): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2146: syntax error: missing ',' before identifier 'glClipPlane'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1173): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2146: syntax error: missing ',' before identifier 'glColor3b'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1174): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2146: syntax error: missing ',' before identifier 'glColor3bv'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1175): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2085: 'APIENTRY': not in formal parameter list
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2146: syntax error: missing ',' before identifier 'glColor3d'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2143: syntax error: missing ';' before '('
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1176): error C2059: syntax error: ')'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1177): error C2054: expected '(' to follow 'WINGDIAPI'
+        C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\um\\GL/gl.h(1177): fatal error C1003: error count exceeds 100; stopping compilation
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:41 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for GL/glut.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-r0kpwc"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-r0kpwc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_GL_GLUT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-r0kpwc'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_c85cf
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_c85cf.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_c85cf.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r0kpwc\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_c85cf.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_c85cf.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_c85cf.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r0kpwc\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r0kpwc\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'GL/glut.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:42 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for GLUT/glut.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-60x718"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-60x718"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_GLUT_GLUT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-60x718'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_dd3a3
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_dd3a3.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_dd3a3.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-60x718\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_dd3a3.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_dd3a3.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_dd3a3.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-60x718\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-60x718\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'GLUT/glut.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:43 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for OpenGL/gl.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3ok35t"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3ok35t"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_OPENGL_GL_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3ok35t'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_6a127
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_6a127.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_6a127.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ok35t\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_6a127.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_6a127.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_6a127.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ok35t\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ok35t\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'OpenGL/gl.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake/OpenGLChecks.cmake:44 (check_include_file)"
+      - "CMakeLists.txt:146 (include)"
+    checks:
+      - "Looking for OpenGL/glu.h"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3hmxn2"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3hmxn2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "HAVE_OPENGL_GLU_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-3hmxn2'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_61537
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_61537.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_61537.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3hmxn2\\CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_61537.dir/CheckIncludeFile.c.obj 
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_61537.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_61537.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3hmxn2\\CheckIncludeFile.c
+        C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3hmxn2\\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'OpenGL/glu.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:140 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/FindCMath.cmake:33 (check_symbol_exists)"
+      - "CMakeLists.txt:156 (find_package)"
+    checks:
+      - "Looking for pow"
+    directories:
+      source: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-801e2t"
+      binary: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-801e2t"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3 /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/cmake"
+    buildResult:
+      variable: "CMath_HAVE_LIBC_POW"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/CMakeFiles/CMakeScratch/TryCompile-801e2t'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/ninja.exe -v cmTC_e3a99
+        [1/2] C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_e3a99.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_e3a99.dir\\ /FS -c C:\\Users\\FredericDelhoume\\gitperso\\khufu\\deps\\tiff-4.7.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-801e2t\\CheckSymbolExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Strawberry\\c\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_e3a99.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e3a99.dir\\CheckSymbolExists.c.obj  /out:cmTC_e3a99.exe /implib:cmTC_e3a99.lib /pdb:cmTC_e3a99.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+...

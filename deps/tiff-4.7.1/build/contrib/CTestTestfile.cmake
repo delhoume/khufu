@@ -1,0 +1,9 @@
+# CMake generated Testfile for 
+# Source directory: C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/contrib
+# Build directory: C:/Users/FredericDelhoume/gitperso/khufu/deps/tiff-4.7.1/build/contrib
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+subdirs("addtiffo")
+subdirs("dbs")
+subdirs("iptcutil")

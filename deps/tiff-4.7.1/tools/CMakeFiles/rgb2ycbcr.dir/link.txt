@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/rgb2ycbcr.dir/rgb2ycbcr.c.o -o rgb2ycbcr  ../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\adler32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\compress.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\crc32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\deflate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\gzclose.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\gzlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\gzread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\gzwrite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inflate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\infback.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inftrees.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inffast.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\trees.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\uncompr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\zutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\build\zconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\zlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\deflate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\gzguts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inffast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inffixed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inflate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\inftrees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\trees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\zutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\FredericDelhoume\gitperso\khufu\deps\zlib-1.3.2\win32\zlib1.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{83F80F1D-20C9-3D69-8E75-37BFD2B9BF95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1E21FEF3-49D3-3F51-A0A0-5A67AE909A03}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

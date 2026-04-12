@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG "CMakeFiles/tjunittest-static.dir/src/tjunittest.c.o" "CMakeFiles/tjunittest-static.dir/src/tjutil.c.o" "CMakeFiles/tjunittest-static.dir/src/md5/md5.c.o" "CMakeFiles/tjunittest-static.dir/src/md5/md5hl.c.o" -o tjunittest-static  libturbojpeg.a 

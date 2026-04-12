@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/strip_rw.dir/strip_rw.c.o CMakeFiles/strip_rw.dir/strip.c.o CMakeFiles/strip_rw.dir/test_arrays.c.o -o strip_rw  ../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 

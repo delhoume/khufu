@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG CMakeFiles/tjdecomp.dir/src/tjdecomp.c.o -o tjdecomp  -Wl,-rpath,/mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/libjpeg-turbo-3.1.3 libturbojpeg.so.0.4.0 

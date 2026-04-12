@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/addtiffo.dir/addtiffo.c.o CMakeFiles/addtiffo.dir/tif_overview.c.o CMakeFiles/addtiffo.dir/tif_ovrcache.c.o -o addtiffo  ../../libtiff/libtiff.a /mnt/c/Users/FredericDelhoume/gitperso/khufu/deps/zlib-1.3.2/libz.a JPEG::JPEG-NOTFOUND /usr/lib/x86_64-linux-gnu/libm.so 
