@@ -17,16 +17,14 @@ LIBS += $(LIBS_STATIC)
 # LIBS += $(LIBS_DYNAMIC)
 PROGRAM = $(BINDIR)/khufu_$(VERSION)_$(PLATFORM)
 
-all: $(BINDIR) $(PROGRAM)
+all: $(PROGRAM)
 
 clean:
 	rm -rf $(SRCDIR)/*~ $(SRCDIR)/*# 
 	rm -rf $(PROGRAM) $(BINDIR)/*.o
 
-$(BINDIR):
-	mkdir -p bin
-
 $(PROGRAM): $(BINDIR)/khufu.o  $(BINDIR)/mongoose.o
+	mkdir -p $(BINDIR)
 	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(PROGRAM) $(LIBS)
 
 $(BINDIR)/khufu.o: $(SRCDIR)/khufu.cpp
@@ -42,3 +40,6 @@ $(BINDIR)/tiff2khufu: $(BINDIR)/tiff2khufu.o
 
 $(BINDIR)/tiff2khufu.o: $(SRCDIR)/tiff2khufu.cpp
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/tiff2khufu.cpp -c -o $(BINDIR)/tiff2khufu.o 
+
+brewinstall:
+	brew install  gcc libtiff libjpeg-turbo zlib-ng zlib-ng-compat zstd

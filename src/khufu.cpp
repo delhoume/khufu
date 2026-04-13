@@ -1,8 +1,6 @@
 // Copyright (c) 2024 Frederic Delhoume
 // All rights reserved
 
-#define KHUFU_VERSION "0.3"
-
 #include <signal.h>
 #include <time.h>
 
@@ -19,7 +17,8 @@ extern "C" {
 #include "stb_image_write.h"
 
 static int s_debug_level = MG_LL_INFO;
-static const char *s_listening_address = "http://0.0.0.0:8000";
+static int s_listening_port = 8000;
+static const char *s_listening_address = "0.0.0.0";
 static const char *s_image_folder = ".";
 static const char *s_root_folder = ".";
 
@@ -119,6 +118,11 @@ void buildList() {
   char buf[100] = "";
   while (mg_fs_ls(&mg_fs_posix, s_image_folder, buf, sizeof(buf))) {
     puts(buf);
+    struct mg_str caps[2];
+    if (mg_match(mg_str_n(buf, 100), mg_str("*.tif"), caps)) {
+      buildList();
+      return;
+    }
 }
  }
 // /tile/<name>/<level>/<x>/<y>
@@ -341,13 +345,14 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
 
 static void usage(const char *prog) {
   fprintf(stderr,
-          "Khufu tile server version : v%ss\n"
+          "Khufu tile server version : v%s\n"
           "Usage: %s OPTIONS\n"
           "  -d FOLDER - base folder, default: .\n"
           "  -f FOLDER - folder with TIFF images, default: .\n"
-          "  -l ADDR   - listening address, default: '%s'\n"
+          "  -h [ADDR]   - listening address, default: '%s'\n"
+          "  -p [PORT]   - listening port, default: '%d'\n"
           "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
-          KHUFU_VERSION, prog, s_listening_address, s_debug_level);
+          KHUFU_VERSION, prog, s_listening_address, s_listening_port, s_debug_level);
   exit(EXIT_FAILURE);
 }
 
@@ -360,8 +365,10 @@ int main(int argc, char *argv[]) {
   for (i = 1; i < argc; i++) {
     if (strcmp(argv[i], "-d") == 0) {
       s_root_folder = argv[++i];
-    } else if (strcmp(argv[i], "-l") == 0) {
-      s_listening_address = argv[++i];
+    } else if (strcmp(argv[i], "-") == 0) {
+      s_listening_address = argv[++i]; 
+    } else if (strcmp(argv[i], "-p") == 0) {
+      s_listening_port = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-v") == 0) {
       s_debug_level = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-f") == 0) {
@@ -381,16 +388,18 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, signal_handler);
   mg_log_set(s_debug_level);
   mg_mgr_init(&mgr);
-  if ((c = mg_http_listen(&mgr, s_listening_address, cb, &mgr)) == NULL) {
-    MG_ERROR(("Cannot listen on %s. Use http://ADDR:PORT or :PORT",
-              s_listening_address));
+   char url[100];
+  
+  mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address, s_listening_port); 
+  if ((c = mg_http_listen(&mgr, url, cb, &mgr)) == NULL) {
+    MG_ERROR(("Cannot listen on %s", url));
     exit(EXIT_FAILURE);
   }
 
   // Start infinite event loop
   MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
   MG_INFO(("Mongoose version          : v%s", MG_VERSION));
-  MG_INFO(("Listening on              : %s", s_listening_address));
+  MG_INFO(("Listening on              : %s", url));
   MG_INFO(("Serving files from folder : %s", s_root_folder));
   MG_INFO(("Serving tiles from folder : %s", s_image_folder));
   while (s_signo == 0)
