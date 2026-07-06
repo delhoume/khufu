@@ -1,7 +1,6 @@
 #ifndef SHOW_TEMPLATE_H
 #define SHOW_TEMPLATE_H
 
-// const char *show_template = "hello world";
 const char *show_template = "<html>\n\
 <meta name=\"referer\" content=\"origin\">\n\
 <head>\n\
