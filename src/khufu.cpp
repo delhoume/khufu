@@ -129,16 +129,20 @@ json j;
 // updates internal json with info on server tiff folder images
 void buildList() {
   j.clear();
-  char buf[100] = "";
+  char buf[256] = "";
   while (mg_fs_ls(&mg_fs_posix, s_image_folder, buf, sizeof(buf))) {
-    struct mg_str caps[2];
-
-    if (mg_match(mg_str(buf), mg_str("*.tif"), caps)) {
-      char id[50];
-      static char filename[1024];
-
+    size_t buflen = strlen(buf);
+    if (buflen <= 4)
+      continue;
+    mg_str extension = mg_str_n(buf + buflen - 4, 4);
+    mg_str tifext = mg_str(".tif");
+    if (mg_strcasecmp(extension, tifext) == 0) {
+      char filename[256];
+      char id[256];
+      memcpy(id, buf, buflen - 4);
+      id[buflen - 4] = 0;
       mg_snprintf(filename, sizeof(filename), "%s/%s", s_image_folder, buf);
-      mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
+
       TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
       TIFF *tifin = TIFFOpenExt(filename, "r", opts);
       TIFFOpenOptionsFree(opts);
@@ -150,7 +154,7 @@ void buildList() {
       json imgj;
       int ndirs = TIFFNumberOfDirectories(tifin);
       imgj["nlevels"] = ndirs;
-      imgj["filename"] = id;
+      imgj["filename"] = buf;
       imgj["tiled"] = (bool)istiled;
       uint16_t bits_per_sample;
       int16_t samples_per_pixel;
@@ -181,10 +185,11 @@ void buildList() {
         imgj["levels"][d]["index"] = d;
         imgj["levels"][d]["width"] = imagewidth;
         imgj["levels"][d]["height"] = imageheight;
+
         unsigned int filetype;
         TIFFGetFieldDefaulted(tifin, TIFFTAG_SUBFILETYPE, &filetype);
         imgj["levels"][d]["full"] =
-            filetype & FILETYPE_REDUCEDIMAGE ? true : false;
+            filetype & FILETYPE_REDUCEDIMAGE ? false : true;
       }
       TIFFClose(tifin);
       j[id] = imgj;
@@ -193,7 +198,7 @@ void buildList() {
   }
 }
 
-// /tile/<name>/<level>/<tx>/<ty>
+// main url  prase
 static void cb(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_ERROR) {
     printf("Error: %s", (char *)ev_data);
@@ -205,29 +210,30 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     if (mg_match(uri, infoapi, caps)) {
       buildList();
       auto cpp_string = j.dump();
+      size_t len = cpp_string.length();
       mg_printf(c,
-                "HTTP/1.1 200 OK\r\nContent-Type: application/json; "
-                "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
-                "Length: %lu\r\n\r\n%s",
-                strlen(cpp_string.c_str()), cpp_string.c_str());
+                "HTTP/1.1 200 OK\r\n"
+                "Content-Type: application/json; charset=utf-8\r\n"
+                "Access-Control-Allow-Origin:*\r\n"
+                "Content-Length: %lu\r\n\r\n",
+                len);
+      mg_send(c, cpp_string.c_str(), len);
       return;
     } else if (mg_match(uri, showapi, caps)) {
       buildList();
-      static char id[128];
-      static char buffer[2048];
+      char id[128];
+      char buffer[2048];
       mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
 
-      fprintf(stderr, "looking for %.*s\n", caps[0].len, caps[0].buf);
-
+      fprintf(stderr, "looking for %s\n", id);
       if (j.contains(id)) {
         auto jotm = j[id];
-        fprintf(stderr, "found %.*s\n", caps[0].len, caps[0].buf);
-        if (j[id]["tiled"] == true) {
-          fprintf(stderr, "found show %.*s\n", caps[0].len, caps[0].buf);
+        fprintf(stderr, "found %s\n", id);
+        if (jotm.contains("tiled") && jotm["tiled"] == true) {
+          fprintf(stderr, "found tiled %s\n", id);
           int directories = j[id]["nlevels"];
-          // find the one that i not reduced image
+          // find the one that is not reduced image
           for (int d = 0; d < directories; ++d) {
-            fprintf(stderr, "found full level %d\n", d);
             if (j[id]["levels"][d]["full"] == true) {
               fprintf(stderr, "found full level %d\n", d);
               int tilesize = j[id]["tileheight"];
@@ -241,17 +247,18 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               int minlevel = maxlevel - directories + 1;
               int dirfull = j[id]["levels"][d]["index"].get<int>();
               char *html_template = (char *)show_template;
-              mg_snprintf(buffer, sizeof(buffer), html_template,
-                          s_listening_port, dirfull, id, imagewidth,
-                          imageheight, tilesize, minlevel, maxlevel);
-              fprintf(stderr, "found show %.*s\n", caps[0].len, caps[0].buf);
-              fprintf(stderr, "fserving %s\n", buffer);
-              mg_printf(
-                  c,
-                  "HTTP/1.1 200 OK\r\nContent-Type: text/html; "
-                  "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
-                  "Length: %lu\r\n\r\n%s",
-                  strlen(buffer), buffer);
+              size_t len =
+                  mg_snprintf(buffer, sizeof(buffer), html_template,
+                              s_listening_port, dirfull, id, imagewidth,
+                              imageheight, tilesize, minlevel, maxlevel);
+              mg_printf(c,
+                        "HTTP/1.1 200 OK\r\n"
+                        "Content-Type: text/html; charset=utf-8\r\n"
+                        "Access-Control-Allow-Origin:*\r\n"
+                        "Content-Length: %lu\r\n\r\n",
+                        len);
+
+              mg_send(c, buffer, len);
               return;
             }
           }
@@ -266,11 +273,11 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         return;
       }
     } else if (mg_match(uri, tileapi, caps)) {
-      static char filename[128];
-      static char buffer[8];
-
-      mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", s_image_folder,
-                  caps[0].len, caps[0].buf);
+      char id[256];
+      char filename[256];
+      char buffer[8];
+      mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
+      mg_snprintf(filename, sizeof(filename), "%s/%s.tif", s_image_folder, id);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].buf);
       int level = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[2].len, caps[2].buf);
@@ -406,8 +413,9 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       if (ok) {
         mg_printf(c,
                   "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
-                  "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
-                  "Length:         \r\n\r\n"); // placeholder
+                  "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\n"
+                  "charset=utf-8\r\nReferer:no-referer\r\n"
+                  "Content-Length:         \r\n\r\n"); // placeholder
         int off = c->send.len;
 
         if (useSTB == false) { // fully optimized path, many times faster
