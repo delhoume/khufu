@@ -1,9 +1,10 @@
 // Copyright (c) 2024 Frederic Delhoume
 // All rights reserved
 
+#include <cstddef>
+#include <cstdio>
 #include <signal.h>
 #include <time.h>
-
 #define MG_ENABLE_CUSTOM_LOG
 #include "mongoose.h"
 
@@ -15,6 +16,11 @@ extern "C" {
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
+
+#include "json.hpp"
+using namespace nlohmann;
+
+#include <show_template.h>
 
 static int s_debug_level = MG_LL_INFO;
 static int s_listening_port = 8000;
@@ -69,6 +75,7 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
   jpeg_mem_dest(&cinfo, &mem, &mem_size);
 
   cinfo.image_width = width;
+
   cinfo.image_height = height;
   cinfo.input_components = comp;
   cinfo.in_color_space =
@@ -80,8 +87,10 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
 
   /* Write every scanline ... */
   while (cinfo.next_scanline < cinfo.image_height) {
-    unsigned int offset = isvswap ?((cinfo.image_height - 1 - cinfo.next_scanline) * width * comp)
-    : (cinfo.next_scanline * width * comp);
+    unsigned int offset =
+        isvswap
+            ? ((cinfo.image_height - 1 - cinfo.next_scanline) * width * comp)
+            : (cinfo.next_scanline * width * comp);
     lpRowBuffer[0] = data + offset;
     jpeg_write_scanlines(&cinfo, lpRowBuffer, 1);
   }
@@ -97,7 +106,9 @@ boolean KhufuCheckTile(int position, int numtiles) {
   return (position >= 0) && (position < numtiles);
 }
 
-struct mg_str tileapi = mg_str("/tile/*/*/*/*"); // SEP##TILE##SEP##WILD;
+struct mg_str tileapi = mg_str("/tile/*/*/*/*");
+struct mg_str infoapi = mg_str("/info");
+struct mg_str showapi = mg_str("/show/*");
 
 struct TIFFInfo {
   TIFF *tifin = nullptr;
@@ -114,18 +125,80 @@ void cbError(struct mg_str &uri) {
   MG_ERROR(("%.*s -=> %s", uri.len, uri.buf, error));
 }
 
+json j;
+// updates internal json with info on server tiff folder images
 void buildList() {
-  char buf[100] = "";
+  j.clear();
+  char buf[256] = "";
   while (mg_fs_ls(&mg_fs_posix, s_image_folder, buf, sizeof(buf))) {
-    puts(buf);
-    struct mg_str caps[2];
-    if (mg_match(mg_str_n(buf, 100), mg_str("*.tif"), caps)) {
-      buildList();
-      return;
+    size_t buflen = strlen(buf);
+    if (buflen <= 4)
+      continue;
+    mg_str extension = mg_str_n(buf + buflen - 4, 4);
+    mg_str tifext = mg_str(".tif");
+    if (mg_strcasecmp(extension, tifext) == 0) {
+      char filename[256];
+      char id[256];
+      memcpy(id, buf, buflen - 4);
+      id[buflen - 4] = 0;
+      mg_snprintf(filename, sizeof(filename), "%s/%s", s_image_folder, buf);
+
+      TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
+      TIFF *tifin = TIFFOpenExt(filename, "r", opts);
+      TIFFOpenOptionsFree(opts);
+      if (tifin == nullptr) {
+        mg_snprintf(error, sizeof(error), "could not open %s", filename);
+        continue;
+      }
+      boolean istiled = TIFFIsTiled(tifin);
+      json imgj;
+      int ndirs = TIFFNumberOfDirectories(tifin);
+      imgj["nlevels"] = ndirs;
+      imgj["filename"] = buf;
+      imgj["tiled"] = (bool)istiled;
+      uint16_t bits_per_sample;
+      int16_t samples_per_pixel;
+      TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);
+
+      TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_sample);
+      imgj["bitspersample"] = bits_per_sample;
+      imgj["samplesperpixel"] = samples_per_pixel;
+      if (istiled) {
+        unsigned int tilewidth;
+        unsigned int tileheight;
+        TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);
+        TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
+        imgj["tilewidth"] = tilewidth;
+        imgj["tileheight"] = tileheight;
+        char rbuf[100];
+        mg_snprintf(rbuf, sizeof(rbuf), "http://localhost:%d/show/%s",
+                    s_listening_port, id);
+        imgj["link"] = +rbuf;
+      }
+      for (int d = 0; d < ndirs; ++d) {
+        TIFFSetDirectory(tifin, d);
+        //        fprintf(stderr, "info for %d\n", d);
+        unsigned int imagewidth;
+        unsigned int imageheight;
+        TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
+        TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
+        imgj["levels"][d]["index"] = d;
+        imgj["levels"][d]["width"] = imagewidth;
+        imgj["levels"][d]["height"] = imageheight;
+
+        unsigned int filetype;
+        TIFFGetFieldDefaulted(tifin, TIFFTAG_SUBFILETYPE, &filetype);
+        imgj["levels"][d]["full"] =
+            filetype & FILETYPE_REDUCEDIMAGE ? false : true;
+      }
+      TIFFClose(tifin);
+      j[id] = imgj;
+      // fprintf(stderr, "Done buildlist\n%s %s\n", id, j.dump().c_str());
     }
+  }
 }
- }
-// /tile/<name>/<level>/<x>/<y>
+
+// main url parse
 static void cb(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_ERROR) {
     printf("Error: %s", (char *)ev_data);
@@ -134,212 +207,255 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     struct mg_str uri = hm->uri;
     struct mg_str caps[5];
 
-    if (mg_match(uri, mg_str("/list"), caps)) {
+    if (mg_match(uri, infoapi, caps)) {
       buildList();
-      return;
-    } else if  (!mg_match(uri, tileapi, caps)) {
-      
-       // normal web server
-      struct mg_http_serve_opts opts = {.root_dir =
-                                            s_root_folder}; // Serve local dir
-      struct mg_http_message *hm = (struct mg_http_message *)ev_data;
-      mg_http_serve_dir(c, hm, &opts);
-      return;
-    }
-    char filename[128];
-    char buffer[8];
-
-    mg_snprintf(filename, sizeof(filename), "%s/%.*s.tif", s_image_folder,
-                caps[0].len, caps[0].buf);
-    mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].buf);
-    int level = atoi(buffer);
-    mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[2].len, caps[2].buf);
-    int column = atoi(buffer);
-    mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].buf);
-    int row = atoi(buffer);
-    int64_t uptime = mg_millis();
-    unsigned int nWritten = 0;
-    boolean useSTB = false;
-    boolean ok;
-
-    if (level < 0 || column < 0 || row < 0) {
-      mg_snprintf(error, sizeof(error), "Wrong format");
-      cbError(uri);
-      return;
-    }
-    uLong signature = adler32(0, (const Bytef *)caps[0].buf, caps[0].len);
-    TIFF *tifin;
-    if (signature != cache.signature) {
-      TIFFClose(cache.tifin);
-
-      TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
-      tifin = TIFFOpenExt(filename, "r", opts);
-      TIFFOpenOptionsFree(opts);
-      if (tifin == nullptr) {
-        mg_snprintf(error, sizeof(error), "could not open %s", filename);
+      auto cpp_string = j.dump();
+      mg_http_reply(c, 200, "Content-Type: application/json\r\n", "%s\n", cpp_string.c_str());
+    } else if (mg_match(uri, showapi, caps)) {
+      buildList();
+      char id[128];
+      char buffer[2048];
+      mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
+     if (j.contains(id)) {
+        if (j[id].contains("tiled") && j[id]["tiled"] == true) {;
+          int directories = j[id]["nlevels"];
+          // find the one that is not reduced image
+          for (int d = 0; d < directories; ++d) {
+            if (j[id]["levels"][d]["full"] == true) {
+              int tilesize = j[id]["tileheight"];
+              int imagewidth = j[id]["levels"][d]["width"].get<int>();
+              int imageheight = j[id]["levels"][d]["height"].get<int>();
+              int maxdimension = imagewidth;
+              if (imageheight > imagewidth) {
+                maxdimension = imageheight;
+              }
+              int maxlevel = ceil(log(maxdimension) / log(2));
+              int minlevel = maxlevel - directories + 1;
+              int dirfull = j[id]["levels"][d]["index"].get<int>();
+              char *html_template = (char *)show_template;
+              mg_snprintf(buffer, sizeof(buffer), html_template,
+                              s_listening_port, dirfull, id, imagewidth,
+                              imageheight, tilesize, minlevel, maxlevel);
+               mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n", buffer);
+                return;
+            }
+          }
+        } else {
+          mg_snprintf(error, sizeof(error), "%s is not tiled", id);
+          cbError(uri);
+          return;
+        }
+      } else {
+        mg_snprintf(error, sizeof(error), "%s is not available", id);
         cbError(uri);
         return;
       }
-      cache.tifin = tifin;
-      cache.num_directories = TIFFNumberOfDirectories(tifin);
-      cache.current_directory = 0;
-      cache.tiled = TIFFIsTiled(tifin);
-      cache.signature = signature;
+    } else if (mg_match(uri, tileapi, caps)) {
+      char id[256];
+      char filename[256];
+      char buffer[8];
+      mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
+      mg_snprintf(filename, sizeof(filename), "%s/%s.tif", s_image_folder, id);
+      mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].buf);
+      int level = atoi(buffer);
+      mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[2].len, caps[2].buf);
+      int column = atoi(buffer);
+      mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].buf);
+      int row = atoi(buffer);
+      int64_t uptime = mg_millis();
+      unsigned int nWritten = 0;
+      boolean useSTB = false;
+      boolean ok;
+
+      if (level < 0 || column < 0 || row < 0) {
+        mg_snprintf(error, sizeof(error), "Wrong format");
+        cbError(uri);
+        return;
+      }
+      uLong signature = adler32(0, (const Bytef *)caps[0].buf, caps[0].len);
+      TIFF *tifin;
+      if (signature != cache.signature) {
+        TIFFClose(cache.tifin);
+
+        TIFFOpenOptions *opts = TIFFOpenOptionsAlloc();
+        tifin = TIFFOpenExt(filename, "r", opts);
+        TIFFOpenOptionsFree(opts);
+        if (tifin == nullptr) {
+          mg_snprintf(error, sizeof(error), "could not open %s", filename);
+          cbError(uri);
+          return;
+        }
+        cache.tifin = tifin;
+        cache.num_directories = TIFFNumberOfDirectories(tifin);
+        cache.current_directory = 0;
+        cache.tiled = TIFFIsTiled(tifin);
+        cache.signature = signature;
+        if (cache.tiled == false) {
+          mg_snprintf(error, sizeof(error), "directory %d is not tiled", level);
+          cbError(uri);
+          return;
+        }
+      }
+      if (level >= cache.num_directories) {
+        mg_snprintf(error, sizeof(error), "directory number %d exceed limit %d",
+                    level, cache.num_directories - 1);
+        cbError(uri);
+        return;
+      }
+      if (cache.current_directory != level) {
+        TIFFSetDirectory(cache.tifin, level);
+        cache.current_directory = level;
+        // cache.tiled = TIFFIsTiled(tifin);
+      }
       if (cache.tiled == false) {
         mg_snprintf(error, sizeof(error), "directory %d is not tiled", level);
         cbError(uri);
         return;
       }
-    }
-    if (level >= cache.num_directories) {
-      mg_snprintf(error, sizeof(error), "directory number %d exceed limit %d",
-                  level, cache.num_directories - 1);
-      cbError(uri);
-      return;
-    }
-    if (cache.current_directory != level) {
-      TIFFSetDirectory(cache.tifin, level);
-      cache.current_directory = level;
-      // cache.tiled = TIFFIsTiled(tifin);
-    }
-    if (cache.tiled == false) {
-      mg_snprintf(error, sizeof(error), "directory %d is not tiled", level);
-      cbError(uri);
-      return;
-    }
-    tifin = cache.tifin;
-    unsigned int tilewidth;
-    unsigned int tileheight;
-    unsigned int imagewidth;
-    unsigned int imageheight;
-    uint16_t bits_per_sample;
-    int16_t samples_per_pixel;
-    TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
-    TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
-    TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);
-    TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
-    TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);
-    TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_sample);
+      tifin = cache.tifin;
+      unsigned int tilewidth;
+      unsigned int tileheight;
+      unsigned int imagewidth;
+      unsigned int imageheight;
+      uint16_t bits_per_sample;
+      int16_t samples_per_pixel;
+      TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
+      TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
+      TIFFGetField(tifin, TIFFTAG_TILEWIDTH, &tilewidth);
+      TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
+      TIFFGetFieldDefaulted(tifin, TIFFTAG_SAMPLESPERPIXEL, &samples_per_pixel);
+      TIFFGetFieldDefaulted(tifin, TIFFTAG_BITSPERSAMPLE, &bits_per_sample);
 
-    unsigned int numtilesx = imagewidth / tilewidth;
-    if (imagewidth % tilewidth)
-      ++numtilesx;
+      unsigned int numtilesx = imagewidth / tilewidth;
+      if (imagewidth % tilewidth)
+        ++numtilesx;
 
-    unsigned int numtilesy = imageheight / tileheight;
-    if (imageheight % tileheight)
-      ++numtilesy;
+      unsigned int numtilesy = imageheight / tileheight;
+      if (imageheight % tileheight)
+        ++numtilesy;
 
-    MG_INFO(("directory %d image %dx%d (%dx%d tiles %dx%d)", level, imagewidth,
-             imageheight, numtilesx, numtilesy, tilewidth, tileheight));
+      MG_INFO(("directory %d image %dx%d (%dx%d tiles %dx%d)", level,
+               imagewidth, imageheight, numtilesx, numtilesy, tilewidth,
+               tileheight));
 
-    if (KhufuCheckTile(column, numtilesx) == false) {
-      mg_snprintf(error, sizeof(error), "bad column number %d, max is %d",
-                  column, numtilesx - 1);
-      cbError(uri);
-      return;
-    }
-    if (KhufuCheckTile(row, numtilesy) == false) {
-      mg_snprintf(error, sizeof(error), "bad row number %d, max is %d", row,
-                  numtilesy - 1);
-      cbError(uri);
-      return;
-    }
+      if (KhufuCheckTile(column, numtilesx) == false) {
+        mg_snprintf(error, sizeof(error), "bad column number %d, max is %d",
+                    column, numtilesx - 1);
+        cbError(uri);
+        return;
+      }
+      if (KhufuCheckTile(row, numtilesy) == false) {
+        mg_snprintf(error, sizeof(error), "bad row number %d, max is %d", row,
+                    numtilesy - 1);
+        cbError(uri);
+        return;
+      }
 
-    unsigned char *data = nullptr;
-    int vswap = 0;
-    if (bits_per_sample == 8 && samples_per_pixel == 1) {
-      MG_VERBOSE((" bps %d spp %d", bits_per_sample, samples_per_pixel));
-      data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
-      uint32_t tilenum =
-          TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
-      ok =
-          TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data,
-                              tilewidth * tileheight * samples_per_pixel) != -1;
-    } else {
-      //  all other formats
-      MG_VERBOSE(
-          ("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
-      data = new unsigned char[tilewidth * tileheight * 4];
-      ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight,
-                            (uint32_t *)data) == 1;
-      if (ok) {
-        vswap = 1;
-        /*
-        // TIFFReadRGBATile returns upside-down data...
-        uint32_t *top = (uint32_t *)data;
-        uint32_t *bottom =
-            (uint32_t *)(data + (tileheight - 1) * tilewidth * 4);
-        for (unsigned int yy = 0; yy < tileheight / 2; ++yy) {
-          for (unsigned int xx = 0; xx < tilewidth; ++xx) {
-            uint32_t temp = top[xx];
-            top[xx] = bottom[xx];
-            bottom[xx] = temp;
+      unsigned char *data = nullptr;
+      int vswap = 0;
+      if (bits_per_sample == 8 && samples_per_pixel == 1) {
+        MG_VERBOSE((" bps %d spp %d", bits_per_sample, samples_per_pixel));
+        data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
+        uint32_t tilenum =
+            TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
+        ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data,
+                                 tilewidth * tileheight * samples_per_pixel) !=
+             -1;
+      } else {
+        //  all other formats
+        MG_VERBOSE(
+            ("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
+        data = new unsigned char[tilewidth * tileheight * 4];
+        ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight,
+                              (uint32_t *)data) == 1;
+        if (ok) {
+          vswap = 1;
+          /*
+          // TIFFReadRGBATile returns upside-down data...
+          uint32_t *top = (uint32_t *)data;
+          uint32_t *bottom =
+              (uint32_t *)(data + (tileheight - 1) * tilewidth * 4);
+          for (unsigned int yy = 0; yy < tileheight / 2; ++yy) {
+            for (unsigned int xx = 0; xx < tilewidth; ++xx) {
+              uint32_t temp = top[xx];
+              top[xx] = bottom[xx];
+              bottom[xx] = temp;
+            }
+            top += tilewidth;
+            bottom -= tilewidth;
           }
-          top += tilewidth;
-          bottom -= tilewidth;
+          */
+          samples_per_pixel = 4;
         }
-        */
-        samples_per_pixel = 4;
       }
-    }
-    if (ok) {
-      mg_printf(c, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
-                   "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\nContent-"
-                   "Length:         \r\n\r\n"); // placeholder
-      int off = c->send.len;
-    
-      if (useSTB == false) { // fully optimized path, many times faster
-        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, vswap, data);
-      } else { // fallback
+      if (ok) {
+        mg_printf(c,
+                  "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
+                  "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\n"
+                  "charset=utf-8\r\nReferer:no-referer\r\n"
+                  "Content-Length:         \r\n\r\n"); // placeholder
+        int off = c->send.len;
 
-        khufu_context context = {c};
-        stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, 4,
-                               data, jpeg_quality);
-      }
-      // fill placeholder for size
-      char tmp[10];
-      size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu",
-                             (unsigned long)(c->send.len - off));
-      nWritten = c->send.len - off;
-      if (n > sizeof(tmp))
-        n = 0;
-      memcpy(c->send.buf + off - 12, tmp, n); // Set content length
-      c->is_resp = 0;                         // Mark response end
-      {
+        if (useSTB == false) { // fully optimized path, many times faster
+          emitJPEG(c, tilewidth, tileheight, samples_per_pixel, vswap, data);
+        } else { // fallback
+
+          khufu_context context = {c};
+          stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight,
+                                 4, data, jpeg_quality);
+        }
+        // fill placeholder for size
+        char tmp[10];
+        size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu",
+                               (unsigned long)(c->send.len - off));
+        nWritten = c->send.len - off;
+        if (n > sizeof(tmp))
+          n = 0;
+        memcpy(c->send.buf + off - 12, tmp, n); // Set content length
+        c->is_resp = 0;                         // Mark response end
+        {
 #if defined(_WIN32)
-        SYSTEMTIME ltime;
-        GetLocalTime(&ltime);
-        int year = ltime.wYear;
-        int mon = ltime.wMonth;
-        int day = ltime.wDay;
-        int hour = ltime.wHour;
-        int min = ltime.wMinute;
-        int sec = ltime.wSecond;
-        int mil = ltime.wMilliseconds;
+          SYSTEMTIME ltime;
+          GetLocalTime(&ltime);
+          int year = ltime.wYear;
+          int mon = ltime.wMonth;
+          int day = ltime.wDay;
+          int hour = ltime.wHour;
+          int min = ltime.wMinute;
+          int sec = ltime.wSecond;
+          int mil = ltime.wMilliseconds;
 #else
-        struct timespec now;
-        clock_gettime(CLOCK_REALTIME, &now);
-        const struct tm tms = *localtime(&now.tv_sec);
-        int year = tms.tm_year + 1900;
-        int mon = tms.tm_mon + 1;
-        int day = tms.tm_mday;
-        int hour = tms.tm_hour;
-        int min = tms.tm_min;
-        int sec = tms.tm_sec;
-        int mil = (int)now.tv_nsec / 1000000;
+          struct timespec now;
+          clock_gettime(CLOCK_REALTIME, &now);
+          const struct tm tms = *localtime(&now.tv_sec);
+          int year = tms.tm_year + 1900;
+          int mon = tms.tm_mon + 1;
+          int day = tms.tm_mday;
+          int hour = tms.tm_hour;
+          int min = tms.tm_min;
+          int sec = tms.tm_sec;
+          int mil = (int)now.tv_nsec / 1000000;
 #endif
-        int elapsed = (int)(mg_millis() - uptime);
-        mg_log("[%4d-%02d-%02dT%02d:%02d:%02d:%03dZ] %M \"%.*s\" -=> %d bytes "
-               "in %d ms",
-               year, mon, day, hour, min, sec, mil, mg_print_ip, &c->rem,
-               uri.len, uri.buf, nWritten, elapsed);
+          int elapsed = (int)(mg_millis() - uptime);
+          mg_log(
+              "[%4d-%02d-%02dT%02d:%02d:%02d:%03dZ] %M \"%.*s\" -=> %d bytes "
+              "in %d ms",
+              year, mon, day, hour, min, sec, mil, mg_print_ip, &c->rem,
+              uri.len, uri.buf, nWritten, elapsed);
+        }
+      } else {
+        mg_snprintf(error, sizeof(error), "could not read tile");
+        cbError(uri);
       }
+      if (data)
+        delete[] data;
     } else {
-      mg_snprintf(error, sizeof(error), "could not read tile");
-      cbError(uri);
+      // normal web server
+      struct mg_http_serve_opts opts = {.root_dir =
+                                            s_root_folder}; // Serve local dir
+      struct mg_http_message *hm = (struct mg_http_message *)ev_data;
+      mg_http_serve_dir(c, hm, &opts);
     }
-    if (data)
-      delete[] data;
   }
 }
 
@@ -352,7 +468,8 @@ static void usage(const char *prog) {
           "  -h [ADDR]   - listening address, default: '%s'\n"
           "  -p [PORT]   - listening port, default: '%d'\n"
           "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
-          KHUFU_VERSION, prog, s_listening_address, s_listening_port, s_debug_level);
+          KHUFU_VERSION, prog, s_listening_address, s_listening_port,
+          s_debug_level);
   exit(EXIT_FAILURE);
 }
 
@@ -366,7 +483,7 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[i], "-d") == 0) {
       s_root_folder = argv[++i];
     } else if (strcmp(argv[i], "-") == 0) {
-      s_listening_address = argv[++i]; 
+      s_listening_address = argv[++i];
     } else if (strcmp(argv[i], "-p") == 0) {
       s_listening_port = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-v") == 0) {
@@ -388,9 +505,10 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, signal_handler);
   mg_log_set(s_debug_level);
   mg_mgr_init(&mgr);
-   char url[100];
-  
-  mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address, s_listening_port); 
+  char url[100];
+
+  mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address,
+              s_listening_port);
   if ((c = mg_http_listen(&mgr, url, cb, &mgr)) == NULL) {
     MG_ERROR(("Cannot listen on %s", url));
     exit(EXIT_FAILURE);
