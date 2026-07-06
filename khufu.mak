@@ -1,6 +1,6 @@
 # cl /MD /out:khufu.exe src/mongoose.c src/khufu.cpp /Isrc /Isrc/tiff-4.3.0/libtiff /Isrc/zlib-1.2.11 /Isrc/libjpeg-turbo2.1.2/include  src/libs64/zlib.lib src/libs64/libtiff.lib src/libs64/turbojpeg-static.lib src/libs64/libwebp.lib
 # cmake -G Ninja -D JPEG_INCLUDE_DIR=..\libjpeg-turbo64_3.1.0\include -D JPEG_LIBRARY=..\libjpeg-turbo64_3.1.0\lib\turbojpeg-static.lib -D zlib=ON -D ZLIB_LIBRARY=..\zlib-1.3.2\zlib.lib -D BUILD_SHARED_LIBS=OFF -D ZLIB_INCLUDE_DIR=..\zlib-1.3.2 -D logluv=OFF -D CMAKE_BUILD_TYPE=Release
-#cmake --bui
+#cmake --buildz
 CC=cl
 LD=link
 SRCDIR= src
