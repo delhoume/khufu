@@ -173,7 +173,7 @@ void buildList() {
         char rbuf[100];
         mg_snprintf(rbuf, sizeof(rbuf), "http://localhost:%d/show/%s",
                     s_listening_port, id);
-        imgj["link"] = +rbuf;
+        imgj["link"] = rbuf;
       }
       for (int d = 0; d < ndirs; ++d) {
         TIFFSetDirectory(tifin, d);
