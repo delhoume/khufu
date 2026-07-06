@@ -19,9 +19,11 @@ body {\n\
 <body>\n\
 <div id=\"openseadragon1\"></div>\n\
 </body>\n\
-<script src=\"/openseadragon.min.js\" refererpolicy=\"strict-origin\"></script>\n\
 <script type=\"text/javascript\">\n\
-  const SERVER = \"http://localhost:%d\";\n\
+%s\n\
+</script>\n\
+<script type=\"text/javascript\">\n\
+const SERVER = \"http://localhost:%d\";\n\
     const DIRFULL = %d;\n\
     const IMAGE = \"%s\";\n\
     const  WIDTH = %d;\n\

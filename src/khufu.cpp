@@ -18,6 +18,11 @@ extern "C" {
 #include "stb_image_write.h"
 
 #include "json.hpp"
+
+const char osd[] = { 
+  #embed "openseadragon.min.js" 
+};
+
 using namespace nlohmann;
 
 #include <show_template.h>
@@ -214,7 +219,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     } else if (mg_match(uri, showapi, caps)) {
       buildList();
       char id[128];
-      char buffer[2048];
+      char buffer[300000];
       mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
      if (j.contains(id)) {
         if (j[id].contains("tiled") && j[id]["tiled"] == true) {;
@@ -234,7 +239,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               int dirfull = j[id]["levels"][d]["index"].get<int>();
               char *html_template = (char *)show_template;
               mg_snprintf(buffer, sizeof(buffer), html_template,
-                              s_listening_port, dirfull, id, imagewidth,
+                             osd, s_listening_port, dirfull, id, imagewidth,
                               imageheight, tilesize, minlevel, maxlevel);
                mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n", buffer);
                 return;
