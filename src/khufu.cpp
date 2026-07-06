@@ -193,12 +193,12 @@ void buildList() {
       }
       TIFFClose(tifin);
       j[id] = imgj;
-      fprintf(stderr, "Done buildlist\n%s %s\n", id, j.dump().c_str());
+      // fprintf(stderr, "Done buildlist\n%s %s\n", id, j.dump().c_str());
     }
   }
 }
 
-// main url  prase
+// main url parse
 static void cb(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_ERROR) {
     printf("Error: %s", (char *)ev_data);
@@ -210,32 +210,18 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     if (mg_match(uri, infoapi, caps)) {
       buildList();
       auto cpp_string = j.dump();
-      size_t len = cpp_string.length();
-      mg_printf(c,
-                "HTTP/1.1 200 OK\r\n"
-                "Content-Type: application/json; charset=utf-8\r\n"
-                "Access-Control-Allow-Origin:*\r\n"
-                "Content-Length: %lu\r\n\r\n",
-                len);
-      mg_send(c, cpp_string.c_str(), len);
-      return;
+      mg_http_reply(c, 200, "Content-Type: application/json\r\n", "%s\n", cpp_string.c_str());
     } else if (mg_match(uri, showapi, caps)) {
       buildList();
       char id[128];
       char buffer[2048];
       mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
-
-      fprintf(stderr, "looking for %s\n", id);
-      if (j.contains(id)) {
-        auto jotm = j[id];
-        fprintf(stderr, "found %s\n", id);
-        if (jotm.contains("tiled") && jotm["tiled"] == true) {
-          fprintf(stderr, "found tiled %s\n", id);
+     if (j.contains(id)) {
+        if (j[id].contains("tiled") && j[id]["tiled"] == true) {;
           int directories = j[id]["nlevels"];
           // find the one that is not reduced image
           for (int d = 0; d < directories; ++d) {
             if (j[id]["levels"][d]["full"] == true) {
-              fprintf(stderr, "found full level %d\n", d);
               int tilesize = j[id]["tileheight"];
               int imagewidth = j[id]["levels"][d]["width"].get<int>();
               int imageheight = j[id]["levels"][d]["height"].get<int>();
@@ -247,19 +233,11 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               int minlevel = maxlevel - directories + 1;
               int dirfull = j[id]["levels"][d]["index"].get<int>();
               char *html_template = (char *)show_template;
-              size_t len =
-                  mg_snprintf(buffer, sizeof(buffer), html_template,
+              mg_snprintf(buffer, sizeof(buffer), html_template,
                               s_listening_port, dirfull, id, imagewidth,
                               imageheight, tilesize, minlevel, maxlevel);
-              mg_printf(c,
-                        "HTTP/1.1 200 OK\r\n"
-                        "Content-Type: text/html; charset=utf-8\r\n"
-                        "Access-Control-Allow-Origin:*\r\n"
-                        "Content-Length: %lu\r\n\r\n",
-                        len);
-
-              mg_send(c, buffer, len);
-              return;
+               mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n", buffer);
+                return;
             }
           }
         } else {
