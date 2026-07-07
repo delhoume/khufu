@@ -9,15 +9,13 @@ RUN apk update \
     clang-dev \
 	  git \
 	  make \
-	  g++ \
+    g++ \
 	 tiff-dev
 
 
 
-RUN git clone https://github.com/delhoume/khufu.git
-
-RUN cd khufu 
-RUN make
+RUN git clone https://github.com/delhoume/khufu.git  && \
+    cd khufu && make 
 
 FROM alpine:latest
 

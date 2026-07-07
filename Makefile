@@ -5,7 +5,7 @@ CXXFLAGS += -std=c++26 -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
 PLATFORM = linux_x64
 
 SRCDIR = src
-BINDIR = binlocalhost
+BINDIR = bin
 
 LIBS_DYNAMIC =   -ltiff -lturbojpeg -ljpeg -lz -lzstd 
 
