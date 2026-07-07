@@ -8,6 +8,10 @@
  - single file c++ source code, based on well known opensource- mongoose http library
  - no config
 
+### Docker
+Khufu will be available asa a standalone docker container.
+Jusat tell it where to find TIFF files andyou are ready to view gigantic imagges.
+
 
 ### Usage
 ```
