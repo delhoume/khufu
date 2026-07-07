@@ -7,7 +7,7 @@ PLATFORM = linux_x64
 SRCDIR = src
 BINDIR = bin
 
-LIBS_DYNAMIC =   -ltiff -lturbojpeg -ljpeg -lz -lzstd 
+LIBS_DYNAMIC = -ltiff -ljpeg -lz -lzstd 
 
 LIBS += $(LIBS_DYNAMIC)
 PROGRAM = $(BINDIR)/khufu
@@ -23,7 +23,7 @@ $(BINDIR):
 	mkdir -p bin
 
 $(PROGRAM): $(BINDIR)/khufu.o  $(BINDIR)/mongoose.o
-	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(PROGRAM) $(LIBS)
+	$(CXX)   $(CXXFLAGS) $(BINDIR)/khufu.o $(BINDIR)/mongoose.o -o $(PROGRAM) $(LIBS)
 
 $(BINDIR)/khufu.o: $(SRCDIR)/khufu.cpp
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/khufu.cpp -c -o $(BINDIR)/khufu.o 

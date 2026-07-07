@@ -3,3 +3,5 @@
 /bin/*.o
 /images
 Makefile~
+a.out
+bin/khufu

@@ -15,13 +15,21 @@ RUN apk update \
 
 
 RUN git clone https://github.com/delhoume/khufu.git  && \
-    cd khufu && make 
+    cd khufu && make && strip bin/khufu
 
 FROM alpine:latest
 
-COPY --from=build-stage /build/khufu/bin/khufu_linux_x64 /usr/local/bin/khufu
+# Install runtime dependencies
+# libtiff not available as static library, so we need to install it in the final image
+
+RUN apk update \
+  && apk upgrade \
+  && apk add --no-cache \ 
+  libgcc libstdc++ tiff
+
+COPY --from=build-stage /build/khufu/bin/khufu /khufu
 
 USER 1000
 WORKDIR /
 HEALTHCHECK NONE
-ENTRYPOINT ["/usr/local/bin/khufu"]
+ENTRYPOINT ["/khufu"]

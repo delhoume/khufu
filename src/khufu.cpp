@@ -69,13 +69,11 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
                      int isvswap, unsigned char *data) {
   MG_VERBOSE(("Using JPEGLib"));
   struct jpeg_compress_struct cinfo;
-  struct jpeg_error_mgr err;
-  unsigned char *lpRowBuffer[1];
-  cinfo.err = jpeg_std_error(&err);
   jpeg_create_compress(&cinfo);
+  jpeg_stdio_dest(&cinfo, stdout);
 
-  // jpeg_stdio_dest(&info, fHandle);
 
+  unsigned char *lpRowBuffer[1];
   unsigned char *mem = 0;
   unsigned long mem_size = 0;
 
