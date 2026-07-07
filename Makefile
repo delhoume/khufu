@@ -1,21 +1,17 @@
 VERSION=0.5
 OPTFLAGS = -O3
-CXXFLAGS += -std=c++11 -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I src
+CXXFLAGS += -std=c++26 -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
 #CXX=/opt/homebrew/bin/g++-13
-PLATFORM = macos_arm64
+PLATFORM = linux_x64
 
 SRCDIR = src
-BINDIR = bin
+BINDIR = binlocalhost
 
-LIB_BREW = /opt/homebrew/lib
-LIB_ZLIBNGCOMPAT=/opt/homebrew/opt/zlib-ng-compat/lib
-LIBS_DYNAMIC = -L $(LIB_BREW) -L $(LIB_ZIBNGCOMPAT) -ltiff -lturbojpeg -lz-ng -lzstd -llzma
+LIBS_DYNAMIC =   -ltiff -lturbojpeg -ljpeg -lz -lzstd 
 
-LIBS_STATIC = $(LIB_BREW)/libtiff.a $(LIB_BREW)/libturbojpeg.a $(LIB_ZLIBNGCOMPAT)/libz.a $(LIB_BREW)/libzstd.a $(LIB_BREW)/liblzma.a
-# LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
-LIBS += $(LIBS_STATIC)
-# LIBS += $(LIBS_DYNAMIC)
+LIBS += $(LIBS_DYNAMIC)
 PROGRAM = $(BINDIR)/khufu_$(VERSION)_$(PLATFORM)
+#CXX=clang
 
 all: $(BINDIR) $(PROGRAM)
 
@@ -34,11 +30,3 @@ $(BINDIR)/khufu.o: $(SRCDIR)/khufu.cpp
 
 $(BINDIR)/mongoose.o: $(SRCDIR)/mongoose.c
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/mongoose.c -c -o $(BINDIR)/mongoose.o 
-
-
-
-$(BINDIR)/tiff2khufu: $(BINDIR)/tiff2khufu.o 
-	$(CXX) -v  $(CXXFLAGS) $(BINDIR)/tiff2khufu.o -o $(BINDIR)/tiff2khufu $(LIBS)
-
-$(BINDIR)/tiff2khufu.o: $(SRCDIR)/tiff2khufu.cpp
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/tiff2khufu.cpp -c -o $(BINDIR)/tiff2khufu.o 

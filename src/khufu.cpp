@@ -2,6 +2,7 @@
 // All rights reserved
 
 #include <cstddef>
+#include <cstdint>
 #include <cstdio>
 #include <signal.h>
 #include <time.h>
@@ -39,6 +40,7 @@ static const unsigned int jpeg_quality = 75;
 static int s_signo;
 static void signal_handler(int signo) { s_signo = signo; }
 
+
 // could be directly the connection if no more than one field is necessary
 typedef struct khufu_context {
   struct mg_connection *c;
@@ -54,7 +56,7 @@ void MongooseInit(j_compress_ptr cinfo) {
   // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
 }
 
-boolean MongooseEmpty(j_compress_ptr cinfo) {
+bool MongooseEmpty(j_compress_ptr cinfo) {
   // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
   return true;
 }
@@ -107,7 +109,7 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
 // test with
 // curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 -o tile.jpg
 
-boolean KhufuCheckTile(int position, int numtiles) {
+bool KhufuCheckTile(int position, int numtiles) {
   return (position >= 0) && (position < numtiles);
 }
 
@@ -119,7 +121,7 @@ struct TIFFInfo {
   TIFF *tifin = nullptr;
   int num_directories = -1;
   int current_directory = -1;
-  boolean tiled = false;
+  bool tiled = false;
   uLong signature = 0;
 };
 
@@ -155,7 +157,7 @@ void buildList() {
         mg_snprintf(error, sizeof(error), "could not open %s", filename);
         continue;
       }
-      boolean istiled = TIFFIsTiled(tifin);
+      bool istiled = TIFFIsTiled(tifin);
       json imgj;
       int ndirs = TIFFNumberOfDirectories(tifin);
       imgj["nlevels"] = ndirs;
@@ -269,8 +271,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       int row = atoi(buffer);
       int64_t uptime = mg_millis();
       unsigned int nWritten = 0;
-      boolean useSTB = false;
-      boolean ok;
+      bool useSTB = false;
+      bool ok;
 
       if (level < 0 || column < 0 || row < 0) {
         mg_snprintf(error, sizeof(error), "Wrong format");
