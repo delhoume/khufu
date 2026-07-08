@@ -2,12 +2,12 @@ CC=gcc
 CCC=g++
 LD=ld
 
-V
-COMMONFLAGS = -O3 -D KHUFU_VERSION=\"$(VERSION)\" -I src
-CCLAGS = $(COMMONFLAGS)-std=c++26
-CFLAGS = $(COMMONFLAGS)
-LIBS = -ltiff -ljpeg -lz -lzstd 
-LDFLAGS =
+VERSION=0.5
+COMMONFLAGS=-O3 -D KHUFU_VERSION=\"$(VERSION)\" -I src
+CCFLAGS =$(COMMONFLAGS)b  -std=c++26
+CFLAGS=$(COMMONFLAGS)
+LIBS=-lsocket -ltiff -ljpeg -lz -lzstd 
+LDFLAGS= 
 
 all:  khufu
 
@@ -18,7 +18,7 @@ khufu: khufu.o  mongoose.o
 	$(LD) $(LDLAGS) khufu.o mongoose.o -o khufu $(LIBS)
 	
 khufu.o: src/khufu.cpp
-	$(CCC) $(CCFLAGS) src/khufu.cpp -c -o khufu.o 
+	$(CCC) $(CCFLAGS) src/khufu.cpp -c -o khufu.o
 
-mongoose.o: src/mongoose.c
+mongoose.o: src/mongoose.c 
 	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.o

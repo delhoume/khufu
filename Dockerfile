@@ -14,14 +14,10 @@ RUN git clone https://github.com/delhoume/khufu.git
 RUN echo `pwd`
 RUN echo `ls -la`
 
-RUN cd khufu && make -f Makefile.alpine && strip /khufu
-RUN echo `pwd`
-RUN echo `ls -la`
-COPY openseadragon-bin-6.0.2/openseadragon.min.js openseadragon-bin-6.0.2/images /build/openseadragon/
+RUN cd khufu && make
 
-RUN echo `pwd`
-RUN echo `ls -la /build`
-
+COPY khufu /build/
+COPY openseadragon-bin-6.0.2 /build/openseadragon;
 # second stage
 FROM alpine:latest
 
@@ -38,4 +34,4 @@ RUN mkdir -p /app/openseadragon
 COPY --from=builder /build/openseadragon /app/openseadragon/
 COPY --from=builder /build/khufu /app/
 WORKDIR /app
-ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]          
+ENTRYPOINT ["khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]          
