@@ -452,7 +452,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         mg_snprintf(error, sizeof(error), "could not read tile");
         cbError(uri);
       }
-      if (data)s
+      if (data)
         delete[] data;
     } else {
       // normal web server
