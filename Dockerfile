@@ -27,9 +27,12 @@ RUN apk update \
   && apk add --no-cache \ 
   libgcc libstdc++ tiff
 
-COPY --from=build-stage /build/khufu/bin/khufu /khufu
+COPY --from=build-stage /build/khufu/bin/khufu /app/khufu
+COPY --from=build-stage /build/khufu/openseadragon-bin-6.0.3/openseadragon-min.js /app/openseadragon/openseadragon-min.js
+COPY --from=build-stage /build/khufu/openseadragon-bin-6.0.3/images /app/openseadragon/images
 
 USER 1000
-WORKDIR /
+WORKDIR /app
 HEALTHCHECK NONE
-ENTRYPOINT ["/khufu"]
+EXPOSE 8000
+ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]            

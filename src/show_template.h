@@ -33,7 +33,7 @@ const SERVER = \"http://localhost:%d\";\n\
     const  MAXLEVEL = %d;\n\
   var viewer = OpenSeadragon({\n\
       id: \"openseadragon1\",\n\
-    prefixUrl: \"/images/\",\n\
+    prefixUrl: \"/openseadragon/images/\",\n\
     tileSources: { \n\
       width: WIDTH,\n\
       height: HEIGHT,\n\
