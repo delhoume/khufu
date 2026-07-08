@@ -28,9 +28,9 @@ WORKDIR /app
 RUN apk update \
   && apk upgrade \
   && apk add --no-cache \ 
-  libgcc libstdc++ tiff
+  libstdc++ tiff
 
 COPY --from=build-stage /build/openseadragon /app/openseadragon/
-COPY --from=build-stage /build/khufu/bin/khufu /app/khufu  
+COPY --from=build-stage /build/khufu /app/khufu  
 USER 1000
 ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]          
