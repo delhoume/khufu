@@ -1,24 +1,24 @@
-VERSION=0.5
-OPTFLAGS = -O3
-CXXFLAGS += -std=c++26 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
+CC=gcc
+CCC=g++
+LD=ld
 
-SRCDIR = src
-
-LIBS_DYNAMIC = -ltiff -ljpeg -lz -lzstd 
-
-LIBS += $(LIBS_DYNAMIC)
+V
+COMMONFLAGS = -O3 -D KHUFU_VERSION=\"$(VERSION)\" -I src
+CCLAGS = $(COMMONFLAGS)-std=c++26
+CFLAGS = $(COMMONFLAGS)
+LIBS = -ltiff -ljpeg -lz -lzstd 
+LDFLAGS =
 
 all:  khufu
 
 clean:
-	rm -rf $(SRCDIR)/*~ $(SRCDIR)/*# 
 	rm -rf khufu *.o
 
 khufu: khufu.o  mongoose.o
-	$(CXX)   $(CXXFLAGS) khufu.o mongoose.o -o ./khufu $(LIBS)
+	$(LD) $(LDLAGS) khufu.o mongoose.o -o khufu $(LIBS)
 	
-khufu.o: $(SRCDIR)/khufu.cpp
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/khufu.cpp -c -o khufu.o 
+khufu.o: src/khufu.cpp
+	$(CCC) $(CCFLAGS) src/khufu.cpp -c -o khufu.o 
 
-mongoose.o: $(SRCDIR)/mongoose.c
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/mongoose.c -c -o mongoose.o
+mongoose.o: src/mongoose.c
+	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.o

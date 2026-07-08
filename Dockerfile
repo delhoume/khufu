@@ -1,4 +1,4 @@
-FROM alpine:latest as builde
+FROM alpine:latest as builder
 
 
 RUN apk update \
@@ -14,11 +14,10 @@ RUN git clone https://github.com/delhoume/khufu.git
 RUN echo `pwd`
 RUN echo `ls -la`
 
-RUN cd khufu && make -f Makefile.alpine && strip ./khufu
+RUN cd khufu && make -f Makefile.alpine && strip /khufu
 RUN echo `pwd`
 RUN echo `ls -la`
 COPY openseadragon-bin-6.0.2/openseadragon.min.js openseadragon-bin-6.0.2/images /build/openseadragon/
-COPY --chmod=0755 bin/khufu /build/
 
 RUN echo `pwd`
 RUN echo `ls -la /build`
