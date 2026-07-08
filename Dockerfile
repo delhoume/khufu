@@ -1,6 +1,5 @@
-FROM alpine:latest as build-stage
+FROM alpine:latest as builde
 
-WORKDIR /build
 
 RUN apk update \
   && apk upgrade \
@@ -10,12 +9,19 @@ RUN apk update \
     g++ \
 	  tiff-dev
 
+WORKDIR /build
+RUN git clone https://github.com/delhoume/khufu.git
+RUN echo `pwd`
+RUN echo `ls -la`
 
-RUN git clone https://github.com/delhoume/khufu.git  && \
-    cd khufu && make && strip bin/khufu
-
+RUN cd khufu && make -f Makefile.alpine && strip ./khufu
+RUN echo `pwd`
+RUN echo `ls -la`
 COPY openseadragon-bin-6.0.2/openseadragon.min.js openseadragon-bin-6.0.2/images /build/openseadragon/
-COPY /build/khufu/bin/khufu /build/khufu
+COPY --chmod=0755 bin/khufu /build/
+
+RUN echo `pwd`
+RUN echo `ls -la /build`
 
 # second stage
 FROM alpine:latest
@@ -29,9 +35,8 @@ RUN apk update \
   && apk add --no-cache \ 
   libstdc++ tiff
 
-COPY --from=build-stage /build/openseadragon /app/openseadragon/
-COPY --from=build-stage /build/khufu /app/khufu  
-USER 1000
+RUN mkdir -p /app/openseadragon
+COPY --from=builder /build/openseadragon /app/openseadragon/
+COPY --from=builder /build/khufu /app/
 WORKDIR /app
-HEALTHCHECK NONE
 ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]          
