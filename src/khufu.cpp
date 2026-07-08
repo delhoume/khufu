@@ -456,8 +456,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         delete[] data;
     } else {
       // normal web server
-      char rootbuf[64];'
-      mg_snprintf(rootbuf, sizeof(rootbuf), "%s,/openseadragon=/app/openseadragon", s_root_folders);
+      char rootbuf[256];          
+      mg_snprintf(rootbuf, sizeof(rootbuf), "%s,/openseadragon=/app/openseadragon", s_root_folder);
       struct mg_http_serve_opts opts = {.root_dir = rootbuf}; // Serve local dir
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
       mg_http_serve_dir(c, hm, &opts);
