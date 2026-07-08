@@ -17,6 +17,10 @@ RUN git clone https://github.com/delhoume/khufu.git  && \
     cd khufu && make && strip bin/khufu
 COPY khufu/openseadragon-bin-6.0.2/openseadragon.min.js /khufu/openseadragon-bin-6.0.2/images /app/openseadragon/
  
+
+# second stage
+FROM alpine:latest
+
 WORKDIR /app
 
 # Install runtime dependencies
