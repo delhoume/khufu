@@ -13,11 +13,11 @@ RUN apk update \
 	 tiff-dev
 
 
-
 RUN git clone https://github.com/delhoume/khufu.git  && \
     cd khufu && make && strip bin/khufu
-
-FROM alpine:latest
+COPY khufu/openseadragon-bin-6.0.2/openseadragon.min.js /khufu/openseadragon-bin-6.0.2/images /app/openseadragon/
+ 
+WORKDIR /app
 
 # Install runtime dependencies
 # libtiff not available as static library, so we need to install it in the final image
@@ -27,12 +27,7 @@ RUN apk update \
   && apk add --no-cache \ 
   libgcc libstdc++ tiff
 
-COPY --from=build-stage /build/khufu/bin/khufu /app/khufu
-COPY --from=build-stage /build/khufu/openseadragon-bin-6.0.3/openseadragon-min.js /app/openseadragon/openseadragon-min.js
-COPY --from=build-stage /build/khufu/openseadragon-bin-6.0.3/images /app/openseadragon/images
-
+COPY --from=build-stage /build/khufu/openseadragon /app/openseadragon/
+COPY --from=build-stage /build/khufu/bin/khufu /app/khufu  
 USER 1000
-WORKDIR /app
-HEALTHCHECK NONE
-EXPOSE 8000
-ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]            
+ENTRYPOINT ["/app/khufu" "-d" "/mnt/webroot" "-f" "/mnt/tifroot" "-p" "8000" ]          
