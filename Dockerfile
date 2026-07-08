@@ -17,7 +17,8 @@ RUN echo `ls -la`
 RUN cd khufu && make
 
 COPY khufu /build/
-COPY openseadragon-bin-6.0.2 /build/openseadragon;
+COPY openseadragon-bin-6.0.2 /build/openseadragon
+
 # second stage
 FROM alpine:latest
 
