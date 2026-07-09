@@ -70,7 +70,7 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
   MG_VERBOSE(("Using JPEGLib"));
   struct jpeg_compress_struct cinfo;
   jpeg_create_compress(&cinfo);
-  jpeg_stdio_dest(&cinfo, stdout);
+  //jpeg_stdio_dest(&cinfo, stdout);
 
 
   unsigned char *lpRowBuffer[1];

@@ -1,5 +1,5 @@
 VERSION=0.5
-OPTFLAGS = -O3
+OPTFLAGS =-g
 CXXFLAGS += -std=c++26 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
 #CXX=/opt/homebrew/bin/g++-13
 PLATFORM = linux_x64
@@ -9,7 +9,7 @@ SRCDIR = src
 LIBS_DYNAMIC = -ltiff -ljpeg -lz -lzstd 
 
 LIBS += $(LIBS_DYNAMIC)
-#CXX=clang
+
 
 all:  khufu
 
