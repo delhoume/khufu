@@ -20,10 +20,6 @@ extern "C" {
 
 #include "json.hpp"
 
-const char osd[] = { 
-  #embed "openseadragon.min.js" 
-};
-
 using namespace nlohmann;
 
 #include "show_template.h"
@@ -40,7 +36,6 @@ static const unsigned int jpeg_quality = 75;
 static int s_signo;
 static void signal_handler(int signo) { s_signo = signo; }
 
-
 // could be directly the connection if no more than one field is necessary
 typedef struct khufu_context {
   struct mg_connection *c;
@@ -52,35 +47,18 @@ void khufu_write(void *context, void *data, int size) {
   mg_send(c, data, size);
 }
 
-void MongooseInit(j_compress_ptr cinfo) {
-  // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
-}
-
-bool MongooseEmpty(j_compress_ptr cinfo) {
-  // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
-  return true;
-}
-
-void MongooseTerm(j_compress_ptr cinfo) {
-  // struct mg_connection* c = (struct mg_connection*)cinfo->client_data;
-}
+struct jpeg_compress_struct cinfo;
+struct jpeg_error_mgr jerr;
+unsigned char *lpRowBuffer[1];
+unsigned long mem_size = 0;
+unsigned char *mem = 0;
 
 static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
                      int isvswap, unsigned char *data) {
   MG_VERBOSE(("Using JPEGLib"));
-  struct jpeg_compress_struct cinfo;
+  cinfo.err = jpeg_std_error(&jerr);
   jpeg_create_compress(&cinfo);
-  //jpeg_stdio_dest(&cinfo, stdout);
-
-
-  unsigned char *lpRowBuffer[1];
-  unsigned char *mem = 0;
-  unsigned long mem_size = 0;
-
-  jpeg_mem_dest(&cinfo, &mem, &mem_size);
-
   cinfo.image_width = width;
-
   cinfo.image_height = height;
   cinfo.input_components = comp;
   cinfo.in_color_space =
@@ -88,8 +66,8 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
 
   jpeg_set_defaults(&cinfo);
   jpeg_set_quality(&cinfo, jpeg_quality, TRUE);
+  jpeg_mem_dest(&cinfo, &mem, &mem_size);
   jpeg_start_compress(&cinfo, TRUE);
-
   /* Write every scanline ... */
   while (cinfo.next_scanline < cinfo.image_height) {
     unsigned int offset =
@@ -99,10 +77,8 @@ static void emitJPEG(struct mg_connection *c, int width, int height, int comp,
     lpRowBuffer[0] = data + offset;
     jpeg_write_scanlines(&cinfo, lpRowBuffer, 1);
   }
+
   jpeg_finish_compress(&cinfo);
-  mg_send(c, mem, mem_size);
-  jpeg_destroy_compress(&cinfo);
-  free((void *)mem);
 }
 // test with
 // curl -vv http://0.0.0.0:8000/tile/mars_60_40_pyramid/1/34/56 -o tile.jpg
@@ -185,6 +161,7 @@ void buildList() {
         //        fprintf(stderr, "info for %d\n", d);
         unsigned int imagewidth;
         unsigned int imageheight;
+
         TIFFGetField(tifin, TIFFTAG_IMAGEWIDTH, &imagewidth);
         TIFFGetField(tifin, TIFFTAG_IMAGELENGTH, &imageheight);
         imgj["levels"][d]["index"] = d;
@@ -211,18 +188,19 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     struct mg_http_message *hm = (struct mg_http_message *)ev_data;
     struct mg_str uri = hm->uri;
     struct mg_str caps[5];
-
+    uint64_t starttime = mg_millis();
     if (mg_match(uri, infoapi, caps)) {
       buildList();
       auto cpp_string = j.dump();
-      mg_http_reply(c, 200, "Content-Type: application/json\r\n", "%s\n", cpp_string.c_str());
+      mg_http_reply(c, 200, "Content-Type: application/json\r\n", "%s\n",
+                    cpp_string.c_str());
     } else if (mg_match(uri, showapi, caps)) {
       buildList();
       char id[128];
-      char buffer[300000];
+      char buffer[2048];
       mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
-     if (j.contains(id)) {
-        if (j[id].contains("tiled") && j[id]["tiled"] == true) {;
+      if (j.contains(id)) {
+        if (j[id].contains("tiled") && j[id]["tiled"] == true) {
           int directories = j[id]["nlevels"];
           // find the one that is not reduced image
           for (int d = 0; d < directories; ++d) {
@@ -239,10 +217,11 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               int dirfull = j[id]["levels"][d]["index"].get<int>();
               char *html_template = (char *)show_template;
               mg_snprintf(buffer, sizeof(buffer), html_template,
-                             osd, s_listening_port, dirfull, id, imagewidth,
-                              imageheight, tilesize, minlevel, maxlevel);
-               mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n", buffer);
-                return;
+                          s_listening_port, dirfull, id, imagewidth,
+                          imageheight, tilesize, minlevel, maxlevel);
+              mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n",
+                            buffer);
+              return;
             }
           }
         } else {
@@ -267,8 +246,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       int column = atoi(buffer);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[3].len, caps[3].buf);
       int row = atoi(buffer);
-      int64_t uptime = mg_millis();
-      unsigned int nWritten = 0;
       bool useSTB = false;
       bool ok;
 
@@ -277,6 +254,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         cbError(uri);
         return;
       }
+      MG_INFO(("tile request for %s: directory %d row %d column %d", id, level,
+               row, column));
       uLong signature = adler32(0, (const Bytef *)caps[0].buf, caps[0].len);
       TIFF *tifin;
       if (signature != cache.signature) {
@@ -339,10 +318,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       if (imageheight % tileheight)
         ++numtilesy;
 
-      MG_INFO(("directory %d image %dx%d (%dx%d tiles %dx%d)", level,
-               imagewidth, imageheight, numtilesx, numtilesy, tilewidth,
-               tileheight));
-
       if (KhufuCheckTile(column, numtilesx) == false) {
         mg_snprintf(error, sizeof(error), "bad column number %d, max is %d",
                     column, numtilesx - 1);
@@ -360,7 +335,8 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       int vswap = 0;
       if (bits_per_sample == 8 && samples_per_pixel == 1) {
         MG_VERBOSE((" bps %d spp %d", bits_per_sample, samples_per_pixel));
-        data = new unsigned char[tilewidth * tileheight * samples_per_pixel];
+        data =
+            (unsigned char *)malloc(tilewidth * tileheight * samples_per_pixel);
         uint32_t tilenum =
             TIFFComputeTile(tifin, column * tilewidth, row * tileheight, 0, 0);
         ok = TIFFReadEncodedTile(tifin, tilenum, (uint32_t *)data,
@@ -370,94 +346,73 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         //  all other formats
         MG_VERBOSE(
             ("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
-        data = new unsigned char[tilewidth * tileheight * 4];
+        samples_per_pixel = 4;
+        data =
+            (unsigned char *)malloc(tilewidth * tileheight * samples_per_pixel);
         ok = TIFFReadRGBATile(tifin, column * tilewidth, row * tileheight,
                               (uint32_t *)data) == 1;
-        if (ok) {
-          vswap = 1;
-          /*
-          // TIFFReadRGBATile returns upside-down data...
-          uint32_t *top = (uint32_t *)data;
-          uint32_t *bottom =
-              (uint32_t *)(data + (tileheight - 1) * tilewidth * 4);
-          for (unsigned int yy = 0; yy < tileheight / 2; ++yy) {
-            for (unsigned int xx = 0; xx < tilewidth; ++xx) {
-              uint32_t temp = top[xx];
-              top[xx] = bottom[xx];
-              bottom[xx] = temp;
-            }
-            top += tilewidth;
-            bottom -= tilewidth;
-          }
-          */
-          samples_per_pixel = 4;
-        }
+
+        vswap = 1;
       }
-      if (ok) {
+      if (!ok) {
+        mg_snprintf(error, sizeof(error), "could not read tile");
+        cbError(uri);
+      }
+      if (useSTB == false) {
+        emitJPEG(c, tilewidth, tileheight, samples_per_pixel, vswap, data);
+
         mg_printf(c,
-                  "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg; "
-                  "charset=utf-8\r\nAccess-Control-Allow-Origin:*\r\n"
-                  "charset=utf-8\r\nReferer:no-referer\r\n"
+                  "HTTP/1.1 200 OK\r\n"
+                  "Content-Type: image/jpeg;\r\n"
+                  "Access-Control-Allow-Origin:*\r\n"
+                  "Referer:no-referer\r\n"
+                  "Content-Length: %d\r\n\r\n",
+                  mem_size);
+        mg_send(c, mem, mem_size);
+        c->is_resp = 0;
+        MG_INFO(("     served %d bytes in %d ms", (int)mem_size,
+                 (mg_millis() - starttime)));
+        return;
+      } else {
+        // TIFFReadRGBATile returns upside-down data...
+        uint32_t *top = (uint32_t *)data;
+        uint32_t *bottom =
+            (uint32_t *)(data + (tileheight - 1) * tilewidth * 4);
+        for (unsigned int yy = 0; yy < tileheight / 2; ++yy) {
+          for (unsigned int xx = 0; xx < tilewidth; ++xx) {
+            uint32_t temp = top[xx];
+            top[xx] = bottom[xx];
+            bottom[xx] = temp;
+          }
+          top += tilewidth;
+          bottom -= tilewidth;
+        }
+        mg_printf(c,
+                  "HTTP/1.1 200 OK\r\n"
+                  "Content-Type: image/jpeg; "
+                  "Access-Control-Allow-Origin:*\r\n"
+                  "Referer:no-referer\r\n"
                   "Content-Length:         \r\n\r\n"); // placeholder
         int off = c->send.len;
-
-        if (useSTB == false) { // fully optimized path, many times faster
-          emitJPEG(c, tilewidth, tileheight, samples_per_pixel, vswap, data);
-        } else { // fallback
-
-          khufu_context context = {c};
-          stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight,
-                                 4, data, jpeg_quality);
-        }
+        khufu_context context = {c};
+        stbi_write_jpg_to_func(khufu_write, &context, tilewidth, tileheight, 4,
+                               data, jpeg_quality);
         // fill placeholder for size
         char tmp[10];
         size_t n = mg_snprintf(tmp, sizeof(tmp), "%lu",
                                (unsigned long)(c->send.len - off));
-        nWritten = c->send.len - off;
         if (n > sizeof(tmp))
           n = 0;
         memcpy(c->send.buf + off - 12, tmp, n); // Set content length
         c->is_resp = 0;                         // Mark response end
-        {
-#if defined(_WIN32)
-          SYSTEMTIME ltime;
-          GetLocalTime(&ltime);
-          int year = ltime.wYear;
-          int mon = ltime.wMonth;
-          int day = ltime.wDay;
-          int hour = ltime.wHour;
-          int min = ltime.wMinute;
-          int sec = ltime.wSecond;
-          int mil = ltime.wMilliseconds;
-#else
-          struct timespec now;
-          clock_gettime(CLOCK_REALTIME, &now);
-          const struct tm tms = *localtime(&now.tv_sec);
-          int year = tms.tm_year + 1900;
-          int mon = tms.tm_mon + 1;
-          int day = tms.tm_mday;
-          int hour = tms.tm_hour;
-          int min = tms.tm_min;
-          int sec = tms.tm_sec;
-          int mil = (int)now.tv_nsec / 1000000;
-#endif
-          int elapsed = (int)(mg_millis() - uptime);
-          mg_log(
-              "[%4d-%02d-%02dT%02d:%02d:%02d:%03dZ] %M \"%.*s\" -=> %d bytes "
-              "in %d ms",
-              year, mon, day, hour, min, sec, mil, mg_print_ip, &c->rem,
-              uri.len, uri.buf, nWritten, elapsed);
-        }
-      } else {
-        mg_snprintf(error, sizeof(error), "could not read tile");
-        cbError(uri);
       }
-      if (data)
-        delete[] data;
+      // free(data);
     } else {
       // normal web server
-      char rootbuf[256];          
-      mg_snprintf(rootbuf, sizeof(rootbuf), "%s,/openseadragon=/app/openseadragon", s_root_folder);
+      char rootbuf[256];
+      mg_snprintf(rootbuf, sizeof(rootbuf),
+                  // "%s,/openseadragon=/app/openseadragon",
+                  "%s", s_root_folder);
       struct mg_http_serve_opts opts = {.root_dir = rootbuf}; // Serve local dir
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
       mg_http_serve_dir(c, hm, &opts);
@@ -524,7 +479,7 @@ int main(int argc, char *argv[]) {
   MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
   MG_INFO(("Mongoose version          : v%s", MG_VERSION));
   MG_INFO(("Listening on              : %s", url));
-  MG_INFO(("Serving files from folder : %s", s_root_folder));
+  MG_INFO(("Serving http from folder : %s", s_root_folder));
   MG_INFO(("Serving tiles from folder : %s", s_image_folder));
   while (s_signo == 0)
     mg_mgr_poll(&mgr, 1000);
