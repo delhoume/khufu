@@ -9,3 +9,4 @@ bin/khufu
 *.o
 khufu
 *.jpg
+._*

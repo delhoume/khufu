@@ -33,6 +33,6 @@ RUN mkdir -p /app/openseadragon
 COPY --from=builder /build/openseadragon /app/openseadragon/
 COPY --from=builder --chmod=0755 /build/khufu /app/
 WORKDIR /app
-# ENTRYPOINT ["./khufu"]
-# CMD ["-d", "/mnt/webroot", "-f", "/mnt/tifroot", "-p", "8000", "-v", "4" ]
-ENTRYPOINT ["sh"]  
+ENTRYPOINT ["./khufu"]
+CMD ["-d", "/mnt/webroot", "-f", "/mnt/tifroot", "-p", "8000" ]
+# ENTRYPOINT ["sh"]  
