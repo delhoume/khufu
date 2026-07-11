@@ -29,6 +29,8 @@ RUN apk update \
   && apk add --no-cache \ 
   libstdc++ tiff
 
+#RUN apk add gdb
+
 RUN mkdir -p /app/openseadragon
 COPY --from=builder /build/openseadragon /app/openseadragon/
 COPY --from=builder --chmod=0755 /build/khufu /app/

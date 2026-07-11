@@ -21,4 +21,4 @@ khufu.o: src/khufu.cpp
 	$(CCC) $(CCFLAGS) src/khufu.cpp -c -o khufu.o
 
 mongoose.o: src/mongoose.c 
-	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.o
+	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.ohttps://tech-couch.com/tag/security

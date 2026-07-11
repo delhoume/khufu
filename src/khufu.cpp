@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
+#include <cstdlib>
 #include <signal.h>
 #include <time.h>
 #define MG_ENABLE_CUSTOM_LOG
@@ -26,6 +27,7 @@ using namespace nlohmann;
 
 static int s_debug_level = MG_LL_INFO;
 static int s_listening_port = 8000;
+static int s_listening_port_external = s_listening_port;
 static const char *s_listening_address = "0.0.0.0";
 static const char *s_image_folder = ".";
 static const char *s_root_folder = ".";
@@ -153,7 +155,7 @@ void buildList() {
         imgj["tileheight"] = tileheight;
         char rbuf[100];
         mg_snprintf(rbuf, sizeof(rbuf), "http://localhost:%d/show/%s",
-                    s_listening_port, id);
+                    s_listening_port_external, id);
         imgj["link"] = rbuf;
       }
       for (int d = 0; d < ndirs; ++d) {
@@ -408,12 +410,11 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       }
       // free(data);
     } else {
-      // normal web server
-      char rootbuf[256];
-      mg_snprintf(rootbuf, sizeof(rootbuf),
-                  // "%s,/openseadragon=/app/openseadragon",
-                  "%s", s_root_folder);
-      struct mg_http_serve_opts opts = {.root_dir = rootbuf}; // Serve local dir
+      // normal web server but internal path for openseadragon
+      struct mg_http_serve_opts opts = {
+          .root_dir = mg_match(uri, mg_str("/apps/openseadragon/*"), NULL)
+                          ? "/app/openseadragon"
+                          : s_root_folder};
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
       mg_http_serve_dir(c, hm, &opts);
     }
@@ -453,6 +454,12 @@ int main(int argc, char *argv[]) {
       s_image_folder = argv[++i];
     } else {
       usage(argv[0]);
+    }
+    const char *external_port = getenv("EXTERNALPORT");
+    if (external_port) {
+      s_listening_port_external = atoi(external_port);
+    } else {
+      s_listening_port_external = s_listening_port;
     }
   }
 
