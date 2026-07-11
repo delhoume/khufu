@@ -336,7 +336,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       unsigned char *data = nullptr;
       int vswap = 0;
       if (bits_per_sample == 8 && samples_per_pixel == 1) {
-        MG_VERBOSE((" bps %d spp %d", bits_per_sample, samples_per_pixel));
+        MG_DEBUG((" bps %d spp %d", bits_per_sample, samples_per_pixel));
         data =
             (unsigned char *)malloc(tilewidth * tileheight * samples_per_pixel);
         uint32_t tilenum =
@@ -346,7 +346,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
              -1;
       } else {
         //  all other formats
-        MG_VERBOSE(
+        MG_DEBUG(
             ("ReadRGBATile bps %d spp %d", bits_per_sample, samples_per_pixel));
         samples_per_pixel = 4;
         data =
@@ -411,20 +411,19 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       // free(data);
     } else {
       // normal web server but internal path for openseadragon
-      struct mg_http_serve_opts optsroot = {
-        .root_dir = s_root_folder};
-        struct mg_http_serve_opts optsapp = {
-          .root_dir = "/app"};
-         struct mg_http_serve_opts* opts;
-          if (mg_match(uri, mg_str("/app/*"), caps)) {
-           opts = &optsapp;
-          uri = mg_str_n(caps[0].buf, caps[0].len);
-          } else {
-           opts = &optsroot;
-          }
+      struct mg_http_serve_opts optsroot = {.root_dir = s_root_folder};
+      struct mg_http_serve_opts optsapp = {.root_dir = "/app"};
+      struct mg_http_serve_opts *opts;
+      if (mg_match(uri, mg_str("/app/#"), caps)) {
+        opts = &optsapp;
+        uri = mg_str_n(caps[0].buf, caps[0].len);
+      } else {
+        opts = &optsroot;
+      }
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
       char uribuf[256];
-      mg_snprintf(uribuf, sizeof(uribuf), "%.*s", hm->uri.len, hm->uri.buf);    
+      mg_snprintf(uribuf, sizeof(uribuf), "%.*s", uri.len, uri.buf);
+      MG_INFO(("Serving %s from %s", uribuf, opts->root_dir));
       mg_http_serve_file(c, hm, uribuf, opts);
     }
   }
@@ -438,7 +437,8 @@ static void usage(const char *prog) {
           "  -f FOLDER - folder with TIFF images, default: .\n"
           "  -h [ADDR]   - listening address, default: '%s'\n"
           "  -p [PORT]   - listening port, default: '%d'\n"
-          "  -v LEVEL  - log level, one of NONE|ERROR(default)|INFO|DEBUG|VERBOSE\n",
+          "  -v LEVEL  - log level, one of "
+          "NONE|ERROR|INFO(default)|DEBUG|VERBOSE\n",
           KHUFU_VERSION, prog, s_listening_address, s_listening_port);
   exit(EXIT_FAILURE);
 }
@@ -467,7 +467,7 @@ int main(int argc, char *argv[]) {
     // convert debug level to Mongoose log level
     // TODO: simple hash
     if (debug_level == NULL) {
-      s_debug_level = MG_LL_ERROR;
+      s_debug_level = MG_LL_INFO;
     } else {
       if (strcmp(debug_level, "NONE") == 0) {
         s_debug_level = MG_LL_NONE;
