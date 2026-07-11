@@ -1,4 +1,4 @@
-VERSION=0.5
+VERSION=0.6
 OPTFLAGS =-O3
 CXXFLAGS += -std=c++11 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat -I/usr/local/include -I/opt/local/include -I /opt/homebrew/include -I src
 #CXX=/opt/homebrew/bin/g++-13

@@ -412,7 +412,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     } else {
       // normal web server but internal path for openseadragon
       struct mg_http_serve_opts opts = {
-          .root_dir = mg_match(uri, mg_str("/apppenseadragon/*"), NULL)
+          .root_dir = mg_match(uri, mg_str("/app/openseadragon/*"), NULL)
                           ? "/app/openseadragon"
                           : s_root_folder};
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
@@ -422,16 +422,15 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
 }
 
 static void usage(const char *prog) {
-  fprintf(stderr,
+  fprintf(stdout,
           "Khufu tile server version : v%s\n"
           "Usage: %s OPTIONS\n"
-          "  -d FOLDER - base folder, default: .\n"
+          "  -d FOLDER - webs folder, default: .\n"
           "  -f FOLDER - folder with TIFF images, default: .\n"
           "  -h [ADDR]   - listening address, default: '%s'\n"
           "  -p [PORT]   - listening port, default: '%d'\n"
-          "  -v LEVEL  - debug level, from 0 to 4, default: %d\n",
-          KHUFU_VERSION, prog, s_listening_address, s_listening_port,
-          s_debug_level);
+          "  -v LEVEL  - log level, one of NONE|ERROR(default)|INFO|DEBUG|VERBOSE\n",
+          KHUFU_VERSION, prog, s_listening_address, s_listening_port);
   exit(EXIT_FAILURE);
 }
 
@@ -439,6 +438,7 @@ int main(int argc, char *argv[]) {
   struct mg_mgr mgr;
   struct mg_connection *c;
   int i;
+  char *debug_level = NULL;
 
   // Parse command-line flags
   for (i = 1; i < argc; i++) {
@@ -449,11 +449,31 @@ int main(int argc, char *argv[]) {
     } else if (strcmp(argv[i], "-p") == 0) {
       s_listening_port = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-v") == 0) {
-      s_debug_level = atoi(argv[++i]);
+      debug_level = argv[++i];
     } else if (strcmp(argv[i], "-f") == 0) {
       s_image_folder = argv[++i];
     } else {
       usage(argv[0]);
+    }
+    // convert debug level to Mongoose log level
+    // TODO: simple hash
+    if (debug_level == NULL) {
+      s_debug_level = MG_LL_ERROR;
+    } else {
+      if (strcmp(debug_level, "NONE") == 0) {
+        s_debug_level = MG_LL_NONE;
+      } else if (strcmp(debug_level, "ERROR") == 0) {
+        s_debug_level = MG_LL_ERROR;
+      } else if (strcmp(debug_level, "INFO") == 0) {
+        s_debug_level = MG_LL_INFO;
+      } else if (strcmp(debug_level, "DEBUG") == 0) {
+        s_debug_level = MG_LL_DEBUG;
+      } else if (strcmp(debug_level, "VERBOSE") == 0) {
+        s_debug_level = MG_LL_VERBOSE;
+      } else {
+        fprintf(stderr, "Unknown log level: %s\n", debug_level);
+        usage(argv[0]);
+      }
     }
     const char *external_port = getenv("EXTERNALPORT");
     if (external_port) {
@@ -471,10 +491,9 @@ int main(int argc, char *argv[]) {
   // Initialise stuff
   signal(SIGINT, signal_handler);
   signal(SIGTERM, signal_handler);
-  mg_log_set(s_debug_level);
   mg_mgr_init(&mgr);
+  mg_log_set(s_debug_level);
   char url[100];
-
   mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address,
               s_listening_port);
   if ((c = mg_http_listen(&mgr, url, cb, &mgr)) == NULL) {
