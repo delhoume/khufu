@@ -412,7 +412,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     } else {
       // normal web server but internal path for openseadragon
       struct mg_http_serve_opts opts = {
-          .root_dir = mg_match(uri, mg_str("/apps/openseadragon/*"), NULL)
+          .root_dir = mg_match(uri, mg_str("/apppenseadragon/*"), NULL)
                           ? "/app/openseadragon"
                           : s_root_folder};
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
