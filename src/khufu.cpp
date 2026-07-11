@@ -411,12 +411,21 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       // free(data);
     } else {
       // normal web server but internal path for openseadragon
-      struct mg_http_serve_opts opts = {
-          .root_dir = mg_match(uri, mg_str("/app/openseadragon/*"), NULL)
-                          ? "/app/openseadragon"
-                          : s_root_folder};
+      struct mg_http_serve_opts optsroot = {
+        .root_dir = s_root_folder};
+        struct mg_http_serve_opts optsapp = {
+          .root_dir = "/app"};
+         struct mg_http_serve_opts* opts;
+          if (mg_match(uri, mg_str("/app/*"), caps)) {
+           opts = &optsapp;
+          uri = mg_str_n(caps[0].buf, caps[0].len);
+          } else {
+           opts = &optsroot;
+          }
       struct mg_http_message *hm = (struct mg_http_message *)ev_data;
-      mg_http_serve_dir(c, hm, &opts);
+      char uribuf[256];
+      mg_snprintf(uribuf, sizeof(uribuf), "%.*s", hm->uri.len, hm->uri.buf);    
+      mg_http_serve_file(c, hm, uribuf, opts);
     }
   }
 }
@@ -425,7 +434,7 @@ static void usage(const char *prog) {
   fprintf(stdout,
           "Khufu tile server version : v%s\n"
           "Usage: %s OPTIONS\n"
-          "  -d FOLDER - webs folder, default: .\n"
+          "  -d FOLDER - web folder, default: .\n"
           "  -f FOLDER - folder with TIFF images, default: .\n"
           "  -h [ADDR]   - listening address, default: '%s'\n"
           "  -p [PORT]   - listening port, default: '%d'\n"
