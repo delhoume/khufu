@@ -219,7 +219,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
               int dirfull = j[id]["levels"][d]["index"].get<int>();
               char *html_template = (char *)show_template;
               mg_snprintf(buffer, sizeof(buffer), html_template,
-                          s_listening_port, dirfull, id, imagewidth,
+                          s_listening_port_external, dirfull, id, imagewidth,
                           imageheight, tilesize, minlevel, maxlevel);
               mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n",
                             buffer);
