@@ -1,4 +1,4 @@
-ínclude Version
+VERSION=`cat Version`
 OPTFLAGS =-O3
 CXXFLAGS += -std=c++11 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
 N
