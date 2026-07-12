@@ -17,7 +17,7 @@ clean:
 khufu: khufu.o  mongoose.o
 	$(CXX)   $(CXXFLAGS) khufu.o mongoose.o -o khufu $(LIBS)
 	
-khufu.o: $(SRCDIR)/khufu.cpp
+khufu.o: $(SRCDIR)/khufu.cpp $(SRCDIR)/show_template.h
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/khufu.cpp -c -o khufu.o 
 
 mongoose.o: $(SRCDIR)/mongoose.c

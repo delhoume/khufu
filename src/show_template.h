@@ -29,22 +29,22 @@ const SERVER = \"http://localhost:%d\";\n\
     const  TILESIZE = %d;\n\
     const  MINLEVEL = %d;\n\
     const  MAXLEVEL = %d;\n\
-  var viewer = OpenSeadragon({\n\
+    var viewer = OpenSeadragon({\n\
       id: \"openseadragon1\",\n\
-    prefixUrl: \"/app/openseadragon/images/\",\n\
-    showNavigator: true,\n\
-    tileSources: { \n\
-      width: WIDTH,\n\
-      height: HEIGHT,\n\
-      tileSize: TILESIZE, \n\
-      minLevel: MINLEVEL,\n\
-      maxLevel: MAXLEVEL,\n\
-      overlay: 0,\n\
-      getTileUrl: function( level, x, y ) {\n\
-        // dirfull is either 0 or last index of directories (full is last)\n\
-        const lvl = DIRFULL == 0 ? (MAXLEVEL - level) : DIRFULL - (MAXLEVEL- level);\n\
-        return `${SERVER}/tile/${IMAGE}/${lvl}/${x}/${y}`;\n\
-      }\n\
+      prefixUrl: \"/app/openseadragon/images/\",\n\
+      showNavigator: true,\n\
+      tileSources: { \n\
+        width: WIDTH,\n\
+        height: HEIGHT,\n\
+        tileSize: TILESIZE, \n\
+        minLevel: MINLEVEL,\n\
+        maxLevel: MAXLEVEL,\n\
+        overlay: 0,\n\
+        getTileUrl: function( level, x, y ) {\n\
+          // dirfull is either 0 or last index of directories (full is last)\n\
+          const lvl = DIRFULL == 0 ? (MAXLEVEL - level) : DIRFULL - (MAXLEVEL- level);\n\
+          return `${SERVER}/tile/${IMAGE}/${lvl}/${x}/${y}`;\n\
+        }\n\
     }\n\
   });\n\
   </script>\n\
