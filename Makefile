@@ -1,7 +1,7 @@
-VERSION=0.6
+ínclude Version
 OPTFLAGS =-O3
 CXXFLAGS += -std=c++11 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
-
+N
 SRCDIR = src
 
 LIBS_DYNAMIC = -ltiff -ljpeg -lz -lzstd 

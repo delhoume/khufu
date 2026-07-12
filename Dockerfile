@@ -16,6 +16,7 @@ RUN cd khufu && make
 
 COPY khufu /build/
 COPY openseadragon-bin-6.0.2 /build/openseadragon
+COPY index.html /build/
 
 # second stage
 FROM alpine:latest
@@ -36,6 +37,7 @@ COPY --from=builder /build/openseadragon /app/openseadragon/
 COPY --from=builder /build/index.html /app/
 COPY --from=builder --chmod=0755 /build/khufu /app/
 
+EXPOSE 8000
 WORKDIR /app
 ENTRYPOINT ["./khufu"]
 CMD ["-d", "/mnt/webroot", "-f", "/mnt/tifroot", "-p", "8000" ]
