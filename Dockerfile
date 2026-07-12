@@ -33,7 +33,9 @@ RUN apk update \
 
 RUN mkdir -p /app/openseadragon
 COPY --from=builder /build/openseadragon /app/openseadragon/
+COPY --from=builder /build/index.html /app/
 COPY --from=builder --chmod=0755 /build/khufu /app/
+
 WORKDIR /app
 ENTRYPOINT ["./khufu"]
 CMD ["-d", "/mnt/webroot", "-f", "/mnt/tifroot", "-p", "8000" ]
