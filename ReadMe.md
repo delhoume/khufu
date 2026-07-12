@@ -16,6 +16,7 @@
 ### Usage
 ```
 >khufu --help
+Khufu tile server version : v1.0
 Usage: ./khufu OPTIONS
   -d FOLDER - web folder, default: .
   -f FOLDER - folder with TIFF images, default: .
@@ -24,16 +25,16 @@ Usage: ./khufu OPTIONS
   -v LEVEL  - log level, one of NONE|ERROR|INFO(default)|DEBUG|VERBOSE
 ```
 
-- files in base folder are available through http 
-- tiled (optionaly pyramidal) TIFF are available though rest APIs:
+- files in web folder are available through http 
+- tiled (optionaly pyramidal) TIFF in TIFF foder are available though rest APIs:
 
-   - `/info`returns a json description of available TIFF images by id 
+   - `/info`returns a json description of available ids in TIFF folder
 
    - `/show/{id}`  returns an html that leverages openseadragon JS library to display a TIFF by id
 
-   - `/tile/{id}/{level}/{x}/{y}` returns an image of the tile at given location. 
+   - `/tile/{id}/{level}/{x}/{y}` returns a JPEG  image of the tile at given location. 
 
-   The OSD TileSource is defined in ` src/ show_template.h` 
+   The OSD TileSource is defined in ` src/show_template.h` 
 
 
 ### Docker
