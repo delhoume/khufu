@@ -32,6 +32,7 @@ const SERVER = \"http://localhost:%d\";\n\
   var viewer = OpenSeadragon({\n\
       id: \"openseadragon1\",\n\
     prefixUrl: \"/app/openseadragon/images/\",\n\
+    showNavigator: true,\n\
     tileSources: { \n\
       width: WIDTH,\n\
       height: HEIGHT,\n\
