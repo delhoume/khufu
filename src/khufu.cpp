@@ -25,7 +25,7 @@ using namespace nlohmann;
 
 #include "show_template.h"
 
-static int s_debug_level = MG_LL_INFO;
+static int s_log_level = MG_LL_INFO;
 static int s_listening_port = 8000;
 static int s_listening_port_external = s_listening_port;
 static const char *s_listening_address = "0.0.0.0";
@@ -467,18 +467,18 @@ int main(int argc, char *argv[]) {
     // convert debug level to Mongoose log level
     // TODO: simple hash
     if (debug_level == NULL) {
-      s_debug_level = MG_LL_INFO;
+      s_log_level = MG_LL_INFO;
     } else {
       if (strcmp(debug_level, "NONE") == 0) {
-        s_debug_level = MG_LL_NONE;
+        s_log_level = MG_LL_NONE;
       } else if (strcmp(debug_level, "ERROR") == 0) {
-        s_debug_level = MG_LL_ERROR;
+        s_log_level = MG_LL_ERROR;
       } else if (strcmp(debug_level, "INFO") == 0) {
-        s_debug_level = MG_LL_INFO;
+        s_log_level = MG_LL_INFO;
       } else if (strcmp(debug_level, "DEBUG") == 0) {
-        s_debug_level = MG_LL_DEBUG;
+        s_log_level = MG_LL_DEBUG;
       } else if (strcmp(debug_level, "VERBOSE") == 0) {
-        s_debug_level = MG_LL_VERBOSE;
+        s_log_level = MG_LL_VERBOSE;
       } else {
         fprintf(stderr, "Unknown log level: %s\n", debug_level);
         usage(argv[0]);
@@ -500,8 +500,9 @@ int main(int argc, char *argv[]) {
   // Initialise stuff
   signal(SIGINT, signal_handler);
   signal(SIGTERM, signal_handler);
+  mg_log_set(s_log_level);
   mg_mgr_init(&mgr);
-  mg_log_set(s_debug_level);
+  
   char url[100];
   mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address,
               s_listening_port);
