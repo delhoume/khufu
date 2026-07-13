@@ -245,9 +245,13 @@
             const card = document.createElement('div');
             card.className = 'card';
 
-            const mainLevel = info.levels.find(l => l.full) || info.levels[0];
+            const mainLevelindex = info.levels.findIndex(l => l.full) || 0;
+            const  mainLevel = info.levels[mainLevelindex];
             const width = mainLevel ? mainLevel.width : 'N/A';
             const height = mainLevel ? mainLevel.height : 'N/A';
+            const maxdimension = Math.max(width, height);
+            const maxlevel = Math.ceil(Math.log(maxdimension) / Math.log(2));
+            const minlevel = maxlevel - info.nlevels + 1;
 
             let html = `
                 <div class="card-header">
@@ -292,9 +296,8 @@
             if (info.tiled) {
                 html += `
                 <div class="card-footer">
-                    <a href="/show/${id}" class="btn">View Image</a>
-                </div>
-                `;
+                    <a href="/app/show.html?image=${id}&dirfull=${mainLevelindex}&width=${width}&height=${height}&tilewidth=${info.tilewidth}&tileheight=${info.tileheight}&minlevel=${minlevel}&maxlevel=${maxlevel}" class="btn">View Image</a>
+                </div>                `;
             }
 
             html += `

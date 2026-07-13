@@ -23,8 +23,6 @@ extern "C" {
 
 using namespace nlohmann;
 
-#include "show_template.h"
-
 static int s_log_level = MG_LL_INFO;
 static int s_listening_port = 8000;
 static int s_listening_port_external = s_listening_port;
@@ -153,10 +151,6 @@ void buildList() {
         TIFFGetField(tifin, TIFFTAG_TILELENGTH, &tileheight);
         imgj["tilewidth"] = tilewidth;
         imgj["tileheight"] = tileheight;
-        char rbuf[100];
-        mg_snprintf(rbuf, sizeof(rbuf), "http://localhost:%d/show/%s",
-                    s_listening_port_external, id);
-        imgj["link"] = rbuf;
       }
       for (int d = 0; d < ndirs; ++d) {
         TIFFSetDirectory(tifin, d);
@@ -188,6 +182,12 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     printf("Error: %s", (char *)ev_data);
   } else if (ev == MG_EV_HTTP_MSG) {
     struct mg_http_message *hm = (struct mg_http_message *)ev_data;
+    struct mg_str* host = mg_http_get_header(hm, "Host");
+    if(host ) {
+      // Process the Host header
+      char hostbuf[256];
+      MG_DEBUG(( "%.*s", host->len, host->buf));
+    }
     struct mg_str uri = hm->uri;
     struct mg_str caps[5];
     uint64_t starttime = mg_millis();
@@ -196,46 +196,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       auto cpp_string = j.dump();
       mg_http_reply(c, 200, "Content-Type: application/json\r\n", "%s\n",
                     cpp_string.c_str());
-    } else if (mg_match(uri, showapi, caps)) {
-      buildList();
-      char id[128];
-      char buffer[2048];
-      mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
-      if (j.contains(id)) {
-        if (j[id].contains("tiled") && j[id]["tiled"] == true) {
-          int directories = j[id]["nlevels"];
-          // find the one that is not reduced image
-          for (int d = 0; d < directories; ++d) {
-            if (j[id]["levels"][d]["full"] == true) {
-              int tilesize = j[id]["tileheight"];
-              int imagewidth = j[id]["levels"][d]["width"].get<int>();
-              int imageheight = j[id]["levels"][d]["height"].get<int>();
-              int maxdimension = imagewidth;
-              if (imageheight > imagewidth) {
-                maxdimension = imageheight;
-              }
-              int maxlevel = ceil(log(maxdimension) / log(2));
-              int minlevel = maxlevel - directories + 1;
-              int dirfull = j[id]["levels"][d]["index"].get<int>();
-              char *html_template = (char *)show_template;
-              mg_snprintf(buffer, sizeof(buffer), html_template,
-                          s_listening_port_external, dirfull, id, imagewidth,
-                          imageheight, tilesize, minlevel, maxlevel);
-              mg_http_reply(c, 200, "Content-Type: text/html\r\n", "%s\n",
-                            buffer);
-              return;
-            }
-          }
-        } else {
-          mg_snprintf(error, sizeof(error), "%s is not tiled", id);
-          cbError(uri);
-          return;
-        }
-      } else {
-        mg_snprintf(error, sizeof(error), "%s is not available", id);
-        cbError(uri);
-        return;
-      }
     } else if (mg_match(uri, tileapi, caps)) {
       char id[256];
       char filename[256];
@@ -414,9 +374,11 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       struct mg_http_serve_opts optsroot = {.root_dir = s_root_folder};
       struct mg_http_serve_opts optsapp = {.root_dir = "/app"};
       struct mg_http_serve_opts *opts;
+      struct mg_str uri2;
       if (mg_match(uri, mg_str("/app/#"), caps)) {
         opts = &optsapp;
-        uri = mg_str_n(caps[0].buf, caps[0].len);
+        uri2 = mg_str_n(caps[0].buf, caps[0].len);
+        hm->uri = uri;
       } else {
         opts = &optsroot;
       }

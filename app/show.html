@@ -1,0 +1,57 @@
+<html>
+<meta name="referer" content="origin">
+<head>
+  <title>Khufu viewer</title>
+<style>
+#openseadragon1 {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>
+</head>
+<body>
+<div id="openseadragon1"></div>
+</body>
+<script src="/app/openseadragon.min.js"></script>
+<script type="text/javascript">
+  
+  const url = URL.parse(window.location.href);
+  const params = new URLSearchParams(url.search);;
+  const PORT= params.get("port") || 1515;
+  const DIRFULL = params.get("dirfull") || 0;
+  const IMAGE = params.get("image") || "";
+  const WIDTH = +params.get("width") || 0;
+  const HEIGHT = +params.get("height") || 0;
+  const TILEWIDTH = +params.get("tilewidth") || 256;
+    const TILEHEIGHT = +params.get("tileheight") || 256;
+  const MINLEVEL = +params.get("minlevel") || 0;
+  const MAXLEVEL = +params.get("maxlevel") || 0;
+
+const port= url.port || PORT;
+console.log(`Khufu viewer: port=${url}`);
+const SERVER = `http://localhost:${port}`;
+      var viewer = OpenSeadragon({
+      id: "openseadragon1",
+      prefixUrl: "/app/images/",
+      showNavigator: true,
+      tileSources: { 
+        width: WIDTH,
+        height: HEIGHT,
+        tileWidth: TILEWIDTH,
+        tileHeight: TILEHEIGHT,
+        minLevel: MINLEVEL,
+        maxLevel: MAXLEVEL,
+        overlay: 0,
+        getTileUrl: function( level, x, y ) {
+          // dirfull is either 0 or last index of directories (full is last)
+          const lvl = DIRFULL == 0 ? (MAXLEVEL - level) : DIRFULL - (MAXLEVEL- level);
+          return `${SERVER}/tile/${IMAGE}/${lvl}/${x}/${y}`;
+        }
+    }
+  });
+  </script>
+</html>
