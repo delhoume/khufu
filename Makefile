@@ -22,3 +22,11 @@ khufu.o: $(SRCDIR)/khufu.cpp $(SRCDIR)/show_template.h
 
 mongoose.o: $(SRCDIR)/mongoose.c
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/mongoose.c -c -o mongoose.o
+
+docker_image:
+  podman image rm -f  docker.io/delhoume/khufu
+	podman container stop Khufu 
+	podman container rm Khufu 
+	podman build --no-cache -t docker.io/delhoume/khufu -f Dockerfile .
+	podman push docker.io/delhoume/khufu
+  podman run -p 3333:8000 -d --name Khufu --env EXTERNALPORT=3333 -v C:\Users\FredericDelhoume\gitperso\osd_screen_wall\tiff:/mnt/tifroot docker.io/delhoume/khufu

@@ -15,8 +15,10 @@ RUN git clone https://github.com/delhoume/khufu.git
 RUN cd khufu && make
 
 COPY khufu /build/
-COPY openseadragon-bin-6.0.2/openseadragon.min.js /build
-COPY app /build/
+COPY app/ /build/app/
+COPY openseadragon-bin-6.0.2/openseadragon.min.js /build/app/
+# R
+
 
 # second stage
 FROM alpine:latest
@@ -32,9 +34,7 @@ RUN apk update \
 
 #RUN apk add gdb
 
-RUN mkdir -p /app/openseadragon
-COPY --from=builder /build/openseadragon /app/openseadragon/
-COPY --from=builder /build/app /app/
+COPY --from=builder /build/app/ /app/
 COPY --from=builder --chmod=0755 /build/khufu /app/
 
 EXPOSE 8000

@@ -19,7 +19,7 @@ body {\n\
 <body>\n\
 <div id=\"openseadragon1\"></div>\n\
 </body>\n\
-<script src=\"/app/openseadragon/openseadragon.min.js\"></script>\n\
+<script src=\"/app/openseadragon.min.js\"></script>\n\
 <script type=\"text/javascript\">\n\
 const SERVER = \"http://localhost:%d\";\n\
     const DIRFULL = %d;\n\
@@ -31,7 +31,7 @@ const SERVER = \"http://localhost:%d\";\n\
     const  MAXLEVEL = %d;\n\
     var viewer = OpenSeadragon({\n\
       id: \"openseadragon1\",\n\
-      prefixUrl: \"/app/openseadragon/images/\",\n\
+      prefixUrl: \"/app/images/\",\n\
       showNavigator: true,\n\
       tileSources: { \n\
         width: WIDTH,\n\
