@@ -12,12 +12,11 @@ RUN apk update \
 WORKDIR /build
 RUN git clone https://github.com/delhoume/khufu.git
 
-RUN cd khufu && make
+RUN cd khufu && make clean all
 
 COPY khufu /build/
 COPY app/ /build/app/
 COPY openseadragon-bin-6.0.2/openseadragon.min.js /build/app/
-# R
 
 
 # second stage
