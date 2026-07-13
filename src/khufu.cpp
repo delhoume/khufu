@@ -184,9 +184,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     struct mg_http_message *hm = (struct mg_http_message *)ev_data;
     struct mg_str* host = mg_http_get_header(hm, "Host");
     if(host ) {
-      // Process the Host header
-      char hostbuf[256];
-      MG_DEBUG(( "%.*s", host->len, host->buf));
+      // MG_DEBUG(( "%.*s", host->len, host->buf));
     }
     struct mg_str uri = hm->uri;
     struct mg_str caps[5];
