@@ -106,7 +106,7 @@ void cbError(struct mg_str &uri) {
   MG_ERROR(("%.*s -=> %s", uri.len, uri.buf, error));
 }
 
-json j;
+json j({});
 // updates internal json with info on server tiff folder images
 void buildList() {
   j.clear();
