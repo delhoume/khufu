@@ -11,7 +11,7 @@ LIB_BREW = /opt/homebrew/lib
 LIB_ZLIBNGCOMPAT=/opt/homebrew/opt/zlib-ng-compat/lib
 LIBS_DYNAMIC = -L $(LIB_BREW) -L $(LIB_ZIBNGCOMPAT) -ltiff -lturbojpeg -lz-ng -lzstd -llzma
 
-LIBS_STATIC = $(LIB_BREW)/libtiff.a $(LIB_BREW)/libturbojpeg.a $(LIB_ZLIBNGCOMPAT)/libz.a $(LIB_BREW)/libzstd.a $(LIB_BREW)/liblzma.a
+LIBS_STATIC = $(LIB_BREW)/libtiff.a $(LIB_BREW)/libturbojpeg.a $(LIB_ZLIBNGCOMPAT)/libz.a $(LIB_BREW)/libzstd.a $(LIB_BREW)/liblzma.a $(LIB_BREW)/libwebp.a $(LIB_BREW)/libsharpyuv.a
 # LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 LIBS += $(LIBS_STATIC)
 # LIBS += $(LIBS_DYNAMIC)
