@@ -15,7 +15,7 @@ RUN git clone https://github.com/delhoume/khufu.git
 RUN cd khufu && make clean all
 
 COPY khufu /build/
-COPY app/ /build/app/
+COPY demo/ /build/app/
 COPY openseadragon-bin-6.0.2/openseadragon.min.js /build/app/
 
 
@@ -39,5 +39,5 @@ COPY --from=builder --chmod=0755 /build/khufu /app/
 EXPOSE 8000
 WORKDIR /app
 ENTRYPOINT ["./khufu"]
-CMD ["-d", "/mnt/webroot", "-f", "/mnt/tifroot", "-p", "8000" ]
+CMD ["-d", "/app, "-f", "/mnt/tifroot", "-p", "8000" ]
 # ENTRYPOINT ["sh"]  

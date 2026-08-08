@@ -1,19 +1,21 @@
 ## khufu, a minimal but effective tile and http server
 
 ### Features
- - serves http from a specfic folder.
- - serves tiles from BigTiff with  standard Rest Ap
- - has builtin catalog and full image viewing capabilities based on opensource OpenSeadragon JS library
- - very efficient (uses optimized dependencies)  
- - instant display of massive files
- - single file c++ source code, based on opensource mongoose http library
- - almost no config
+
+- serves http from a specfic folder.
+- serves tiles from BigTiff with standard Rest Ap
+- has builtin catalog and full image viewing capabilities based on opensource OpenSeadragon JS library
+- very efficient (uses optimized dependencies)
+- instant display of massive files
+- single file c++ source code, based on opensource mongoose http library
+- almost no config
 
 - https://github.com/cesanta/mongoose
 
 - https://github.com/openseadragon/openseadragon
 
 ### Usage
+
 ```
 >khufu --help
 Khufu tile server version : v1.0
@@ -25,25 +27,23 @@ Usage: ./khufu OPTIONS
   -v LEVEL  - log level, one of NONE|ERROR|INFO(default)|DEBUG|VERBOSE
 ```
 
-- files in web folder are available through http 
+- files in web folder are available through http
 - tiled (optionaly pyramidal) TIFF in TIFF foder are available though rest APIs:
+  - `/info`returns a json description of available ids in TIFF folder
 
-   - `/info`returns a json description of available ids in TIFF folder
+  - `/tile/{id}/{level}/{x}/{y}` returns a JPEG image of the tile at given location.
 
-   - `/show/{id}`  returns an html that leverages openseadragon JS library to display a TIFF by id
-
-   - `/tile/{id}/{level}/{x}/{y}` returns a JPEG  image of the tile at given location. 
-
-   The OSD TileSource is defined in ` src/show_template.h` 
-
+  An OSD TileSource is defined in ` demo/show.htmls`
 
 ### Docker
+
 Khufu is available as a standalone docker container.
 Just tell it where to find TIFF files and you are ready to view gigantic images locally. TIFFs must be tiled to be viewable.
 
 podman usage on Windows :
-````
-podman run -p 3333:8000 -d --name Khufu --env EXTERNALPORT=3333 -v C:\path_to_tiled_tiffs:/mnt/tifroot docker.io/delhoume/khufu
-````
 
-then point your browser to `http://localhost:3333/app/index.html` and voila !
+```
+podman run -p 3333:8000 -d --name Khufu --env EXTERNALPORT=3333 -v C:\path_to_tiled_tiffs:/mnt/tifroot docker.io/delhoume/khufu
+```
+
+then point your browser to `http://localhost:3333` and voila !

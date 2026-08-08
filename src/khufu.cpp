@@ -23,14 +23,18 @@ extern "C" {
 
 using namespace nlohmann;
 
+#if !defined(APPDIR)
+#define APPDIR "app"
+#endif
+
 enum OutFormat { JPG = 0, PNG = 1 };
 
 static int s_log_level = MG_LL_INFO;
 static int s_listening_port = 8000;
 static int s_listening_port_external = s_listening_port;
 static const char *s_listening_address = "0.0.0.0";
-static const char *s_image_folder = ".";
-static const char *s_root_folder = ".";
+char s_image_folder[256] = ".";
+char s_root_folder[256] = ".";
 
 static const unsigned int jpeg_quality = 75;
 
@@ -183,7 +187,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     printf("Error: %s", (char *)ev_data);
   } else if (ev == MG_EV_HTTP_MSG) {
     struct mg_http_message *hm = (struct mg_http_message *)ev_data;
-    struct mg_str* host = mg_http_get_header(hm, "Host");
     struct mg_str *host = mg_http_get_header(hm, "Host");
     if (host) {
       // MG_DEBUG(( "%.*s", host->len, host->buf));
@@ -199,7 +202,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
     } else if (mg_match(uri, tileapi, caps)) {
       char id[256];
       char filename[256];
-      char buffer[8];
+      char buffer[16];
       mg_snprintf(id, sizeof(id), "%.*s", caps[0].len, caps[0].buf);
       mg_snprintf(filename, sizeof(filename), "%s/%s.tif", s_image_folder, id);
       mg_snprintf(buffer, sizeof(buffer), "%.*s", caps[1].len, caps[1].buf);
@@ -211,16 +214,17 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       char *rowbuf = caps[3].buf;
       OutFormat outformat = JPG;
       int row = 0;
-
       if (len > 3 && rowbuf[len - 4] == '.') {
         char *extension = rowbuf + len - 3;
         if (extension[0] == 'p' && extension[1] == 'n' && extension[2] == 'g') {
           outformat = PNG;
           buffer[len - 4] = 0;
-          row = atoi(buffer);
-        }
-      } else {
+        } else if (extension[0] == 'j' && extension[1] == 'p' && extension[2] == 'g') {
+          outformat = JPG;
+          buffer[len - 4] = 0;
+        } 
       }
+      row = atoi(buffer);
       bool useSTB = false;
       if (outformat == PNG)
         useSTB = true;
@@ -348,7 +352,7 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
         mg_send(c, mem, mem_size);
         c->is_resp = 0;
         MG_INFO(("     served %d bytes in %d ms", (int)mem_size,
-                 (mg_millis() - starttime)));
+          +       (mg_millis() - starttime)));
         return;
       } else {
         // TIFFReadRGBATile returns upside-down data...
@@ -406,120 +410,104 @@ static void cb(struct mg_connection *c, int ev, void *ev_data) {
       }
       // free(data);
     } else {
-      // normal web server but internal path for openseadragon
-      struct mg_http_serve_opts optsroot = {.root_dir = s_root_folder};
-      struct mg_http_serve_opts optsapp = {.root_dir = "/app"};
-      struct mg_http_serve_opts* opts;
-      if (mg_match(uri, mg_str("/app/#"), caps)) {
-        opts = &optsapp;
-      } else {
-        opts = &optsroot;
-        if (uri.buf[0] == '/') {
-          uri.buf += 1;
-          uri.len -= 1;
-        }
-      }
-      struct mg_http_message *hm = (struct mg_http_message *)ev_data;      
-      char path[256];
-      mg_snprintf(path,sizeof(path), "%.*s", uri.len, uri.buf);
-      MG_INFO(("Serving %s from %s", path, opts->root_dir));
-      mg_http_serve_file(c, hm, path, opts);
+      const struct mg_http_serve_opts optsroot = {.root_dir = s_root_folder};
+      mg_http_serve_dir(c, hm, &optsroot);
     }
   }
 }
 
-  static void usage(const char *prog) {
-    fprintf(stdout,
-            "Khufu tile server version : v%s\n"
-            "Usage: %s OPTIONS\n"
-            "  -d FOLDER - web folder, default: .\n"
-            "  -f FOLDER - folder with TIFF images, default: .\n"
-            "  -h [ADDR]   - listening address, default: '%s'\n"
-            "  -p [PORT]   - listening port, default: '%d'\n"
-            "  -v LEVEL  - log level, one of "
-            "NONE|ERROR|INFO(default)|DEBUG|VERBOSE\n",
-            KHUFU_VERSION, prog, s_listening_address, s_listening_port);
+static void usage(const char *prog) {
+  fprintf(stdout,
+          "Khufu tile server version : v%s\n"
+          "Usage: %s OPTIONS\n"
+          "  -d FOLDER - web folder, default: .\n"
+          "  -f FOLDER - folder with TIFF images, default: .\n"
+          "  -h [ADDR]   - listening address, default: '%s'\n"
+          "  -p [PORT]   - listening port, default: '%d'\n"
+          "  -v LEVEL  - log level, one of "
+          "NONE|ERROR|INFO(default)|DEBUG|VERBOSE\n",
+          KHUFU_VERSION, prog, s_listening_address, s_listening_port);
+  exit(EXIT_FAILURE);
+}
+
+int main(int argc, char *argv[]) {
+  struct mg_mgr mgr;
+  struct mg_connection *c;
+  int i;
+  char *debug_level = NULL;
+
+  // Parse command-line flags
+  for (i = 1; i < argc; i++) {
+    if (strcmp(argv[i], "-d") == 0) {
+      strcpy(s_root_folder, argv[++i]);
+    } else if (strcmp(argv[i], "-") == 0) {
+      s_listening_address = argv[++i];
+    } else if (strcmp(argv[i], "-p") == 0) {
+      s_listening_port = atoi(argv[++i]);
+    } else if (strcmp(argv[i], "-v") == 0) {
+      debug_level = argv[++i];
+    } else if (strcmp(argv[i], "-f") == 0) {
+      strcpy(s_image_folder, argv[++i]);
+    } else {
+      usage(argv[0]);
+    }
+    // convert debug level to Mongoose log level
+    // TODO: simple hash
+    if (debug_level == NULL) {
+      s_log_level = MG_LL_INFO;
+    } else {
+      if (strcmp(debug_level, "NONE") == 0) {
+        s_log_level = MG_LL_NONE;
+      } else if (strcmp(debug_level, "ERROR") == 0) {
+        s_log_level = MG_LL_ERROR;
+      } else if (strcmp(debug_level, "INFO") == 0) {
+        s_log_level = MG_LL_INFO;
+      } else if (strcmp(debug_level, "DEBUG") == 0) {
+        s_log_level = MG_LL_DEBUG;
+      } else if (strcmp(debug_level, "VERBOSE") == 0) {
+        s_log_level = MG_LL_VERBOSE;
+      } else {
+        fprintf(stderr, "Unknown log level: %s\n", debug_level);
+        usage(argv[0]);
+      }
+    }
+    const char *external_port = getenv("EXTERNALPORT");
+    if (external_port) {
+      s_listening_port_external = atoi(external_port);
+    } else {
+      s_listening_port_external = s_listening_port;
+    }
+  }
+
+  //  TIFFSetErrorHandler(NULL);
+  //   TIFFSetErrorHandlerExt(NULL);
+  TIFFSetWarningHandler(NULL);
+  TIFFSetWarningHandlerExt(NULL);
+
+  // Initialise stuff
+  signal(SIGINT, signal_handler);
+  signal(SIGTERM, signal_handler);
+  mg_log_set(s_log_level);
+  mg_mgr_init(&mgr);
+
+  char url[100];
+  mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address,
+              s_listening_port);
+  if ((c = mg_http_listen(&mgr, url, cb, &mgr)) == NULL) {
+    MG_ERROR(("Cannot listen on %s", url));
     exit(EXIT_FAILURE);
   }
 
-  int main(int argc, char *argv[]) {
-    struct mg_mgr mgr;
-    struct mg_connection *c;
-    int i;
-    char *debug_level = NULL;
-
-    // Parse command-line flags
-    for (i = 1; i < argc; i++) {
-      if (strcmp(argv[i], "-d") == 0) {
-        s_root_folder = argv[++i];
-      } else if (strcmp(argv[i], "-") == 0) {
-        s_listening_address = argv[++i];
-      } else if (strcmp(argv[i], "-p") == 0) {
-        s_listening_port = atoi(argv[++i]);
-      } else if (strcmp(argv[i], "-v") == 0) {
-        debug_level = argv[++i];
-      } else if (strcmp(argv[i], "-f") == 0) {
-        s_image_folder = argv[++i];
-      } else {
-        usage(argv[0]);
-      }
-      // convert debug level to Mongoose log level
-      // TODO: simple hash
-      if (debug_level == NULL) {
-        s_log_level = MG_LL_INFO;
-      } else {
-        if (strcmp(debug_level, "NONE") == 0) {
-          s_log_level = MG_LL_NONE;
-        } else if (strcmp(debug_level, "ERROR") == 0) {
-          s_log_level = MG_LL_ERROR;
-        } else if (strcmp(debug_level, "INFO") == 0) {
-          s_log_level = MG_LL_INFO;
-        } else if (strcmp(debug_level, "DEBUG") == 0) {
-          s_log_level = MG_LL_DEBUG;
-        } else if (strcmp(debug_level, "VERBOSE") == 0) {
-          s_log_level = MG_LL_VERBOSE;
-        } else {
-          fprintf(stderr, "Unknown log level: %s\n", debug_level);
-          usage(argv[0]);
-        }
-      }
-      const char *external_port = getenv("EXTERNALPORT");
-      if (external_port) {
-        s_listening_port_external = atoi(external_port);
-      } else {
-        s_listening_port_external = s_listening_port;
-      }
-    }
-
-    //  TIFFSetErrorHandler(NULL);
-    //   TIFFSetErrorHandlerExt(NULL);
-    TIFFSetWarningHandler(NULL);
-    TIFFSetWarningHandlerExt(NULL);
-
-    // Initialise stuff
-    signal(SIGINT, signal_handler);
-    signal(SIGTERM, signal_handler);
-    mg_log_set(s_log_level);
-    mg_mgr_init(&mgr);
-
-    char url[100];
-    mg_snprintf(url, sizeof(url), "http://%s:%d", s_listening_address,
-                s_listening_port);
-    if ((c = mg_http_listen(&mgr, url, cb, &mgr)) == NULL) {
-      MG_ERROR(("Cannot listen on %s", url));
-      exit(EXIT_FAILURE);
-    }
-
-    // Start infinite event loop
-    MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
-    MG_INFO(("Mongoose version          : v%s", MG_VERSION));
-    MG_INFO(("Listening on              : %s", url));
-    MG_INFO(("Serving http from folder : %s", s_root_folder));
-    MG_INFO(("Serving tiles from folder : %s", s_image_folder));
-    while (s_signo == 0)
-      mg_mgr_poll(&mgr, 1000);
-    TIFFClose(cache.tifin);
-    mg_mgr_free(&mgr);
-    MG_INFO(("Exiting on signal %d", s_signo));
-    return 0;
-  }
+  // Start infinite event loop
+  MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
+  MG_INFO(("Mongoose version          : v%s", MG_VERSION));
+  MG_INFO(("Listening on              : %s", url));
+  MG_INFO(("Serving http from folder : %s", s_root_folder));
+  MG_INFO(("Serving tiles from folder : %s", s_image_folder));
+  while (s_signo == 0)
+    mg_mgr_poll(&mgr, 1000);
+  TIFFClose(cache.tifin);
+  mg_mgr_free(&mgr);
+  MG_INFO(("Exiting on signal %d", s_signo));
+  return 0;
+}

@@ -16,7 +16,7 @@ body {
 <body>
 <div id="openseadragon1"></div>
 </body>
-<script src="/app/openseadragon.min.js"></script>
+<script src="openseadragon.min.js"></script>
 <script type="text/javascript">
   
   const url = URL.parse(window.location.href);
@@ -36,7 +36,7 @@ console.log(`Khufu viewer: port=${url}`);
 const SERVER = `http://localhost:${port}`;
       var viewer = OpenSeadragon({
       id: "openseadragon1",
-      prefixUrl: "/app/images/",
+      prefixUrl: "images/",
       showNavigator: true,
       tileSources: { 
         width: WIDTH,

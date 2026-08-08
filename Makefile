@@ -1,6 +1,6 @@
 VERSION=`cat Version`
 OPTFLAGS =-O3
-CXXFLAGS += -std=c++11 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
+CXXFLAGS += -std=c++11 $(OPTFLAGS) -D APPDIR=\"/app\" -D KHUFU_VERSION=\"$(VERSION)\" -Wall -Wformat  -I src
 SRCDIR = src
 
 LIBS_DYNAMIC = -ltiff -ljpeg -lz -lzstd 

@@ -3,7 +3,8 @@ CC=gcc
 CCC=g++
 LD=ld
 
-COMMONFLAGS=-O3 -D KHUFU_VERSION=\"$(VERSION)\" -I src
+COMMONFLAGS=-O3 
+CXXFLAGS += -std=c++11 $(OPTFLAGS) -D KHUFU_VERSION=\"$(VERSION)\" -I src
 CCFLAGS =$(COMMONFLAGS)b  -std=c++26
 CFLAGS=$(COMMONFLAGS)
 LIBS=-lsocket -ltiff -ljpeg -lz -lzstd 
@@ -21,4 +22,4 @@ khufu.o: src/khufu.cpp
 	$(CCC) $(CCFLAGS) src/khufu.cpp -c -o khufu.o
 
 mongoose.o: src/mongoose.c 
-	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.ohttps://tech-couch.com/tag/security
+	$(CC) $(CFLAGS) src/mongoose.c -c -o mongoose.o
