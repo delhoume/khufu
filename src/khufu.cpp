@@ -499,7 +499,7 @@ int main(int argc, char *argv[]) {
   }
 
   // Start infinite event loop
-  MG_INFO(("Khufu tile server version : v%s", KHUFU_VERSION));
+  MG_INFO(("Khufu tile and web server version : v%s", KHUFU_VERSION));
   MG_INFO(("Mongoose version          : v%s", MG_VERSION));
   MG_INFO(("Listening on              : %s", url));
   MG_INFO(("Serving http from folder : %s", s_root_folder));

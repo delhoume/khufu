@@ -39,5 +39,5 @@ COPY --from=builder --chmod=0755 /build/khufu /app/
 EXPOSE 8000
 WORKDIR /app
 ENTRYPOINT ["./khufu"]
-CMD ["-d", "/app, "-f", "/mnt/tifroot", "-p", "8000" ]
+CMD ["-d", "/app/, "-f", "/mnt/tifroot", "-p", "8000" ]
 # ENTRYPOINT ["sh"]  

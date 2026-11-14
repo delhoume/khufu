@@ -3,12 +3,11 @@
 ### Features
 
 - serves http from a specfic folder.
-- serves tiles from BigTiff with standard Rest Ap
+- serves tiles from BigTiff with standard Rest Api
 - has builtin catalog and full image viewing capabilities based on opensource OpenSeadragon JS library
 - very efficient (uses optimized dependencies)
 - instant display of massive files
 - single file c++ source code, based on opensource mongoose http library
-- almost no config
 
 - https://github.com/cesanta/mongoose
 
@@ -18,7 +17,7 @@
 
 ```
 >khufu --help
-Khufu tile server version : v1.0
+Khufu tile and web server version : v1.0
 Usage: ./khufu OPTIONS
   -d FOLDER - web folder, default: .
   -f FOLDER - folder with TIFF images, default: .
@@ -28,10 +27,10 @@ Usage: ./khufu OPTIONS
 ```
 
 - files in web folder are available through http
-- tiled (optionaly pyramidal) TIFF in TIFF foder are available though rest APIs:
+- tiled (optionally pyramidal) TIFFs in TIFF folder are available though rest APIs:
   - `/info`returns a json description of available ids in TIFF folder
 
-  - `/tile/{id}/{level}/{x}/{y}` returns a JPEG image of the tile at given location.
+  - `/tile/{id}/{level}/{x}/{y}[.png,.jpg]` returns an image of the tile at given location in specified format (default is JPG)
 
   An OSD TileSource is defined in ` demo/show.htmls`
 
