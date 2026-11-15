@@ -32,14 +32,14 @@ Usage: ./khufu OPTIONS
 
   - `/tile/{id}/{level}/{x}/{y}[.png,.jpg]` returns an image of the tile at given location in specified format (default is JPG)
 
-  An OSD TileSource is defined in ` demo/show.htmls`
+  An OSD TileSource is defined in ` demo/show.html`
 
 ### Docker
 
 Khufu is available as a standalone docker container.
 Just tell it where to find TIFF files and you are ready to view gigantic images locally. TIFFs must be tiled to be viewable.
 
-podman usage on Windows :
+podman (or docker)usage on Windows :
 
 ```
 podman run -p 3333:8000 -d --name Khufu --env EXTERNALPORT=3333 -v C:\path_to_tiled_tiffs:/mnt/tifroot docker.io/delhoume/khufu
